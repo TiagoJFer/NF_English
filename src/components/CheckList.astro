@@ -1,0 +1,6 @@
+---
+const { items } = Astro.props;
+---
+<ul class="included">
+  {items.map((item) => <li><span class="check">✓</span><span>{item}</span></li>)}
+</ul>

@@ -1,0 +1,1034 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Natalia Fernandes English | Destrave seu Inglês</title>
+    <meta
+      name="description"
+      content="Programa online de 8 semanas para quem já estudou inglês, mas trava na hora de falar. Entre na lista de espera do Destrave seu Inglês."
+    />
+    <meta property="og:title" content="Natalia Fernandes English | Destrave seu Inglês" />
+    <meta
+      property="og:description"
+      content="Ganhe confiança para participar de conversas reais em inglês, sem recomeçar do zero."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="Nath.jpg" />
+    <meta name="theme-color" content="#b84f47" />
+    <style>
+      :root {
+        --ink: #1f2421;
+        --muted: #5e6761;
+        --paper: #fffaf2;
+        --paper-strong: #f5eadc;
+        --white: #ffffff;
+        --brand: #b84f47;
+        --brand-dark: #7f332f;
+        --sage: #6d8372;
+        --sage-dark: #35483d;
+        --gold: #f1bd61;
+        --gold-soft: #fff1cf;
+        --line: #e2d6c7;
+        --shadow: 0 24px 70px rgba(31, 36, 33, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        line-height: 1.5;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .page {
+        overflow: hidden;
+      }
+
+      .container {
+        width: min(1120px, calc(100% - 40px));
+        margin: 0 auto;
+      }
+
+      .nav {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        border-bottom: 1px solid rgba(226, 214, 199, 0.9);
+        background: rgba(255, 250, 242, 0.92);
+        backdrop-filter: blur(16px);
+      }
+
+      .nav-inner {
+        display: flex;
+        min-height: 70px;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 850;
+        text-decoration: none;
+      }
+
+      .brand-mark {
+        display: grid;
+        width: 40px;
+        height: 40px;
+        place-items: center;
+        border-radius: 8px;
+        background: var(--sage-dark);
+        color: var(--white);
+        font-weight: 900;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 22px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+      }
+
+      .button {
+        display: inline-flex;
+        min-height: 50px;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        border: 0;
+        border-radius: 8px;
+        background: var(--brand);
+        color: var(--white);
+        padding: 14px 22px;
+        font-weight: 850;
+        text-decoration: none;
+        box-shadow: 0 14px 30px rgba(184, 79, 71, 0.24);
+      }
+
+      .button:hover {
+        background: var(--brand-dark);
+      }
+
+      .button.secondary {
+        border: 1px solid var(--line);
+        background: var(--white);
+        color: var(--sage-dark);
+        box-shadow: none;
+      }
+
+      .hero {
+        padding: 78px 0 54px;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.02fr) minmax(320px, 0.78fr);
+        gap: 54px;
+        align-items: center;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        width: fit-content;
+        align-items: center;
+        gap: 8px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: var(--white);
+        padding: 8px 13px;
+        color: var(--brand-dark);
+        font-size: 14px;
+        font-weight: 850;
+      }
+
+      .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--gold);
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
+      h1 {
+        max-width: 780px;
+        margin: 20px 0 22px;
+        font-size: clamp(43px, 7vw, 74px);
+        line-height: 0.98;
+        letter-spacing: 0;
+      }
+
+      h2 {
+        margin-bottom: 14px;
+        font-size: clamp(32px, 5vw, 52px);
+        line-height: 1.05;
+        letter-spacing: 0;
+      }
+
+      h3 {
+        margin-bottom: 9px;
+      }
+
+      .hero-copy {
+        max-width: 650px;
+        color: var(--muted);
+        font-size: 21px;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin: 30px 0 18px;
+      }
+
+      .microcopy {
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .hero-proof {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 28px;
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: var(--white);
+        padding: 9px 13px;
+        color: var(--sage-dark);
+        font-size: 14px;
+        font-weight: 800;
+      }
+
+      .hero-visual {
+        position: relative;
+      }
+
+      .portrait-frame {
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--paper-strong);
+        box-shadow: var(--shadow);
+      }
+
+      .portrait-frame img {
+        width: 100%;
+        height: min(620px, 68vw);
+        min-height: 500px;
+        object-fit: cover;
+        object-position: center top;
+      }
+
+      .floating-note {
+        position: absolute;
+        right: -14px;
+        bottom: 28px;
+        width: min(300px, 82%);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--white);
+        padding: 18px;
+        box-shadow: 0 18px 50px rgba(31, 36, 33, 0.18);
+      }
+
+      .floating-note strong {
+        display: block;
+        margin-bottom: 8px;
+        color: var(--brand-dark);
+      }
+
+      .floating-note p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .proof {
+        padding: 12px 0 58px;
+      }
+
+      .proof-row {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--white);
+      }
+
+      .proof-item {
+        padding: 23px;
+        border-right: 1px solid var(--line);
+      }
+
+      .proof-item:last-child {
+        border-right: 0;
+      }
+
+      .proof-item b {
+        display: block;
+        font-size: 27px;
+        line-height: 1;
+      }
+
+      .proof-item span {
+        display: block;
+        margin-top: 8px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      section {
+        padding: 76px 0;
+      }
+
+      .band {
+        background: var(--paper-strong);
+      }
+
+      .section-head {
+        max-width: 780px;
+        margin-bottom: 34px;
+      }
+
+      .section-head.center {
+        margin-right: auto;
+        margin-left: auto;
+        text-align: center;
+      }
+
+      .section-head p {
+        color: var(--muted);
+        font-size: 19px;
+      }
+
+      .pain-grid,
+      .pillar-grid,
+      .week-grid,
+      .faq-grid {
+        display: grid;
+        gap: 18px;
+      }
+
+      .pain-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .pillar-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .card {
+        min-height: 100%;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--white);
+        padding: 24px;
+      }
+
+      .card p {
+        margin-bottom: 0;
+        color: var(--muted);
+      }
+
+      .icon {
+        display: grid;
+        width: 42px;
+        height: 42px;
+        margin-bottom: 18px;
+        place-items: center;
+        border-radius: 8px;
+        background: var(--gold-soft);
+        color: var(--brand-dark);
+        font-weight: 900;
+      }
+
+      .method {
+        display: grid;
+        grid-template-columns: minmax(0, 0.78fr) minmax(0, 1fr);
+        gap: 30px;
+        align-items: start;
+      }
+
+      .method-panel {
+        position: sticky;
+        top: 96px;
+        border-radius: 8px;
+        background: var(--sage-dark);
+        color: var(--white);
+        padding: 30px;
+      }
+
+      .method-panel p {
+        color: rgba(255, 255, 255, 0.78);
+      }
+
+      .included {
+        display: grid;
+        gap: 12px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .included li {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+        color: var(--muted);
+      }
+
+      .check {
+        display: grid;
+        flex: 0 0 24px;
+        width: 24px;
+        height: 24px;
+        place-items: center;
+        border-radius: 50%;
+        background: var(--brand);
+        color: var(--white);
+        font-size: 13px;
+        font-weight: 900;
+      }
+
+      .teacher {
+        display: grid;
+        grid-template-columns: minmax(260px, 0.54fr) minmax(0, 1fr);
+        gap: 34px;
+        align-items: center;
+      }
+
+      .teacher-photo {
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--white);
+        box-shadow: var(--shadow);
+      }
+
+      .teacher-photo img {
+        width: 100%;
+        aspect-ratio: 4 / 5;
+        object-fit: cover;
+        object-position: center top;
+      }
+
+      .cred-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        margin-top: 26px;
+      }
+
+      .cred {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--white);
+        padding: 18px;
+      }
+
+      .cred b {
+        display: block;
+        color: var(--brand-dark);
+        font-size: 24px;
+        line-height: 1;
+      }
+
+      .cred span {
+        display: block;
+        margin-top: 8px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .week-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .week {
+        display: flex;
+        gap: 14px;
+        align-items: flex-start;
+      }
+
+      .week-number {
+        display: grid;
+        flex: 0 0 38px;
+        width: 38px;
+        height: 38px;
+        place-items: center;
+        border-radius: 8px;
+        background: var(--gold);
+        font-weight: 900;
+      }
+
+      .week h3 {
+        font-size: 18px;
+      }
+
+      .week p {
+        font-size: 14px;
+      }
+
+      .offer {
+        display: grid;
+        grid-template-columns: minmax(0, 0.95fr) minmax(320px, 0.68fr);
+        gap: 28px;
+        align-items: stretch;
+      }
+
+      .price-box {
+        border: 2px solid var(--brand);
+        border-radius: 8px;
+        background: var(--white);
+        padding: 28px;
+        box-shadow: var(--shadow);
+      }
+
+      .price-label {
+        color: var(--brand-dark);
+        font-size: 13px;
+        font-weight: 900;
+        text-transform: uppercase;
+      }
+
+      .price {
+        margin: 12px 0 8px;
+        font-size: clamp(42px, 6vw, 56px);
+        font-weight: 900;
+        line-height: 1;
+      }
+
+      .price-box p {
+        color: var(--muted);
+      }
+
+      .price-box .button {
+        width: 100%;
+        margin-top: 12px;
+      }
+
+      .offer-note {
+        border-radius: 8px;
+        background: var(--gold-soft);
+        padding: 14px;
+        color: var(--sage-dark);
+        font-size: 14px;
+        font-weight: 750;
+      }
+
+      .faq-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      details {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--white);
+        padding: 20px;
+      }
+
+      summary {
+        cursor: pointer;
+        font-weight: 850;
+      }
+
+      details p {
+        margin: 12px 0 0;
+        color: var(--muted);
+      }
+
+      .final-cta {
+        padding: 78px 0;
+        background: var(--sage-dark);
+        color: var(--white);
+      }
+
+      .final-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 32px;
+        align-items: center;
+      }
+
+      .final-cta p {
+        max-width: 680px;
+        margin-bottom: 0;
+        color: rgba(255, 255, 255, 0.78);
+        font-size: 19px;
+      }
+
+      .final-cta .button {
+        background: var(--gold);
+        color: var(--ink);
+        box-shadow: none;
+      }
+
+      footer {
+        padding: 30px 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      @media (max-width: 940px) {
+        .nav-links a {
+          display: none;
+        }
+
+        .hero {
+          padding-top: 54px;
+        }
+
+        .hero-grid,
+        .method,
+        .teacher,
+        .offer,
+        .final-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .method-panel {
+          position: static;
+        }
+
+        .portrait-frame img {
+          height: 560px;
+          min-height: 0;
+        }
+
+        .proof-row,
+        .pain-grid,
+        .pillar-grid,
+        .week-grid,
+        .cred-grid,
+        .faq-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .container {
+          width: min(100% - 28px, 1120px);
+        }
+
+        .nav-inner {
+          min-height: 64px;
+        }
+
+        .brand span:last-child {
+          max-width: 160px;
+          line-height: 1.05;
+        }
+
+        .nav .button {
+          min-height: 44px;
+          padding: 11px 13px;
+          font-size: 13px;
+        }
+
+        h1 {
+          font-size: 43px;
+        }
+
+        .hero-copy,
+        .section-head p,
+        .final-cta p {
+          font-size: 18px;
+        }
+
+        .hero-actions,
+        .hero-actions .button,
+        .final-grid .button {
+          width: 100%;
+        }
+
+        .portrait-frame img {
+          height: 520px;
+        }
+
+        .floating-note {
+          right: 12px;
+          bottom: 16px;
+        }
+
+        .proof-row,
+        .pain-grid,
+        .pillar-grid,
+        .week-grid,
+        .cred-grid,
+        .faq-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .proof-item {
+          border-right: 0;
+          border-bottom: 1px solid var(--line);
+        }
+
+        .proof-item:last-child {
+          border-bottom: 0;
+        }
+
+        section {
+          padding: 56px 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header class="nav">
+        <div class="container nav-inner">
+          <a class="brand" href="#top" aria-label="Natalia Fernandes English">
+            <span class="brand-mark">NF</span>
+            <span>Natalia Fernandes English</span>
+          </a>
+          <nav class="nav-links" aria-label="Navegação principal">
+            <a href="#programa">Programa</a>
+            <a href="#natalia">Natalia</a>
+            <a href="#oferta">Turma</a>
+            <a href="#faq">FAQ</a>
+          </nav>
+          <a class="button" href="https://wa.me/5511967165564?text=Quero%20destravar%20meu%20ingles%20com%20a%20Natalia%20Fernandes%20English" target="_blank" rel="noreferrer">
+            Quero entrar
+          </a>
+        </div>
+      </header>
+
+      <main id="top">
+        <section class="hero">
+          <div class="container hero-grid">
+            <div>
+                <div class="eyebrow"><span class="dot"></span> Destrave seu Inglês | Lista de espera</div>
+              <h1>Ganhe confiança para conversar em inglês sem travar.</h1>
+              <p class="hero-copy">
+                Um programa online de 8 semanas para quem já estudou inglês, mas sente que não evoluiu
+                e trava quando precisa falar. Pratique conversas reais usando sua rotina, seus gostos e suas histórias como ponto de partida.
+              </p>
+              <div class="hero-actions">
+                <a class="button" href="https://wa.me/5511967165564?text=Quero%20entrar%20na%20lista%20de%20espera%20do%20Destrave%20seu%20Ingles" target="_blank" rel="noreferrer">
+                  Entrar na lista de espera
+                </a>
+                <a class="button secondary" href="#oferta">Ver turma e investimento</a>
+              </div>
+              <p class="microcopy">
+                Entre na lista de espera para receber as próximas informações da turma, sem compromisso.
+              </p>
+              <div class="hero-proof" aria-label="Destaques do programa">
+                <span class="pill">8 semanas</span>
+                <span class="pill">1h por encontro ao vivo</span>
+                <span class="pill">Vagas limitadas</span>
+                <span class="pill">Garantia de 7 dias</span>
+              </div>
+            </div>
+
+            <div class="hero-visual">
+              <div class="portrait-frame">
+                <img src="Nath.jpg" alt="Natalia Fernandes, professora de inglês" />
+              </div>
+              <div class="floating-note">
+                <strong>Você não precisa recomeçar do zero.</strong>
+                <p>O foco é reorganizar o que você já viu e colocar o inglês em uso com segurança.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="proof">
+          <div class="container proof-row" aria-label="Resumo do programa">
+            <div class="proof-item">
+              <b>15 anos</b>
+              <span>de experiência ensinando inglês</span>
+            </div>
+            <div class="proof-item">
+              <b>8</b>
+              <span>encontros online ao vivo</span>
+            </div>
+            <div class="proof-item">
+              <b>24</b>
+              <span>aulas gravadas curtas</span>
+            </div>
+            <div class="proof-item">
+              <b>10 a 15 min</b>
+              <span>de conversa final para ver sua evolução</span>
+            </div>
+          </div>
+        </div>
+
+        <section class="band">
+          <div class="container">
+            <div class="section-head">
+              <h2>Se você já estudou e mesmo assim trava, o problema não é falta de capacidade.</h2>
+              <p>
+                Muitas pessoas acumulam regras, listas e aplicativos, mas quase não têm um espaço seguro
+                para falar, errar, ajustar e tentar de novo.
+              </p>
+            </div>
+            <div class="pain-grid">
+              <article class="card">
+                <div class="icon">?</div>
+                <h3>Dá branco na hora</h3>
+                <p>Você entende parte da conversa, mas a resposta não sai quando alguém fala com você.</p>
+              </article>
+              <article class="card">
+                <div class="icon">!</div>
+                <h3>Vergonha de errar</h3>
+                <p>A preocupação com pronúncia e gramática perfeita trava antes da primeira frase.</p>
+              </article>
+              <article class="card">
+                <div class="icon">+</div>
+                <h3>Já tentou antes</h3>
+                <p>Você estudou por meses ou anos, mas sente que não saiu do lugar na conversação.</p>
+              </article>
+              <article class="card">
+                <div class="icon">✓</div>
+                <h3>Pouco tempo</h3>
+                <p>Você precisa de um caminho leve, possível na rotina, sem depender de horas livres por dia.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section id="programa">
+          <div class="container method">
+            <div class="method-panel">
+              <div class="eyebrow"><span class="dot"></span> O programa</div>
+              <h2>Destrave seu Inglês</h2>
+              <p>
+                Um percurso prático para ganhar confiança em conversas reais, sem prometer fluência milagrosa
+                e sem fazer você começar tudo de novo.
+              </p>
+              <a class="button" href="https://wa.me/5511967165564?text=Quero%20receber%20os%20detalhes%20do%20Destrave%20seu%20Ingles" target="_blank" rel="noreferrer">
+                Receber detalhes pelo WhatsApp
+              </a>
+            </div>
+
+            <div>
+              <div class="pillar-grid">
+                <article class="card">
+                  <div class="icon">1</div>
+                  <h3>Sua vida vira assunto</h3>
+                  <p>Rotina, trabalho, viagens, música, séries, família e histórias pessoais entram nas práticas.</p>
+                </article>
+                <article class="card">
+                  <div class="icon">2</div>
+                  <h3>Prática segura para falar</h3>
+                  <p>Você fala aos poucos, com correção leve e sem interrupções que aumentam a vergonha.</p>
+                </article>
+                <article class="card">
+                  <div class="icon">3</div>
+                  <h3>Evolução possível na rotina</h3>
+                  <p>Vídeos curtos preparam a aula ao vivo e missões simples ajudam a manter contato com o idioma.</p>
+                </article>
+              </div>
+
+              <div class="card" style="margin-top: 18px">
+                <h3>O que está incluído</h3>
+                <ul class="included">
+                  <li><span class="check">✓</span><span>8 aulas online ao vivo de 1h.</span></li>
+                  <li><span class="check">✓</span><span>24 aulas gravadas curtas para preparar vocabulário, frases e listening.</span></li>
+                  <li><span class="check">✓</span><span>Missões pessoais conectadas aos interesses e objetivos de cada aluno.</span></li>
+                  <li><span class="check">✓</span><span>Mapa de Afinidades para usar a vida real do aluno como material de aula.</span></li>
+                  <li><span class="check">✓</span><span>Phrase Bank pessoal com expressões úteis para conversas reais.</span></li>
+                  <li><span class="check">✓</span><span>Conversa final de 10 a 15 minutos, com feedback e próximos passos.</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="natalia" class="band">
+          <div class="container teacher">
+            <div class="teacher-photo">
+              <img src="Nath.jpg" alt="Professora Natalia Fernandes" />
+            </div>
+            <div>
+              <div class="section-head">
+                <h2>Com Natalia Fernandes, professora de inglês há 15 anos.</h2>
+                <p>
+                  A Natalia trabalha com adultos que precisam transformar conhecimento solto em fala possível.
+                  A abordagem é próxima, acolhedora e prática, com temas da vida real para reduzir a trava e aumentar a confiança.
+                </p>
+              </div>
+              <div class="cred-grid">
+                <div class="cred">
+                  <b>15</b>
+                  <span>anos ensinando inglês</span>
+                </div>
+                <div class="cred">
+                  <b>Adultos</b>
+                  <span>experiência com alunos que já tentaram antes</span>
+                </div>
+                <div class="cred">
+                  <b>In company</b>
+                  <span>aulas para empresas como Yamaha, Eaton e Mahle</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <div class="container">
+            <div class="section-head center">
+              <h2>Uma jornada de 8 semanas para falar mais e travar menos.</h2>
+              <p>
+                A meta é sair da paralisia e construir repertório para falar sobre rotina, gostos,
+                trabalho, viagens e histórias pessoais.
+              </p>
+            </div>
+            <div class="week-grid">
+              <article class="card week"><span class="week-number">1</span><div><h3>I'm back</h3><p>Recomeço sem vergonha e frases de sobrevivência.</p></div></article>
+              <article class="card week"><span class="week-number">2</span><div><h3>Things I like</h3><p>Gostos, hobbies, música, séries, comida e esportes.</p></div></article>
+              <article class="card week"><span class="week-number">3</span><div><h3>My routine</h3><p>Rotina real, trabalho, casa, estudos e tempo livre.</p></div></article>
+              <article class="card week"><span class="week-number">4</span><div><h3>Small talk</h3><p>Começar e manter conversas simples sem pânico.</p></div></article>
+              <article class="card week"><span class="week-number">5</span><div><h3>My stories</h3><p>Contar pequenas histórias do passado sem travar.</p></div></article>
+              <article class="card week"><span class="week-number">6</span><div><h3>Opinions</h3><p>Dar opinião, concordar, discordar e explicar preferências.</p></div></article>
+              <article class="card week"><span class="week-number">7</span><div><h3>Real situations</h3><p>Listening e simulações de viagem, trabalho, atendimento ou socialização.</p></div></article>
+              <article class="card week"><span class="week-number">8</span><div><h3>Final conversation</h3><p>Preparação e conversa final de 10 a 15 minutos, com feedback e próximos passos.</p></div></article>
+            </div>
+          </div>
+        </section>
+
+        <section id="oferta" class="band">
+          <div class="container offer">
+            <div class="card">
+              <div class="section-head">
+                <h2>Entre na lista de espera.</h2>
+                <p>
+                  A próxima turma será anunciada primeiro para quem demonstrar interesse. Uma turma com vagas limitadas
+                  para manter o ambiente seguro e a prática próxima.
+                </p>
+              </div>
+              <ul class="included">
+                <li><span class="check">✓</span><span>Programa online de 8 semanas.</span></li>
+                <li><span class="check">✓</span><span>Aulas ao vivo e conteúdos gravados curtos.</span></li>
+                <li><span class="check">✓</span><span>Conteúdos gravados curtos para preparar cada encontro.</span></li>
+                <li><span class="check">✓</span><span>Prática baseada na rotina, interesses e objetivos dos alunos.</span></li>
+                <li><span class="check">✓</span><span>Garantia de 7 dias para testar com tranquilidade.</span></li>
+              </ul>
+            </div>
+
+            <aside class="price-box" aria-label="Investimento da turma fundadora">
+              <div class="price-label">Turma fundadora</div>
+              <div class="price">R$ 497</div>
+              <p><strong>Condição especial de entrada.</strong></p>
+              <p>Preço cheio nas próximas turmas: R$ 997.</p>
+              <div class="offer-note">
+                Vagas limitadas para preservar a prática e o acompanhamento próximo.
+              </div>
+              <a class="button" href="https://wa.me/5511967165564?text=Quero%20entrar%20na%20lista%20de%20espera%20do%20Destrave%20seu%20Ingles" target="_blank" rel="noreferrer">
+                Entrar na lista de espera
+              </a>
+              <p class="microcopy" style="margin-top: 14px">
+                Chame no WhatsApp para confirmar disponibilidade e receber os próximos passos.
+              </p>
+            </aside>
+          </div>
+        </section>
+
+        <section id="faq">
+          <div class="container">
+            <div class="section-head">
+              <h2>Dúvidas comuns</h2>
+            </div>
+            <div class="faq-grid">
+              <details>
+                <summary>Tenho vergonha de falar. Esse curso é para mim?</summary>
+                <p>Sim. A proposta é justamente criar um ambiente seguro para falar aos poucos, errar sem exposição desnecessária e ganhar confiança.</p>
+              </details>
+              <details>
+                <summary>Já tentei estudar inglês antes e não evoluí. O que muda?</summary>
+                <p>O foco aqui não é acumular mais teoria. Você usa temas da sua vida para praticar fala, escuta e reação em conversas reais.</p>
+              </details>
+              <details>
+                <summary>Meu inglês é muito básico. Posso entrar?</summary>
+                <p>O programa é para quem já teve contato com inglês. Não precisa falar bem, mas é importante já reconhecer alguma base do idioma.</p>
+              </details>
+              <details>
+                <summary>Não tenho muito tempo. Vou conseguir acompanhar?</summary>
+                <p>O formato combina aulas gravadas curtas, um encontro semanal de 1h e missões simples para manter o inglês presente na rotina.</p>
+              </details>
+              <details>
+                <summary>Vou precisar falar na frente dos outros?</summary>
+                <p>Sim, mas de forma gradual e guiada. A turma existe para praticar, não para expor ou constranger.</p>
+              </details>
+              <details>
+                <summary>O curso promete fluência em 8 semanas?</summary>
+                <p>Não. A promessa é mais confiança, repertório e prática para participar de conversas simples e travar menos.</p>
+              </details>
+              <details>
+                <summary>E se eu entrar e perceber que não é para mim?</summary>
+                <p>Você conta com garantia de 7 dias. Se o programa não fizer sentido para você nesse período, pode pedir cancelamento.</p>
+              </details>
+              <details>
+                <summary>Como faço a inscrição?</summary>
+                <p>Clique em um dos botões da página para chamar no WhatsApp. A Natalia confirma a disponibilidade da turma e envia os próximos passos.</p>
+              </details>
+            </div>
+          </div>
+        </section>
+
+        <section class="final-cta">
+          <div class="container final-grid">
+            <div>
+              <h2>Você já estudou inglês. Agora é hora de voltar a falar.</h2>
+              <p>
+                Entre na turma de abertura do Destrave seu Inglês e comece a praticar conversas reais com mais leveza e segurança.
+              </p>
+            </div>
+            <a class="button" href="https://wa.me/5511967165564?text=Quero%20entrar%20na%20turma%20de%20abertura%20com%20a%20Natalia" target="_blank" rel="noreferrer">
+              Falar com a Natalia
+            </a>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <div class="container">
+          Natalia Fernandes English. Programa online para adultos que querem conversar em inglês com mais confiança.
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
