@@ -49,10 +49,10 @@ const {
       <p class="hero-copy" set:html={description} />
 
       {(primaryAction || secondaryAction) && (
-        <div class="hero-actions">
+        <div class={`hero-actions ${primaryAction && secondaryAction ? 'has-both-actions' : ''}`}>
           {primaryAction && (
             <a
-              class={`button ${primaryAction.isSecondary ? 'secondary' : ''}`}
+              class={`button hero-primary ${primaryAction.isSecondary ? 'secondary' : ''}`}
               href={primaryAction.href}
               target={primaryAction.isExternal ? '_blank' : undefined}
               rel={primaryAction.isExternal ? 'noreferrer' : undefined}
@@ -62,7 +62,7 @@ const {
           )}
           {secondaryAction && (
             <a
-              class={`button ${secondaryAction.isSecondary ? 'secondary' : ''}`}
+              class={`button hero-secondary ${secondaryAction.isSecondary ? 'secondary' : ''}`}
               href={secondaryAction.href}
               target={secondaryAction.isExternal ? '_blank' : undefined}
               rel={secondaryAction.isExternal ? 'noreferrer' : undefined}

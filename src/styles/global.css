@@ -317,8 +317,16 @@ footer { padding: 48px 0 60px; color: var(--muted); font-size: 14px; border-top:
   .section-head p, .final-cta p { font-size: 16.5px; }
   .hero-actions { display: flex; flex-direction: column; gap: 10px; margin: 20px 0 14px; width: 100%; }
   .hero-actions .button { width: 100%; }
-  .hero-actions .button.secondary { background: transparent; border-color: var(--line-strong); color: var(--sage-dark); font-weight: 750; box-shadow: none; }
-  .hero-actions .button.secondary:hover { background: var(--surface-soft); }
+  .hero-actions.has-both-actions .hero-primary { display: none; }
+  .hero-actions.has-both-actions .hero-secondary {
+    background: var(--brand);
+    color: white;
+    border: none;
+    box-shadow: 0 14px 30px rgba(184, 79, 71, .24);
+  }
+  .hero-actions.has-both-actions .hero-secondary:hover {
+    background: var(--brand-dark);
+  }
   .final-grid .button { width: 100%; }
   .portrait-frame img { height: 440px; }
   .hero-circle-frame { width: min(280px, 74vw); height: min(280px, 74vw); border-width: 4px; box-shadow: 0 0 0 2px var(--line), 0 16px 40px rgba(31, 36, 33, 0.14), 0 0 0 8px rgba(241, 189, 97, 0.16); }
