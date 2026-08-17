@@ -41,11 +41,38 @@ const {
 
 <section class="hero">
   <div class="container hero-grid">
-    <div>
+    <div class="hero-content">
       {eyebrow && (
         <div class="eyebrow"><span class="dot"></span> {eyebrow}</div>
       )}
-      <h1 set:html={title} />
+      
+      <div class="hero-header-row">
+        <div class="hero-mobile-avatar">
+          <div class="hero-circle-frame">
+            <picture>
+              {imageWebpSrc && <source srcset={imageWebpSrc} type="image/webp" />}
+              <img
+                src={imageSrc}
+                alt={imageAlt}
+                width="160"
+                height="160"
+                fetchpriority="high"
+                loading="eager"
+                decoding="async"
+              />
+            </picture>
+          </div>
+        </div>
+        <h1 set:html={title} />
+      </div>
+
+      {(floatingNoteTitle || floatingNoteText) && (
+        <div class="floating-note hero-mobile-note">
+          {floatingNoteTitle && <strong>{floatingNoteTitle}</strong>}
+          {floatingNoteText && <p>{floatingNoteText}</p>}
+        </div>
+      )}
+
       <p class="hero-copy" set:html={description} />
 
       {(primaryAction || secondaryAction) && (
@@ -84,7 +111,7 @@ const {
       )}
     </div>
 
-    <div>
+    <div class="hero-desktop-media">
       {imageFrameType === 'circle' ? (
         <div class="hero-image-wrapper">
           <div class="hero-circle-frame">
