@@ -1,0 +1,362 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import MobileCTA from '../components/MobileCTA.astro';
+import Hero from '../components/Hero.astro';
+import ProofBar from '../components/ProofBar.astro';
+import CorporateStrip from '../components/CorporateStrip.astro';
+import PillarsSection from '../components/PillarsSection.astro';
+import CardGridSection from '../components/CardGridSection.astro';
+import SolutionsSection from '../components/SolutionsSection.astro';
+import ComparisonSection from '../components/ComparisonSection.astro';
+import TeacherSection from '../components/TeacherSection.astro';
+import ProgramMethodSection from '../components/ProgramMethodSection.astro';
+import CurriculumSection from '../components/CurriculumSection.astro';
+import OfferSection from '../components/OfferSection.astro';
+import FAQSection from '../components/FAQSection.astro';
+import CTABanner from '../components/CTABanner.astro';
+
+const whatsappDemo = 'https://wa.me/5511967165564';
+---
+
+<Layout
+  title="Catálogo de Templates & Design System | NF English"
+  description="Showroom de componentes e seções padronizadas da NF English (Metodologia Templates-First)."
+>
+  <div class="page" id="top">
+    <!-- Header Demonstrativo -->
+    <Header mode="index" />
+
+    <!-- Intro do Showroom -->
+    <section style="padding: 40px 0 20px; background: var(--surface-soft); border-bottom: 1px solid var(--line);">
+      <div class="container">
+        <div class="eyebrow"><span class="dot"></span> Showroom Templates-First</div>
+        <h1 style="margin: 14px 0 10px; font-size: clamp(32px, 5vw, 54px);">Catálogo de Componentes & Design System</h1>
+        <p class="hero-copy" style="font-size: 17px; max-width: 800px; margin-bottom: 16px;">
+          Este catálogo serve como a referência absoluta de componentes da NF English. Conforme a regra de ouro: <strong>"Edite sempre o template, nunca a página"</strong>. Qualquer modificação visual deve ser feita no respectivo componente em <code>src/components/</code>.
+        </p>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+          <span class="pill">Regra de Ouro Ativa</span>
+          <span class="pill">Astro Componentizado</span>
+          <span class="pill">Cloudflare Ready</span>
+          <span class="pill">Governança AGENTS.md</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 01. PRIMITIVOS DO DESIGN SYSTEM -->
+    <section style="padding: 60px 0;">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow sage"><span class="dot"></span> 01. Primitivos</div>
+          <h2>Primitivos Visuais & Botões</h2>
+          <p>Tokens de botões, tags, badges e elevações que sustentam todo o ecossistema visual.</p>
+        </div>
+
+        <div style="display: grid; gap: 30px;">
+          <!-- Botões -->
+          <div class="card">
+            <h3>Variantes de Botões</h3>
+            <div style="display: flex; flex-wrap: wrap; gap: 14px; align-items: center; margin-top: 16px;">
+              <a href="#" class="button">Botão Primário (Brand)</a>
+              <a href="#" class="button gold">Botão Gold (CTA de Alto Impacto)</a>
+              <a href="#" class="button secondary">Botão Secundário</a>
+              <a href="#" class="button small">Botão Pequeno</a>
+              <div style="background: var(--sage-dark); padding: 12px; border-radius: 8px; display: inline-flex;">
+                <a href="#" class="button outline-white">Botão Outline White</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Badges & Eyebrows -->
+          <div class="card">
+            <h3>Badges, Eyebrows & Tags</h3>
+            <div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-top: 16px;">
+              <div class="eyebrow"><span class="dot"></span> Eyebrow Padrão</div>
+              <div class="eyebrow sage"><span class="dot"></span> Eyebrow Sage</div>
+              <span class="pill">Pill Padrão</span>
+              <span class="solution-tag" style="margin: 0;">Tag de Solução</span>
+              <span class="corp-badge">Badge Corporativo</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02. HERO SECTION -->
+    <div style="background: var(--paper); border-top: 2px dashed var(--line); padding-top: 20px;">
+      <div class="container">
+        <span class="pill" style="margin-bottom: 10px;">Componente: Hero.astro</span>
+      </div>
+      <Hero
+        eyebrow="NF English • Ensino Personalizado"
+        title="Inglês de verdade para a sua vida real."
+        description="Metodologia individualizada, foco em conversação sem traumas e segurança psicológica para adultos que precisam destravar e liderar em inglês."
+        primaryAction={{ text: 'Quero Meu Plano Personalizado', href: whatsappDemo, isExternal: true }}
+        secondaryAction={{ text: 'Conhecer Soluções', href: '#solucoes' }}
+        microcopy="Atendimento humanizado direto no WhatsApp com a fundadora."
+        pills={['Mentoria 1:1', 'Destrave seu Inglês (Grupo)', 'In Company (Empresas)', 'Atendimento Personalizado']}
+        floatingNoteTitle="Natalia Fernandes"
+        floatingNoteText="15 anos de experiência transformando conhecimento teórico em comunicação real com segurança e acolhimento."
+      />
+    </div>
+
+    <!-- 03. PROOF BAR & CORPORATE STRIP -->
+    <div style="background: var(--surface-soft); border-top: 2px dashed var(--line); padding-top: 20px;">
+      <div class="container">
+        <span class="pill" style="margin-bottom: 10px;">Componentes: ProofBar.astro & CorporateStrip.astro</span>
+      </div>
+      <ProofBar
+        items={[
+          { value: '15+', label: 'anos de experiência ensinando adultos' },
+          { value: '100%', label: 'aulas personalizadas para sua rotina' },
+          { value: '3+', label: 'grandes multinacionais atendidas' },
+          { value: 'Zero', label: 'métodos engessados ou constrangimento' }
+        ]}
+      />
+      <CorporateStrip
+        label="Treinamentos Corporativos & Confiança Empresarial"
+        badges={['YAMAHA', 'EATON', 'MAHLE', 'EXECUTIVOS C-LEVEL', 'LÍDERES GLOBAIS']}
+      />
+    </div>
+
+    <!-- 04. CARD GRIDS (PAIN POINTS) -->
+    <div style="background: var(--paper); border-top: 2px dashed var(--line); padding-top: 20px;">
+      <div class="container">
+        <span class="pill" style="margin-bottom: 10px;">Componente: CardGridSection.astro</span>
+      </div>
+      <CardGridSection
+        title="Se você já estudou e mesmo assim trava, o problema não é falta de capacidade."
+        description="Muitas pessoas acumulam regras, listas e aplicativos, mas quase não têm um espaço seguro para falar, errar, ajustar e tentar de novo."
+        columns={4}
+        isBand={true}
+        items={[
+          { icon: '?', title: 'Dá branco na hora', desc: 'Você entende parte da conversa, mas a resposta não sai quando alguém fala com você.' },
+          { icon: '!', title: 'Vergonha de errar', desc: 'A preocupação com pronúncia e gramática perfeita trava antes da primeira frase.' },
+          { icon: '+', title: 'Já tentou antes', desc: 'Você estudou por meses ou anos, mas sente que não saiu do lugar na conversação.' },
+          { icon: '✓', title: 'Pouco tempo', desc: 'Você precisa de um caminho leve e possível na rotina, sem horas livres por dia.' }
+        ]}
+      />
+    </div>
+
+    <!-- 05. PILARES DE METODOLOGIA -->
+    <div style="background: var(--surface-soft); border-top: 2px dashed var(--line); padding-top: 20px;">
+      <div class="container">
+        <span class="pill" style="margin-bottom: 10px;">Componente: PillarsSection.astro</span>
+      </div>
+      <PillarsSection
+        eyebrow="Metodologia Exclusiva"
+        title="Como funciona o ensino personalizado na prática"
+        description="Quatro pilares fundamentais que transformam o aprendizado de inglês em uma experiência leve, acolhedora e diretamente aplicável ao seu dia a dia."
+        pillars={[
+          { num: '01', title: 'Diagnóstico Individual Profundo', desc: 'Antes de qualquer aula, analisamos seu histórico com o idioma e suas metas imediatas.' },
+          { num: '02', title: 'Mapa de Afinidades & Vida Real', desc: 'Sua rotina profissional e interesses viram o material das práticas.' },
+          { num: '03', title: 'Segurança Psicológica & Acolhimento', desc: 'Ambiente seguro onde o erro é tratado como ferramenta natural de ajuste.' },
+          { num: '04', title: 'Ritmo Adaptado para Adultos Ocupados', desc: 'Metodologia flexível pensada para quem tem rotina intensa e pouco tempo livre.' }
+        ]}
+      />
+    </div>
+
+    <!-- 06. SOLUÇÕES & OFERTAS -->
+    <div style="background: var(--paper); border-top: 2px dashed var(--line); padding-top: 20px;">
+      <div class="container">
+        <span class="pill" style="margin-bottom: 10px;">Componente: SolutionsSection.astro</span>
+      </div>
+      <SolutionsSection
+        eyebrow="Nossos Formatos"
+        title="Três caminhos pensados para o seu momento"
+        description="Do acompanhamento individual ultra-personalizado à imersão prática em grupo ou capacitação corporativa."
+        solutions={[
+          {
+            tag: '100% Personalizado',
+            title: 'Mentoria Executiva 1:1',
+            desc: 'Aulas individuais sob medida para seus objetivos imediatos de carreira, viagens ou apresentações de negócios.',
+            features: ['Diagnóstico completo de perfil e metas', 'Aulas 100% focadas na sua área de atuação', 'Flexibilidade total de agenda'],
+            ctaText: 'Quero Mentoria 1:1',
+            ctaHref: whatsappDemo,
+            ctaClass: 'secondary',
+            isExternal: true
+          },
+          {
+            tag: 'Imersão em Grupo',
+            isFeatured: true,
+            featuredTag: 'Mais Procurado • Turmas Reduzidas',
+            title: 'Programa Destrave seu Inglês',
+            desc: 'Jornada prática de 8 semanas para quem já estudou, mas ainda trava na hora de falar em público e no dia a dia.',
+            features: ['8 encontros ao vivo em ambiente seguro', 'Missões semanais aplicadas à rotina', 'Turmas reduzidas'],
+            ctaText: 'Ver Detalhes do Programa',
+            ctaHref: '/destrave',
+            ctaClass: 'gold'
+          },
+          {
+            tag: 'Para Empresas',
+            title: 'Treinamentos In Company',
+            desc: 'Capacitação linguística e comunicação de negócios para executivos, líderes e equipes corporativas multinacionais.',
+            features: ['Alinhamento aos jargões e processos da empresa', 'Simulações reais de reuniões e negociações', 'Relatórios periódicos de evolução'],
+            ctaText: 'Falar com Consultor Corporativo',
+            ctaHref: whatsappDemo,
+            ctaClass: 'secondary',
+            isExternal: true
+          }
+        ]}
+      />
+    </div>
+
+    <!-- 07. COMPARATIVO -->
+    <div style="background: var(--surface-soft); border-top: 2px dashed var(--line); padding-top: 20px;">
+      <div class="container">
+        <span class="pill" style="margin-bottom: 10px;">Componente: ComparisonSection.astro</span>
+      </div>
+      <ComparisonSection
+        title="Por que os métodos tradicionais falham com adultos"
+        description="A maioria dos cursos foi desenhada para crianças ou segue apostilas engessadas. Na NF English, o método se molda a você."
+        traditionalItems={[
+          'Turmas com ritmos diferentes onde você tem vergonha de se expressar',
+          'Listas mecânicas de gramática sem contexto prático',
+          'Cobrança excessiva que gera ansiedade e bloqueios'
+        ]}
+        nfItems={[
+          'Conteúdo construído a partir do seu dia a dia profissional e pessoal',
+          'Segurança psicológica para falar desde o primeiro momento',
+          'Ritmo e carga horária adaptados à rotina de quem tem pouco tempo'
+        ]}
+      />
+    </div>
+
+    <!-- 08. AUTORIDADE / TEACHER -->
+    <div style="background: var(--paper); border-top: 2px dashed var(--line); padding-top: 20px;">
+      <div class="container">
+        <span class="pill" style="margin-bottom: 10px;">Componente: TeacherSection.astro</span>
+      </div>
+      <TeacherSection
+        eyebrow="A Fundadora"
+        title="Ensinar adultos exige acolhimento, método e compreensão da vida real."
+        description="Com mais de 15 anos dedicados ao ensino da língua inglesa, Natalia Fernandes desenvolveu uma metodologia humanizada voltada para profissionais que carregam frustrações de cursos anteriores."
+        creds={[
+          { value: '15+', label: 'anos de dedicação exclusiva ao ensino' },
+          { value: 'Multinacionais', label: 'experiência com líderes da Yamaha, Eaton e Mahle' },
+          { value: 'Sem Traumas', label: 'metodologia focada em segurança emocional' }
+        ]}
+        manifesto="&ldquo;Meu compromisso não é fazer você decorar regras para passar numa prova, mas sim dar a você a segurança e a voz para liderar reuniões, viajar o mundo e se expressar com orgulho em inglês.&rdquo;"
+      />
+    </div>
+
+    <!-- 09. PROGRAM METHOD (STICKY) -->
+    <div style="background: var(--surface-soft); border-top: 2px dashed var(--line); padding-top: 20px;">
+      <div class="container">
+        <span class="pill" style="margin-bottom: 10px;">Componente: ProgramMethodSection.astro</span>
+      </div>
+      <ProgramMethodSection
+        panelTitle="Destrave seu Inglês"
+        panelDescription="Um percurso prático para ganhar confiança em conversas reais, sem prometer fluência milagrosa e sem fazer você começar tudo de novo."
+        panelCtaText="Receber detalhes pelo WhatsApp"
+        panelCtaHref={whatsappDemo}
+        pillars={[
+          { icon: '1', title: 'Sua vida vira assunto', desc: 'Rotina, trabalho, viagens, música, séries e histórias pessoais entram nas práticas.' },
+          { icon: '2', title: 'Prática segura para falar', desc: 'Você fala aos poucos, com correção leve e sem interrupções que aumentam a vergonha.' },
+          { icon: '3', title: 'Evolução possível na rotina', desc: 'Vídeos curtos preparam a aula ao vivo e missões simples mantêm contato com o idioma.' }
+        ]}
+        includedItems={[
+          '8 semanas de acompanhamento online.',
+          'Aulas ao vivo e conteúdos gravados curtos.',
+          'Missões pessoais conectadas aos seus objetivos.',
+          'Conversa final de 10 a 15 minutos com feedback.'
+        ]}
+      />
+    </div>
+
+    <!-- 10. CURRICULUM (8 WEEKS) -->
+    <div style="background: var(--paper); border-top: 2px dashed var(--line); padding-top: 20px;">
+      <div class="container">
+        <span class="pill" style="margin-bottom: 10px;">Componente: CurriculumSection.astro</span>
+      </div>
+      <CurriculumSection
+        title="Uma jornada de 8 semanas para falar mais e travar menos."
+        description="A meta é sair da paralisia e construir repertório para falar sobre rotina, gostos, trabalho, viagens e histórias pessoais."
+        steps={[
+          { number: '1', title: "I'm back", description: 'Recomeço sem vergonha e frases de sobrevivência.' },
+          { number: '2', title: 'Things I like', description: 'Gostos, hobbies, música, séries, comida e esportes.' },
+          { number: '3', title: 'My routine', description: 'Rotina real, trabalho, casa, estudos e tempo livre.' },
+          { number: '4', title: 'Small talk', description: 'Começar e manter conversas simples sem pânico.' },
+          { number: '5', title: 'My stories', description: 'Contar pequenas histórias do passado sem travar.' },
+          { number: '6', title: 'Opinions', description: 'Dar opinião, concordar, discordar e explicar preferências.' }
+        ]}
+      />
+    </div>
+
+    <!-- 11. OFFER SECTION -->
+    <div style="background: var(--surface-soft); border-top: 2px dashed var(--line); padding-top: 20px;">
+      <div class="container">
+        <span class="pill" style="margin-bottom: 10px;">Componente: OfferSection.astro</span>
+      </div>
+      <OfferSection
+        title="Entre na lista de espera."
+        description="A próxima turma será anunciada primeiro para quem demonstrar interesse. Entre na lista para receber as informações."
+        checklist={[
+          'Programa online de 8 semanas.',
+          'Aulas ao vivo e conteúdos gravados curtos.',
+          'Prática baseada na sua rotina e nos seus objetivos.',
+          'Turma pequena para manter um ambiente seguro.',
+          'Garantia de 7 dias.'
+        ]}
+        priceLabel="Condição de lançamento"
+        price="R$ 497"
+        priceDetails="<strong>Condição especial de entrada.</strong>"
+        priceFull="Preço cheio nas próximas turmas: R$ 997."
+        offerNote="A condição de lançamento será apresentada aos interessados da lista de espera."
+        ctaText="Entrar na lista de espera"
+        ctaHref={whatsappDemo}
+        ctaMicrocopy="Sem compromisso. Você conversa com a equipe antes de decidir."
+      />
+    </div>
+
+    <!-- 12. FAQ SECTION -->
+    <div style="background: var(--paper); border-top: 2px dashed var(--line); padding-top: 20px;">
+      <div class="container">
+        <span class="pill" style="margin-bottom: 10px;">Componente: FAQSection.astro</span>
+      </div>
+      <FAQSection
+        eyebrow="Tire suas dúvidas"
+        title="Perguntas Frequentes"
+        description="Tudo o que você precisa saber sobre como funcionam nossas aulas, mentorias e programas."
+        faqs={[
+          {
+            q: 'Como funciona a personalização do ensino na prática?',
+            a: 'Após uma avaliação inicial de perfil e objetivos, construímos o planejamento com temas, vocabulário e situações diretamente ligadas ao seu cotidiano.'
+          },
+          {
+            q: 'Para quem são indicadas as aulas e mentorias da NF English?',
+            a: 'Nosso foco é exclusivamente o público adulto e profissional: pessoas que já tiveram contato prévio com o idioma ou estudaram anos, mas ainda travam na hora de falar.'
+          },
+          {
+            q: 'As aulas são online ou presenciais?',
+            a: '100% online com interação ao vivo, permitindo que você estude de onde estiver, com total conforto e sem perda de tempo em deslocamentos.'
+          }
+        ]}
+      />
+    </div>
+
+    <!-- 13. CTA BANNER -->
+    <div style="border-top: 2px dashed var(--line); padding-top: 20px;">
+      <div class="container">
+        <span class="pill" style="margin-bottom: 10px;">Componente: CTABanner.astro</span>
+      </div>
+      <CTABanner
+        title="Pronto para destravar seu inglês com um plano feito sob medida?"
+        description="Fale diretamente com nossa equipe no WhatsApp para tirar dúvidas, agendar um diagnóstico pedagógico ou entender qual solução é perfeita para você."
+        ctaText="Conversar no WhatsApp"
+        ctaHref={whatsappDemo}
+      />
+    </div>
+
+    <!-- 14. FOOTER & MOBILE CTA -->
+    <div style="border-top: 2px dashed var(--line); padding-top: 20px;">
+      <div class="container">
+        <span class="pill" style="margin-bottom: 10px;">Componentes: Footer.astro & MobileCTA.astro</span>
+      </div>
+      <Footer />
+      <MobileCTA href={whatsappDemo} text="Falar no WhatsApp" />
+    </div>
+  </div>
+</Layout>

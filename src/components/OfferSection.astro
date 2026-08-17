@@ -1,0 +1,63 @@
+---
+import CheckList from './CheckList.astro';
+
+interface Props {
+  id?: string;
+  title: string;
+  description: string;
+  checklist: string[];
+  priceAriaLabel?: string;
+  priceLabel: string;
+  price: string;
+  priceDetails?: string;
+  priceFull?: string;
+  offerNote?: string;
+  ctaText: string;
+  ctaHref: string;
+  ctaMicrocopy?: string;
+  isBand?: boolean;
+}
+
+const {
+  id = 'oferta',
+  title,
+  description,
+  checklist = [],
+  priceAriaLabel = 'Investimento do programa',
+  priceLabel,
+  price,
+  priceDetails,
+  priceFull,
+  offerNote,
+  ctaText,
+  ctaHref,
+  ctaMicrocopy,
+  isBand = true
+} = Astro.props;
+---
+
+<section id={id} class={isBand ? 'band' : ''}>
+  <div class="container offer">
+    <div class="card">
+      <div class="section-head">
+        <h2 set:html={title} />
+        <p set:html={description} />
+      </div>
+      <CheckList items={checklist} />
+    </div>
+
+    <aside class="price-box" aria-label={priceAriaLabel}>
+      <div class="price-label">{priceLabel}</div>
+      <div class="price">{price}</div>
+      {priceDetails && <p set:html={priceDetails} />}
+      {priceFull && <p set:html={priceFull} />}
+      {offerNote && <div class="offer-note" set:html={offerNote} />}
+      <a class="button" href={ctaHref} target="_blank" rel="noreferrer">
+        {ctaText}
+      </a>
+      {ctaMicrocopy && (
+        <p class="microcopy" style="margin-top: 14px">{ctaMicrocopy}</p>
+      )}
+    </aside>
+  </div>
+</section>

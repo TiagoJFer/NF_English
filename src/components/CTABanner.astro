@@ -1,0 +1,36 @@
+---
+interface Props {
+  id?: string;
+  title: string;
+  description: string;
+  ctaText: string;
+  ctaHref: string;
+  isExternal?: boolean;
+}
+
+const {
+  id,
+  title,
+  description,
+  ctaText,
+  ctaHref,
+  isExternal = true
+} = Astro.props;
+---
+
+<section id={id} class="final-cta">
+  <div class="container final-grid">
+    <div>
+      <h2 set:html={title} />
+      <p set:html={description} />
+    </div>
+    <a
+      class="button"
+      href={ctaHref}
+      target={isExternal ? '_blank' : undefined}
+      rel={isExternal ? 'noreferrer' : undefined}
+    >
+      {ctaText}
+    </a>
+  </div>
+</section>

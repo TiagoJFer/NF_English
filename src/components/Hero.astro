@@ -1,0 +1,135 @@
+---
+interface ActionButton {
+  text: string;
+  href: string;
+  isSecondary?: boolean;
+  isExternal?: boolean;
+}
+
+interface Props {
+  eyebrow?: string;
+  title: string;
+  description: string;
+  primaryAction?: ActionButton;
+  secondaryAction?: ActionButton;
+  microcopy?: string;
+  pills?: string[];
+  imageSrc?: string;
+  imageWebpSrc?: string;
+  imageAlt?: string;
+  imageFrameType?: 'circle' | 'portrait';
+  floatingNoteTitle?: string;
+  floatingNoteText?: string;
+}
+
+const {
+  eyebrow,
+  title,
+  description,
+  primaryAction,
+  secondaryAction,
+  microcopy,
+  pills = [],
+  imageSrc = '/Nath.jpg',
+  imageWebpSrc = '/Nath.webp',
+  imageAlt = 'Natalia Fernandes, professora de inglês',
+  imageFrameType = 'circle',
+  floatingNoteTitle,
+  floatingNoteText
+} = Astro.props;
+---
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      {eyebrow && (
+        <div class="eyebrow"><span class="dot"></span> {eyebrow}</div>
+      )}
+      <h1 set:html={title} />
+      <p class="hero-copy" set:html={description} />
+
+      {(primaryAction || secondaryAction) && (
+        <div class="hero-actions">
+          {primaryAction && (
+            <a
+              class={`button ${primaryAction.isSecondary ? 'secondary' : ''}`}
+              href={primaryAction.href}
+              target={primaryAction.isExternal ? '_blank' : undefined}
+              rel={primaryAction.isExternal ? 'noreferrer' : undefined}
+            >
+              {primaryAction.text}
+            </a>
+          )}
+          {secondaryAction && (
+            <a
+              class={`button ${secondaryAction.isSecondary ? 'secondary' : ''}`}
+              href={secondaryAction.href}
+              target={secondaryAction.isExternal ? '_blank' : undefined}
+              rel={secondaryAction.isExternal ? 'noreferrer' : undefined}
+            >
+              {secondaryAction.text}
+            </a>
+          )}
+        </div>
+      )}
+
+      {microcopy && <p class="microcopy">{microcopy}</p>}
+
+      {pills.length > 0 && (
+        <div class="hero-proof">
+          {pills.map((pill) => (
+            <span class="pill">{pill}</span>
+          ))}
+        </div>
+      )}
+    </div>
+
+    <div>
+      {imageFrameType === 'circle' ? (
+        <div class="hero-image-wrapper">
+          <div class="hero-circle-frame">
+            <picture>
+              {imageWebpSrc && <source srcset={imageWebpSrc} type="image/webp" />}
+              <img
+                src={imageSrc}
+                alt={imageAlt}
+                width="576"
+                height="1024"
+                fetchpriority="high"
+                loading="eager"
+                decoding="async"
+              />
+            </picture>
+          </div>
+          {(floatingNoteTitle || floatingNoteText) && (
+            <div class="floating-note">
+              {floatingNoteTitle && <strong>{floatingNoteTitle}</strong>}
+              {floatingNoteText && <p>{floatingNoteText}</p>}
+            </div>
+          )}
+        </div>
+      ) : (
+        <div class="portrait-frame">
+          <picture>
+            {imageWebpSrc && <source srcset={imageWebpSrc} type="image/webp" />}
+            <img
+              src={imageSrc}
+              alt={imageAlt}
+              width="576"
+              height="1024"
+              fetchpriority="high"
+              loading="eager"
+              decoding="async"
+            />
+          </picture>
+          {(floatingNoteTitle || floatingNoteText) && (
+            <div class="floating-note">
+              {floatingNoteTitle && <strong>{floatingNoteTitle}</strong>}
+              {floatingNoteText && <p>{floatingNoteText}</p>}
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  </div>
+</section>

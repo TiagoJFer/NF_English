@@ -1,0 +1,74 @@
+---
+interface SolutionCard {
+  tag: string;
+  isFeatured?: boolean;
+  featuredTag?: string;
+  title: string;
+  desc: string;
+  features: string[];
+  ctaText: string;
+  ctaHref: string;
+  ctaClass?: string;
+  isExternal?: boolean;
+}
+
+interface Props {
+  id?: string;
+  eyebrow?: string;
+  title: string;
+  description?: string;
+  solutions: SolutionCard[];
+  isBand?: boolean;
+}
+
+const {
+  id = 'solucoes',
+  eyebrow = 'Nossos Formatos',
+  title,
+  description,
+  solutions = [],
+  isBand = false
+} = Astro.props;
+---
+
+<section id={id} class={isBand ? 'band' : ''}>
+  <div class="container">
+    <div class="section-head center">
+      {eyebrow && (
+        <div class="eyebrow"><span class="dot"></span> {eyebrow}</div>
+      )}
+      <h2 set:html={title} />
+      {description && <p set:html={description} />}
+    </div>
+
+    <div class="solutions-grid">
+      {solutions.map((item) => (
+        <article class={`solution-card ${item.isFeatured ? 'featured' : ''}`}>
+          {item.isFeatured && item.featuredTag && (
+            <span class="solution-featured-tag">{item.featuredTag}</span>
+          )}
+          <div>
+            <div class="solution-tag">{item.tag}</div>
+            <h3>{item.title}</h3>
+            <p class="solution-desc">{item.desc}</p>
+            <ul class="solution-features">
+              {item.features.map((feat) => (
+                <li>
+                  <span class="chk">✓</span> {feat}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <a
+            class={`button ${item.ctaClass || ''}`}
+            href={item.ctaHref}
+            target={item.isExternal ? '_blank' : undefined}
+            rel={item.isExternal ? 'noreferrer' : undefined}
+          >
+            {item.ctaText}
+          </a>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

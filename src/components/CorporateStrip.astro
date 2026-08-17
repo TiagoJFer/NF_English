@@ -1,0 +1,22 @@
+---
+interface Props {
+  label?: string;
+  badges: string[];
+}
+
+const {
+  label = 'Treinamentos Corporativos & Confiança Empresarial',
+  badges = ['YAMAHA', 'EATON', 'MAHLE', 'EXECUTIVOS C-LEVEL', 'LÍDERES GLOBAIS']
+} = Astro.props;
+---
+
+<div class="corporate-strip">
+  <div class="container corporate-inner">
+    <span class="corporate-label">{label}</span>
+    <div class="corporate-logos">
+      {badges.map((badge) => (
+        <span class="corp-badge">{badge}</span>
+      ))}
+    </div>
+  </div>
+</div>

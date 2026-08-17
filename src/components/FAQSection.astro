@@ -1,0 +1,45 @@
+---
+interface FAQItem {
+  q: string;
+  a: string;
+}
+
+interface Props {
+  id?: string;
+  eyebrow?: string;
+  title: string;
+  description?: string;
+  faqs: FAQItem[];
+  isBand?: boolean;
+}
+
+const {
+  id = 'faq',
+  eyebrow,
+  title,
+  description,
+  faqs = [],
+  isBand = false
+} = Astro.props;
+---
+
+<section id={id} class={isBand ? 'band' : ''}>
+  <div class="container">
+    <div class="section-head">
+      {eyebrow && (
+        <div class="eyebrow"><span class="dot"></span> {eyebrow}</div>
+      )}
+      <h2 set:html={title} />
+      {description && <p set:html={description} />}
+    </div>
+
+    <div class="grid faq-grid">
+      {faqs.map((faq) => (
+        <details>
+          <summary>{faq.q}</summary>
+          <p>{faq.a}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,49 @@
+---
+interface PillarItem {
+  num: string;
+  title: string;
+  desc: string;
+}
+
+interface Props {
+  id?: string;
+  eyebrow?: string;
+  title: string;
+  description?: string;
+  pillars: PillarItem[];
+  isBand?: boolean;
+}
+
+const {
+  id = 'personalizacao',
+  eyebrow = 'Metodologia Exclusiva',
+  title,
+  description,
+  pillars = [],
+  isBand = false
+} = Astro.props;
+---
+
+<section id={id} class={isBand ? 'band' : ''}>
+  <div class="container">
+    <div class="section-head">
+      {eyebrow && (
+        <div class="eyebrow sage"><span class="dot"></span> {eyebrow}</div>
+      )}
+      <h2 set:html={title} />
+      {description && <p set:html={description} />}
+    </div>
+
+    <div class="pillars-4">
+      {pillars.map((pillar) => (
+        <article class="pillar-card">
+          <div class="pillar-num">{pillar.num}</div>
+          <div class="pillar-content">
+            <h3>{pillar.title}</h3>
+            <p>{pillar.desc}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

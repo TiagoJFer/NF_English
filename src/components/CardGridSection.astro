@@ -1,0 +1,52 @@
+---
+interface CardItem {
+  icon: string;
+  title: string;
+  desc: string;
+}
+
+interface Props {
+  id?: string;
+  eyebrow?: string;
+  title: string;
+  description?: string;
+  columns?: 2 | 3 | 4;
+  isBand?: boolean;
+  centerHeader?: boolean;
+  items: CardItem[];
+}
+
+const {
+  id,
+  eyebrow,
+  title,
+  description,
+  columns = 4,
+  isBand = true,
+  centerHeader = false,
+  items = []
+} = Astro.props;
+
+const gridClass = columns === 4 ? 'pain-grid' : (columns === 3 ? 'pillar-grid' : 'faq-grid');
+---
+
+<section id={id} class={isBand ? 'band' : ''}>
+  <div class="container">
+    <div class={`section-head ${centerHeader ? 'center' : ''}`}>
+      {eyebrow && (
+        <div class="eyebrow"><span class="dot"></span> {eyebrow}</div>
+      )}
+      <h2 set:html={title} />
+      {description && <p set:html={description} />}
+    </div>
+    <div class={`grid ${gridClass}`}>
+      {items.map((item) => (
+        <article class="card">
+          <div class="icon">{item.icon}</div>
+          <h3>{item.title}</h3>
+          <p>{item.desc}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

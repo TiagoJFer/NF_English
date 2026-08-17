@@ -1,0 +1,75 @@
+---
+interface CredItem {
+  value: string;
+  label: string;
+}
+
+interface Props {
+  id?: string;
+  eyebrow?: string;
+  title: string;
+  description: string;
+  creds?: CredItem[];
+  manifesto?: string;
+  imageSrc?: string;
+  imageWebpSrc?: string;
+  imageAlt?: string;
+  isBand?: boolean;
+}
+
+const {
+  id = 'sobre',
+  eyebrow = 'A Fundadora',
+  title,
+  description,
+  creds = [],
+  manifesto,
+  imageSrc = '/Nath.jpg',
+  imageWebpSrc = '/Nath.webp',
+  imageAlt = 'Professora Natalia Fernandes',
+  isBand = true
+} = Astro.props;
+---
+
+<section id={id} class={isBand ? 'band' : ''}>
+  <div class="container teacher">
+    <div class="teacher-photo">
+      <picture>
+        {imageWebpSrc && <source srcset={imageWebpSrc} type="image/webp" />}
+        <img
+          src={imageSrc}
+          alt={imageAlt}
+          width="576"
+          height="1024"
+          loading="lazy"
+          decoding="async"
+        />
+      </picture>
+    </div>
+
+    <div>
+      <div class="section-head">
+        {eyebrow && (
+          <div class="eyebrow"><span class="dot"></span> {eyebrow}</div>
+        )}
+        <h2 set:html={title} />
+        <p set:html={description} />
+      </div>
+
+      {creds.length > 0 && (
+        <div class="grid cred-grid">
+          {creds.map((c) => (
+            <div class="cred">
+              <b>{c.value}</b>
+              <span>{c.label}</span>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {manifesto && (
+        <div class="teacher-manifesto" set:html={manifesto} />
+      )}
+    </div>
+  </div>
+</section>

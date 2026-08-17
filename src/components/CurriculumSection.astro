@@ -1,0 +1,49 @@
+---
+interface CurriculumStep {
+  number: string;
+  title: string;
+  description: string;
+}
+
+interface Props {
+  id?: string;
+  eyebrow?: string;
+  title: string;
+  description?: string;
+  steps: CurriculumStep[];
+  isBand?: boolean;
+}
+
+const {
+  id,
+  eyebrow,
+  title,
+  description,
+  steps = [],
+  isBand = false
+} = Astro.props;
+---
+
+<section id={id} class={isBand ? 'band' : ''}>
+  <div class="container">
+    <div class="section-head center">
+      {eyebrow && (
+        <div class="eyebrow"><span class="dot"></span> {eyebrow}</div>
+      )}
+      <h2 set:html={title} />
+      {description && <p set:html={description} />}
+    </div>
+
+    <div class="grid week-grid">
+      {steps.map((step) => (
+        <article class="card week">
+          <span class="week-number">{step.number}</span>
+          <div>
+            <h3>{step.title}</h3>
+            <p>{step.description}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,84 @@
+---
+interface LinkItem {
+  label: string;
+  href: string;
+  isExternal?: boolean;
+}
+
+interface Props {
+  brandTitle?: string;
+  brandDescription?: string;
+  solutionsTitle?: string;
+  solutions?: LinkItem[];
+  contactTitle?: string;
+  contactLinks?: LinkItem[];
+  copyright?: string;
+  domain?: string;
+}
+
+const {
+  brandTitle = 'Natalia Fernandes English',
+  brandDescription = 'Ensino de inglês personalizado de alta excelência para adultos, líderes e empresas. Transformando conhecimento teórico em comunicação real com segurança e acolhimento.',
+  solutionsTitle = 'Soluções',
+  solutions = [
+    { label: 'Mentoria 1:1 Executiva', href: 'https://wa.me/5511967165564?text=Ola%20Natalia,%20tenho%20interesse%20nas%20Aulas%20Individuais%20e%20Mentoria%201:1.', isExternal: true },
+    { label: 'Programa Destrave seu Inglês', href: '/destrave' },
+    { label: 'Treinamentos In-Company', href: 'https://wa.me/5511967165564?text=Ola%20Natalia,%20gostaria%20de%20informacoes%20sobre%20treinamentos%20de%20ingles%20in%20company%20para%20minha%20empresa.', isExternal: true },
+    { label: 'Metodologia e Pilares', href: '#personalizacao' }
+  ],
+  contactTitle = 'Contato & Redes',
+  contactLinks = [
+    { label: 'WhatsApp: +55 (11) 96716-5564', href: 'https://wa.me/5511967165564', isExternal: true },
+    { label: 'Voltar ao topo', href: '#top' }
+  ],
+  copyright = `© ${new Date().getFullYear()} Natalia Fernandes English. Todos os direitos reservados.`,
+  domain = 'nfenglish.com.br'
+} = Astro.props;
+---
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="brand" style="margin-bottom: 14px;">
+          <span class="brand-mark">NF</span>
+          <span>{brandTitle}</span>
+        </div>
+        <p class="muted">
+          {brandDescription}
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <strong>{solutionsTitle}</strong>
+        <ul class="footer-links">
+          {solutions.map((item) => (
+            <li>
+              <a href={item.href} target={item.isExternal ? '_blank' : undefined} rel={item.isExternal ? 'noreferrer' : undefined}>
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <strong>{contactTitle}</strong>
+        <ul class="footer-links">
+          {contactLinks.map((item) => (
+            <li>
+              <a href={item.href} target={item.isExternal ? '_blank' : undefined} rel={item.isExternal ? 'noreferrer' : undefined}>
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>{copyright}</div>
+      <div>{domain}</div>
+    </div>
+  </div>
+</footer>

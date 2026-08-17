@@ -1,6 +1,17 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import MobileCTA from '../../components/MobileCTA.astro';
+import Hero from '../../components/Hero.astro';
+import ProofBar from '../../components/ProofBar.astro';
+import CorporateStrip from '../../components/CorporateStrip.astro';
+import ComparisonSection from '../../components/ComparisonSection.astro';
+import PillarsSection from '../../components/PillarsSection.astro';
+import SolutionsSection from '../../components/SolutionsSection.astro';
+import TeacherSection from '../../components/TeacherSection.astro';
+import FAQSection from '../../components/FAQSection.astro';
+import CTABanner from '../../components/CTABanner.astro';
 
 const whatsappDiagnostic = 'https://wa.me/5511967165564?text=Hi%20Natalia,%20I%20would%20like%20to%20talk%20about%20a%20tailored%20English%20plan.';
 const whatsappMentoring = 'https://wa.me/5511967165564?text=Hi%20Natalia,%20I%20am%20interested%20in%201:1%20Executive%20Mentoring%20sessions.';
@@ -26,6 +37,54 @@ const pillars = [
     num: '04',
     title: 'Built for Busy Professionals',
     desc: 'A flexible methodology with smart scheduling and actionable missions, specifically designed for adults with demanding careers and limited time.'
+  }
+];
+
+const solutions = [
+  {
+    tag: 'Individual & Executive',
+    title: '1:1 Custom Mentoring',
+    desc: 'Private executive coaching 100% focused on your career goals, international meetings, interviews, or high-stakes business presentations.',
+    features: [
+      'Personalized learning roadmaps',
+      'Simulations tailored to real work challenges',
+      'Flexible scheduling and pacing',
+      'Continuous pronunciation and fluency feedback'
+    ],
+    ctaText: 'Inquire About 1:1 Mentoring',
+    ctaHref: whatsappMentoring,
+    ctaClass: 'secondary',
+    isExternal: true
+  },
+  {
+    tag: 'Select Cohorts',
+    isFeatured: true,
+    featuredTag: 'Group Program',
+    title: 'Unlock Your English',
+    desc: 'An 8-week practical immersive track for adults who understand English but freeze when speaking. Supportive, psychologically safe environment.',
+    features: [
+      '8 live interactive online sessions',
+      '24 bite-sized on-demand modules',
+      'Affinity Map & Personal Phrase Bank',
+      'Final 1-on-1 progress conversation'
+    ],
+    ctaText: 'Explore Program Details ↗',
+    ctaHref: '/en/destrave'
+  },
+  {
+    tag: 'For Teams & Corporations',
+    title: 'In-Company Training',
+    desc: 'Tailored corporate language solutions for teams and executives needing confident, clear communication in global business settings.',
+    features: [
+      'Corporate proficiency assessments',
+      'Syllabus aligned with company workflows & jargon',
+      'Proven track record with Yamaha, Eaton, Mahle',
+      'Regular engagement and progress reporting'
+    ],
+    ctaText: 'Corporate Solutions',
+    ctaHref: whatsappCorporate,
+    ctaClass: 'secondary',
+    isExternal: true
   }
 ];
 
@@ -66,362 +125,142 @@ const faqs = [
     <Header mode="institutional" lang="en" />
     
     <main>
-      <!-- INSTITUTIONAL HERO -->
-      <section class="hero">
-        <div class="container hero-grid">
-          <div>
-            <div class="eyebrow"><span class="dot"></span> Excellence & Personalization</div>
-            <h1>English that adapts to your life, your career, and your rhythm.</h1>
-            <p class="hero-copy">
-              No generic formulas or rigid classrooms. For 15 years, we have been helping adults transform passive knowledge into confident, natural speaking through tailored coaching.
-            </p>
-            <div class="hero-actions">
-              <a class="button" href={whatsappDiagnostic} target="_blank" rel="noreferrer">
-                Discuss Your Plan on WhatsApp
-              </a>
-              <a class="button secondary" href="#solutions">
-                Explore Programs
-              </a>
-            </div>
-            <p class="microcopy">Consultative and welcoming conversation via WhatsApp. No obligations.</p>
-            <div class="hero-proof">
-              <span class="pill">15+ years experience</span>
-              <span class="pill">100% adult-focused</span>
-              <span class="pill">Corporate expertise</span>
-              <span class="pill">1:1 and group tracks</span>
-            </div>
-          </div>
+      <!-- HERO -->
+      <Hero
+        eyebrow="Excellence & Personalization"
+        title="English that adapts to your life, your career, and your rhythm."
+        description="No generic formulas or rigid classrooms. For 15 years, we have been helping adults transform passive knowledge into confident, natural speaking through tailored coaching."
+        primaryAction={{ text: 'Discuss Your Plan on WhatsApp', href: whatsappDiagnostic, isExternal: true }}
+        secondaryAction={{ text: 'Explore Programs', href: '#solutions' }}
+        microcopy="Consultative and welcoming conversation via WhatsApp. No obligations."
+        pills={['15+ years experience', '100% adult-focused', 'Corporate expertise', '1:1 and group tracks']}
+        imageFrameType="circle"
+        imageSrc="/Nath.jpg"
+        imageWebpSrc="/Nath.webp"
+        imageAlt="Natalia Fernandes, founder of NF English"
+        floatingNoteTitle="Genuine Personalization:"
+        floatingNoteText="Your classes are built around your real profession, interests, and actual day-to-day challenges."
+      />
 
-          <div class="hero-image-wrapper">
-            <div class="hero-circle-frame">
-              <picture>
-                <source srcset="/Nath.webp" type="image/webp" />
-                <img src="/Nath.jpg" alt="Natalia Fernandes, founder of NF English" width="576" height="1024" fetchpriority="high" loading="eager" decoding="async" />
-              </picture>
-            </div>
-            <div class="floating-note">
-              <strong>Real Personalization:</strong>
-              <p>Your profession, your interests, and your real challenges become your class curriculum.</p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <!-- METRICS -->
+      <ProofBar
+        ariaLabel="NF English Credentials & Highlights"
+        items={[
+          { value: '15+ Years', label: 'dedicated exclusively to adult language education' },
+          { value: '100% Tailored', label: 'strategies built around your goals and schedule' },
+          { value: 'In-Company', label: 'training for multinational enterprises and leaders' },
+          { value: 'Speaking Focus', label: 'psychological safety to communicate in the real world' }
+        ]}
+      />
 
-      <!-- PROOF BAR -->
-      <div class="proof">
-        <div class="container proof-row" aria-label="NF English credentials and key highlights">
-          <div class="proof-item">
-            <b>15+ Years</b>
-            <span>dedicated exclusively to teaching adult learners</span>
-          </div>
-          <div class="proof-item">
-            <b>100% Tailored</b>
-            <span>strategy customized to your schedule and goals</span>
-          </div>
-          <div class="proof-item">
-            <b>In-Company</b>
-            <span>corporate trainings for major multinational brands</span>
-          </div>
-          <div class="proof-item">
-            <b>Speaking First</b>
-            <span>psychological safety to hold real conversations</span>
-          </div>
-        </div>
+      <!-- CORPORATE -->
+      <div id="corporate">
+        <CorporateStrip
+          label="Trusted by global executives and multinational corporations:"
+          badges={['YAMAHA', 'EATON', 'MAHLE', '+ C-Level Leaders']}
+        />
       </div>
 
-      <!-- CORPORATE STRIP -->
-      <div class="corporate-strip" id="corporate">
-        <div class="container corporate-inner">
-          <span class="corporate-label">Trusted by leading professionals and global corporations:</span>
-          <div class="corporate-logos">
-            <span class="corp-badge">YAMAHA</span>
-            <span class="corp-badge">EATON</span>
-            <span class="corp-badge">MAHLE</span>
-            <span class="corp-badge">+ Executives & Leaders</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- THE PROBLEM: TRADITIONAL VS PERSONALIZED -->
-      <section class="band">
-        <div class="container">
-          <div class="section-head center">
-            <div class="eyebrow"><span class="dot"></span> The Traditional Method Problem</div>
-            <h2>Why one-size-fits-all courses fail busy adults</h2>
-            <p>
-              Traditional language schools push everyone through the same mechanical assembly line. The result is frustration, wasted time, and the false feeling that you "just aren't good at languages."
-            </p>
-          </div>
-
-          <div class="compare-grid">
-            <div class="compare-box traditional">
-              <h3>Generic Shelf Courses</h3>
-              <p class="muted">The rigid model that ignores the reality of adult learners:</p>
-              <ul class="compare-list traditional">
-                <li>
-                  <span class="compare-icon bad">✕</span>
-                  <span>Standardized textbooks with fake dialogues disconnected from your daily work.</span>
-                </li>
-                <li>
-                  <span class="compare-icon bad">✕</span>
-                  <span>Crowded classes with mixed levels, causing anxiety and minimal speaking time.</span>
-                </li>
-                <li>
-                  <span class="compare-icon bad">✕</span>
-                  <span>Excessive focus on memorizing theoretical grammar without practical usage.</span>
-                </li>
-                <li>
-                  <span class="compare-icon bad">✕</span>
-                  <span>Harsh corrections that destroy spontaneity and create mental blocks.</span>
-                </li>
-              </ul>
-            </div>
-
-            <div class="compare-box nf">
-              <span class="compare-badge">The NF English Difference</span>
-              <h3>Learning with True Personalization</h3>
-              <p class="muted">A methodology that molds around who you are and what you need:</p>
-              <ul class="compare-list">
-                <li>
-                  <span class="compare-icon good">✓</span>
-                  <span><strong>Living content:</strong> your career, projects, travel, and personal stories become class topics.</span>
-                </li>
-                <li>
-                  <span class="compare-icon good">✓</span>
-                  <span><strong>Psychological safety:</strong> a warm atmosphere where mistakes are natural stepping stones to fluency.</span>
-                </li>
-                <li>
-                  <span class="compare-icon good">✓</span>
-                  <span><strong>Immediate relevance:</strong> learn vocabulary and phrases you will use the very same day at work.</span>
-                </li>
-                <li>
-                  <span class="compare-icon good">✓</span>
-                  <span><strong>Close guidance:</strong> mentorship from an educator who understands busy schedules.</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
+      <!-- COMPARISON -->
+      <ComparisonSection
+        id="personalization"
+        isBand={true}
+        eyebrow="The Flaw of Traditional Teaching"
+        title="Why generic courses fail busy adults"
+        description="Most traditional schools put every student on the same assembly line. The result is frustration, lost time, and the false belief that you 'just are not good at languages'."
+        traditionalTitle="Off-the-Shelf Traditional Schools"
+        traditionalDesc="The rigid model that ignores adult learners' realities:"
+        traditionalItems={[
+          'Standardized textbooks filled with artificial dialogues unrelated to your life.',
+          'Overcrowded mixed-level classes fostering anxiety and minimal speaking time.',
+          'Obsessive focus on rote grammar rules without immediate practical application.',
+          'Harsh correction methods that stifle spontaneity and create speaking blocks.'
+        ]}
+        nfTitle="Real Personalization That Works"
+        nfDesc="A methodology shaped entirely around who you are and what you need:"
+        nfBadge="The NF English Difference"
+        nfItems={[
+          'Living content: your career, projects, travels, and personal stories become the class material.',
+          'Psychological safety: a supportive space where mistakes are treated as natural learning cues.',
+          'Immediate relevance: acquire expressions and vocabulary you can use at work on the same day.',
+          'Close mentorship: human guidance from an educator who understands demanding schedules.'
+        ]}
+      />
 
       <!-- 4 PILLARS -->
-      <section id="personalization">
-        <div class="container">
-          <div class="section-head">
-            <div class="eyebrow sage"><span class="dot"></span> Exclusive Methodology</div>
-            <h2>The 4 Pillars of Personalized Learning</h2>
-            <p>Discover the pedagogical framework that ensures every minute of class has direct relevance for you.</p>
-          </div>
+      <PillarsSection
+        id="pillars"
+        eyebrow="Exclusive Methodology"
+        title="The 4 Pillars of Personalized Learning"
+        description="Discover the pedagogical framework ensuring every minute of your class has direct relevance to your life."
+        pillars={pillars}
+      />
 
-          <div class="pillars-4">
-            {pillars.map((pillar) => (
-              <div class="pillar-card">
-                <div class="pillar-num">{pillar.num}</div>
-                <div class="pillar-content">
-                  <h3>{pillar.title}</h3>
-                  <p>{pillar.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <!-- SOLUTIONS -->
+      <SolutionsSection
+        id="solutions"
+        isBand={true}
+        eyebrow="Our Solutions"
+        title="The right format for your goals and availability"
+        description="From 1:1 private coaching to immersive group tracks and enterprise training, we have a solution crafted for you."
+        solutions={solutions}
+      />
 
-      <!-- SOLUTIONS & FORMATS -->
-      <section id="solutions" class="band">
-        <div class="container">
-          <div class="section-head center">
-            <div class="eyebrow"><span class="dot"></span> Our Solutions</div>
-            <h2>The right format for your goals and availability</h2>
-            <p>From 1:1 executive mentoring to group immersion and corporate trainings, we offer a solution tailored for you.</p>
-          </div>
-
-          <div class="solutions-grid">
-            <!-- 1:1 Mentoring -->
-            <div class="solution-card">
-              <div>
-                <div class="solution-tag">Individual & Executive</div>
-                <h3>1:1 Tailored Mentoring</h3>
-                <p class="solution-desc">
-                  Exclusive private coaching 100% focused on your career milestones, high-stakes meetings, international presentations, or relocation.
-                </p>
-                <ul class="solution-features">
-                  <li><span class="chk">✓</span> Fully individualized pedagogical roadmap</li>
-                  <li><span class="chk">✓</span> Rehearsals for real business scenarios</li>
-                  <li><span class="chk">✓</span> Total schedule and pacing flexibility</li>
-                  <li><span class="chk">✓</span> Continuous feedback on pronunciation and flow</li>
-                </ul>
-              </div>
-              <a class="button secondary" href={whatsappMentoring} target="_blank" rel="noreferrer">
-                Inquire About 1:1 Mentoring
-              </a>
-            </div>
-
-            <!-- Destrave Group (Featured) -->
-            <div class="solution-card featured">
-              <span class="solution-featured-tag">Group Program</span>
-              <div>
-                <div class="solution-tag">Selected Cohorts</div>
-                <h3>Unlock Your English ("Destrave")</h3>
-                <p class="solution-desc">
-                  An 8-week practical program for adults who have studied English before but freeze when speaking. Supportive practice and real vocabulary.
-                </p>
-                <ul class="solution-features">
-                  <li><span class="chk">✓</span> 8 live online sessions in small cohorts</li>
-                  <li><span class="chk">✓</span> 24 targeted recorded video lessons</li>
-                  <li><span class="chk">✓</span> Personal Affinity Map & Phrase Bank</li>
-                  <li><span class="chk">✓</span> 10–15 min final conversation assessment</li>
-                </ul>
-              </div>
-              <a class="button" href="/en/destrave">
-                Explore Program Details ↗
-              </a>
-            </div>
-
-            <!-- Corporate -->
-            <div class="solution-card">
-              <div>
-                <div class="solution-tag">For Companies & Teams</div>
-                <h3>In-Company Training</h3>
-                <p class="solution-desc">
-                  Customized corporate programs for teams and leaders who need agile, assertive, and confident communication in global business.
-                </p>
-                <ul class="solution-features">
-                  <li><span class="chk">✓</span> Corporate language proficiency assessment</li>
-                  <li><span class="chk">✓</span> Content aligned to industry jargon and company workflows</li>
-                  <li><span class="chk">✓</span> Proven track record with Yamaha, Eaton, Mahle</li>
-                  <li><span class="chk">✓</span> Regular reporting on attendance and evolution</li>
-                </ul>
-              </div>
-              <a class="button secondary" href={whatsappCorporate} target="_blank" rel="noreferrer">
-                Corporate Solutions
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ABOUT NATALIA FERNANDES -->
-      <section id="about">
-        <div class="container teacher">
-          <div class="teacher-photo">
-            <picture>
-              <source srcset="/Nath.webp" type="image/webp" />
-              <img src="/Nath.jpg" alt="Teacher Natalia Fernandes, founder of NF English" width="576" height="1024" loading="lazy" decoding="async" />
-            </picture>
-          </div>
-          <div>
-            <div class="section-head">
-              <div class="eyebrow"><span class="dot"></span> Founder & Head Coach</div>
-              <h2>Meet Natalia Fernandes</h2>
-              <p>
-                With over 15 years dedicated to English education, Natalia has built a career focused on adult learners — guiding professionals with past classroom anxieties and global corporate executives to achieve speaking independence.
-              </p>
-            </div>
-
-            <div class="grid cred-grid">
-              <div class="cred">
-                <b>15+ Years</b>
-                <span>of classroom and 1:1 executive mentoring</span>
-              </div>
-              <div class="cred">
-                <b>Adult Specialist</b>
-                <span>expert in speaking confidence & real communication</span>
-              </div>
-              <div class="cred">
-                <b>In-Company</b>
-                <span>training programs for global industrial leaders</span>
-              </div>
-            </div>
-
-            <div class="teacher-manifesto">
-              "Fluency isn't about speaking flawlessly or faking a native accent. Fluency is the freedom to express your ideas clearly, defend your perspective, and participate in the world without fear."
-            </div>
-          </div>
-        </div>
-      </section>
+      <!-- TEACHER -->
+      <TeacherSection
+        id="about"
+        eyebrow="Founder & Educator"
+        title="Meet Natalia Fernandes"
+        description="With over 15 years dedicated to teaching English, Natalia built a methodology specifically for adult learners — helping everyone from professionals with past classroom trauma to C-level executives achieve true conversational freedom."
+        imageSrc="/Nath.jpg"
+        imageWebpSrc="/Nath.webp"
+        imageAlt="Natalia Fernandes, founder of NF English"
+        creds={[
+          { value: '15+ Years', label: 'of classroom and 1:1 executive coaching experience' },
+          { value: 'Adults', label: 'specialist in unlocking speech and real-world communication' },
+          { value: 'In-Company', label: 'trusted trainer for international corporations' }
+        ]}
+        manifesto="&ldquo;Fluency does not mean speaking without mistakes or having a native accent. Fluency is having the confidence to express your ideas, lead discussions, and participate in the world without fear.&rdquo;"
+      />
 
       <!-- FAQ -->
-      <section id="faq" class="band">
-        <div class="container">
-          <div class="section-head center">
-            <div class="eyebrow"><span class="dot"></span> Questions & Answers</div>
-            <h2>Frequently Asked Questions</h2>
-            <p>Clear answers about our methodology, programs, and how to get started.</p>
-          </div>
-
-          <div class="grid faq-grid">
-            {faqs.map((faq) => (
-              <details>
-                <summary>{faq.q}</summary>
-                <p>{faq.a}</p>
-              </details>
-            ))}
-          </div>
-        </div>
-      </section>
+      <FAQSection
+        id="faq"
+        isBand={true}
+        eyebrow="Got Questions?"
+        title="Frequently Asked Questions"
+        description="Clear answers about our methodology, program formats, and how to get started."
+        faqs={faqs}
+      />
 
       <!-- FINAL CTA -->
-      <section class="final-cta">
-        <div class="container final-grid">
-          <div>
-            <h2>Ready to unlock your English with a plan tailored to you?</h2>
-            <p>
-              Chat directly with our team on WhatsApp to ask questions, schedule a pedagogical diagnostic, or find the ideal program for your goals.
-            </p>
-          </div>
-          <a class="button gold" href={whatsappDiagnostic} target="_blank" rel="noreferrer">
-            Chat on WhatsApp
-          </a>
-        </div>
-      </section>
+      <CTABanner
+        title="Ready to unlock your English with a custom plan?"
+        description="Chat directly with our team on WhatsApp to ask questions, book a diagnostic session, or discover the perfect program for you."
+        ctaText="Chat on WhatsApp"
+        ctaHref={whatsappDiagnostic}
+      />
     </main>
 
-    <!-- MOBILE FLOATING CTA -->
-    <div class="mobile-cta">
-      <a class="button" href={whatsappDiagnostic} target="_blank" rel="noreferrer">
-        Chat on WhatsApp
-      </a>
-    </div>
+    <!-- MOBILE CTA -->
+    <MobileCTA href={whatsappDiagnostic} text="Chat on WhatsApp" />
 
     <!-- FOOTER -->
-    <footer>
-      <div class="container">
-        <div class="footer-grid">
-          <div class="footer-col">
-            <div class="brand" style="margin-bottom: 14px;">
-              <span class="brand-mark">NF</span>
-              <span>Natalia Fernandes English</span>
-            </div>
-            <p class="muted">
-              High-excellence personalized English coaching for adults, leaders, and companies. Transforming passive knowledge into confident, real-world communication with warmth and safety.
-            </p>
-          </div>
-
-          <div class="footer-col">
-            <strong>Solutions</strong>
-            <ul class="footer-links">
-              <li><a href={whatsappMentoring} target="_blank" rel="noreferrer">1:1 Executive Mentoring</a></li>
-              <li><a href="/en/destrave">Unlock Your English Program</a></li>
-              <li><a href={whatsappCorporate} target="_blank" rel="noreferrer">In-Company Training</a></li>
-              <li><a href="#personalization">Methodology & Pillars</a></li>
-            </ul>
-          </div>
-
-          <div class="footer-col">
-            <strong>Contact & Support</strong>
-            <ul class="footer-links">
-              <li><a href={whatsappDiagnostic} target="_blank" rel="noreferrer">WhatsApp: +55 (11) 96716-5564</a></li>
-              <li><a href="#top">Back to top ↑</a></li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="footer-bottom">
-          <div>© {new Date().getFullYear()} Natalia Fernandes English. All rights reserved.</div>
-          <div>nfenglish.com.br</div>
-        </div>
-      </div>
-    </footer>
+    <Footer
+      brandDescription="Premium personalized English education for adults, leaders, and global corporations. Transforming knowledge into confident communication with psychological safety."
+      solutionsTitle="Solutions"
+      solutions={[
+        { label: '1:1 Executive Mentoring', href: whatsappMentoring, isExternal: true },
+        { label: 'Unlock Your English Program', href: '/en/destrave' },
+        { label: 'In-Company Corporate Training', href: whatsappCorporate, isExternal: true },
+        { label: 'Methodology & Pillars', href: '#personalization' }
+      ]}
+      contactTitle="Contact & Social"
+      contactLinks={[
+        { label: 'WhatsApp: +55 (11) 96716-5564', href: 'https://wa.me/5511967165564', isExternal: true },
+        { label: 'Back to top', href: '#top' }
+      ]}
+      copyright={`© ${new Date().getFullYear()} Natalia Fernandes English. All rights reserved.`}
+    />
   </div>
 </Layout>

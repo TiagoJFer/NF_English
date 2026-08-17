@@ -1,0 +1,67 @@
+---
+import CheckList from './CheckList.astro';
+
+interface PillarCard {
+  icon: string;
+  title: string;
+  desc: string;
+}
+
+interface Props {
+  id?: string;
+  eyebrow?: string;
+  panelTitle: string;
+  panelDescription: string;
+  panelCtaText: string;
+  panelCtaHref: string;
+  pillars: PillarCard[];
+  includedTitle?: string;
+  includedItems: string[];
+}
+
+const {
+  id = 'programa',
+  eyebrow = 'O programa',
+  panelTitle,
+  panelDescription,
+  panelCtaText,
+  panelCtaHref,
+  pillars = [],
+  includedTitle = 'O que está incluído',
+  includedItems = []
+} = Astro.props;
+---
+
+<section id={id}>
+  <div class="container method">
+    <div class="method-panel">
+      {eyebrow && (
+        <div class="eyebrow"><span class="dot"></span> {eyebrow}</div>
+      )}
+      <h2 set:html={panelTitle} />
+      <p set:html={panelDescription} />
+      <a class="button" href={panelCtaHref} target="_blank" rel="noreferrer">
+        {panelCtaText}
+      </a>
+    </div>
+
+    <div>
+      <div class="grid pillar-grid">
+        {pillars.map((p) => (
+          <article class="card">
+            <div class="icon">{p.icon}</div>
+            <h3>{p.title}</h3>
+            <p>{p.desc}</p>
+          </article>
+        ))}
+      </div>
+
+      {includedItems.length > 0 && (
+        <div class="card" style="margin-top: 18px">
+          <h3>{includedTitle}</h3>
+          <CheckList items={includedItems} />
+        </div>
+      )}
+    </div>
+  </div>
+</section>

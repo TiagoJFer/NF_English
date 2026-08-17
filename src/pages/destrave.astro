@@ -1,9 +1,20 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
-import CheckList from '../components/CheckList.astro';
+import Footer from '../components/Footer.astro';
+import MobileCTA from '../components/MobileCTA.astro';
+import Hero from '../components/Hero.astro';
+import ProofBar from '../components/ProofBar.astro';
+import CardGridSection from '../components/CardGridSection.astro';
+import ProgramMethodSection from '../components/ProgramMethodSection.astro';
+import TeacherSection from '../components/TeacherSection.astro';
+import CurriculumSection from '../components/CurriculumSection.astro';
+import OfferSection from '../components/OfferSection.astro';
+import FAQSection from '../components/FAQSection.astro';
+import CTABanner from '../components/CTABanner.astro';
 
 const whatsapp = 'https://wa.me/5511967165564?text=Quero%20entrar%20na%20lista%20de%20espera%20do%20Destrave%20seu%20Ingles';
+
 const included = [
   '8 semanas de acompanhamento online.',
   'Aulas ao vivo e conteúdos gravados curtos para vocabulário, frases e listening.',
@@ -12,262 +23,198 @@ const included = [
   'Phrase Bank pessoal com expressões úteis para conversas reais.',
   'Conversa final de 10 a 15 minutos, com feedback e próximos passos.'
 ];
+
 const weeks = [
-  ['1', "I'm back", 'Recomeço sem vergonha e frases de sobrevivência.'],
-  ['2', 'Things I like', 'Gostos, hobbies, música, séries, comida e esportes.'],
-  ['3', 'My routine', 'Rotina real, trabalho, casa, estudos e tempo livre.'],
-  ['4', 'Small talk', 'Começar e manter conversas simples sem pânico.'],
-  ['5', 'My stories', 'Contar pequenas histórias do passado sem travar.'],
-  ['6', 'Opinions', 'Dar opinião, concordar, discordar e explicar preferências.'],
-  ['7', 'Real situations', 'Listening e simulações de viagem, trabalho, atendimento ou socialização.'],
-  ['8', 'Final conversation', 'Preparação e conversa final de 10 a 15 minutos, com feedback e próximos passos.']
+  { number: '1', title: "I'm back", description: 'Recomeço sem vergonha e frases de sobrevivência.' },
+  { number: '2', title: 'Things I like', description: 'Gostos, hobbies, música, séries, comida e esportes.' },
+  { number: '3', title: 'My routine', description: 'Rotina real, trabalho, casa, estudos e tempo livre.' },
+  { number: '4', title: 'Small talk', description: 'Começar e manter conversas simples sem pânico.' },
+  { number: '5', title: 'My stories', description: 'Contar pequenas histórias do passado sem travar.' },
+  { number: '6', title: 'Opinions', description: 'Dar opinião, concordar, discordar e explicar preferências.' },
+  { number: '7', title: 'Real situations', description: 'Listening e simulações de viagem, trabalho, atendimento ou socialização.' },
+  { number: '8', title: 'Final conversation', description: 'Preparação e conversa final de 10 a 15 minutos, com feedback e próximos passos.' }
+];
+
+const faqs = [
+  {
+    q: 'Tenho vergonha de falar. Esse curso é para mim?',
+    a: 'Sim. A proposta é criar um ambiente seguro para falar aos poucos, errar sem exposição desnecessária e ganhar confiança.'
+  },
+  {
+    q: 'Já tentei estudar antes e não evoluí. O que muda?',
+    a: 'O foco não é acumular mais teoria. Você usa temas da sua vida para praticar fala, escuta e reação em conversas reais.'
+  },
+  {
+    q: 'Meu inglês é muito básico. Posso entrar?',
+    a: 'O programa é para quem já teve contato com inglês. Não precisa falar bem, mas é importante reconhecer alguma base do idioma.'
+  },
+  {
+    q: 'Não tenho muito tempo. Vou conseguir acompanhar?',
+    a: 'O formato combina aulas gravadas curtas, um encontro semanal e missões simples para manter o inglês presente na rotina.'
+  },
+  {
+    q: 'Vou precisar falar na frente dos outros?',
+    a: 'Sim, mas de forma gradual e guiada. A turma existe para praticar, não para expor ou constranger.'
+  },
+  {
+    q: 'O curso promete fluência?',
+    a: 'Não. A proposta é construir confiança, repertório e prática para participar de conversas simples e travar menos.'
+  },
+  {
+    q: 'E se eu perceber que não é para mim?',
+    a: 'Você conta com garantia de 7 dias. Se o programa não fizer sentido nesse período, pode pedir cancelamento.'
+  },
+  {
+    q: 'Como faço a inscrição?',
+    a: 'Clique em um dos botões para chamar no WhatsApp. A equipe confirma a disponibilidade e envia os próximos passos.'
+  }
 ];
 ---
-<Layout title="Destrave seu Inglês | Natalia Fernandes English" description="Programa online de 8 semanas para adultos que já estudaram inglês, mas travam na hora de falar.">
+
+<Layout 
+  title="Destrave seu Inglês | Natalia Fernandes English" 
+  description="Programa online de 8 semanas para adultos que já estudaram inglês, mas travam na hora de falar."
+>
   <div class="page" id="top">
     <Header mode="destrave" />
+    
     <main>
-      <section class="hero">
-        <div class="container hero-grid">
-          <div>
-            <div class="eyebrow"><span class="dot"></span> Destrave seu inglês</div>
-            <h1>Ganhe confiança para conversar em inglês sem travar.</h1>
-            <p class="hero-copy">Um programa online para quem já estudou inglês, mas sente que não evoluiu e trava quando precisa falar. Pratique conversas reais usando sua rotina, seus gostos e suas histórias como ponto de partida.</p>
-            <div class="hero-actions">
-              <a class="button" href={whatsapp} target="_blank" rel="noreferrer">Quero destravar meu inglês</a>
-              <a class="button secondary" href="#oferta">Ver turma e investimento</a>
-            </div>
-            <p class="microcopy">Entre na lista de espera para receber as próximas informações da turma, sem compromisso.</p>
-            <div class="hero-proof">
-              <span class="pill">8 semanas</span>
-              <span class="pill">Aulas ao vivo</span>
-              <span class="pill">Vagas limitadas</span>
-              <span class="pill">Garantia de 7 dias</span>
-            </div>
-          </div>
-          <div class="hero-image-wrapper">
-            <div class="hero-circle-frame">
-              <picture>
-                <source srcset="/Nath.webp" type="image/webp" />
-                <img src="/Nath.jpg" alt="Natalia Fernandes, professora de inglês" width="576" height="1024" fetchpriority="high" loading="eager" decoding="async" />
-              </picture>
-            </div>
-            <div class="floating-note">
-              <strong>Você não precisa recomeçar do zero.</strong>
-              <p>O foco é reorganizar o que você já viu e colocar o inglês em uso com segurança.</p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <!-- HERO -->
+      <Hero
+        eyebrow="Destrave seu inglês"
+        title="Ganhe confiança para conversar em inglês sem travar."
+        description="Um programa online para quem já estudou inglês, mas sente que não evoluiu e trava quando precisa falar. Pratique conversas reais usando sua rotina, seus gostos e suas histórias como ponto de partida."
+        primaryAction={{ text: 'Quero destravar meu inglês', href: whatsapp, isExternal: true }}
+        secondaryAction={{ text: 'Ver turma e investimento', href: '#oferta', isSecondary: true }}
+        microcopy="Entre na lista de espera para receber as próximas informações da turma, sem compromisso."
+        pills={['8 semanas', 'Aulas ao vivo', 'Vagas limitadas', 'Garantia de 7 dias']}
+        imageFrameType="circle"
+        imageSrc="/Nath.jpg"
+        imageWebpSrc="/Nath.webp"
+        imageAlt="Natalia Fernandes, professora de inglês"
+        floatingNoteTitle="Você não precisa recomeçar do zero."
+        floatingNoteText="O foco é reorganizar o que você já viu e colocar o inglês em uso com segurança."
+      />
 
-      <div class="proof">
-        <div class="container proof-row" aria-label="Resumo do programa">
-          <div class="proof-item"><b>15 anos</b><span>de experiência ensinando inglês</span></div>
-          <div class="proof-item"><b>8</b><span>encontros online ao vivo</span></div>
-          <div class="proof-item"><b>24</b><span>aulas gravadas curtas</span></div>
-          <div class="proof-item"><b>10 a 15 min</b><span>de conversa final para ver sua evolução</span></div>
-        </div>
-      </div>
+      <!-- PROOF ROW -->
+      <ProofBar
+        ariaLabel="Resumo do programa"
+        items={[
+          { value: '15 anos', label: 'de experiência ensinando inglês' },
+          { value: '8', label: 'encontros online ao vivo' },
+          { value: '24', label: 'aulas gravadas curtas' },
+          { value: '10 a 15 min', label: 'de conversa final para ver sua evolução' }
+        ]}
+      />
 
-      <section class="band">
-        <div class="container">
-          <div class="section-head">
-            <h2>Se você já estudou e mesmo assim trava, o problema não é falta de capacidade.</h2>
-            <p>Muitas pessoas acumulam regras, listas e aplicativos, mas quase não têm um espaço seguro para falar, errar, ajustar e tentar de novo.</p>
-          </div>
-          <div class="grid pain-grid">
-            <article class="card">
-              <div class="icon">?</div>
-              <h3>Dá branco na hora</h3>
-              <p>Você entende parte da conversa, mas a resposta não sai quando alguém fala com você.</p>
-            </article>
-            <article class="card">
-              <div class="icon">!</div>
-              <h3>Vergonha de errar</h3>
-              <p>A preocupação com pronúncia e gramática perfeita trava antes da primeira frase.</p>
-            </article>
-            <article class="card">
-              <div class="icon">+</div>
-              <h3>Já tentou antes</h3>
-              <p>Você estudou por meses ou anos, mas sente que não saiu do lugar na conversação.</p>
-            </article>
-            <article class="card">
-              <div class="icon">✓</div>
-              <h3>Pouco tempo</h3>
-              <p>Você precisa de um caminho leve e possível na rotina, sem horas livres por dia.</p>
-            </article>
-          </div>
-        </div>
-      </section>
+      <!-- DORES / PAIN POINTS -->
+      <CardGridSection
+        isBand={true}
+        title="Se você já estudou e mesmo assim trava, o problema não é falta de capacidade."
+        description="Muitas pessoas acumulam regras, listas e aplicativos, mas quase não têm um espaço seguro para falar, errar, ajustar e tentar de novo."
+        columns={4}
+        items={[
+          { icon: '?', title: 'Dá branco na hora', desc: 'Você entende parte da conversa, mas a resposta não sai quando alguém fala com você.' },
+          { icon: '!', title: 'Vergonha de errar', desc: 'A preocupação com pronúncia e gramática perfeita trava antes da primeira frase.' },
+          { icon: '+', title: 'Já tentou antes', desc: 'Você estudou por meses ou anos, mas sente que não saiu do lugar na conversação.' },
+          { icon: '✓', title: 'Pouco tempo', desc: 'Você precisa de um caminho leve e possível na rotina, sem horas livres por dia.' }
+        ]}
+      />
 
-      <section id="programa">
-        <div class="container method">
-          <div class="method-panel">
-            <div class="eyebrow"><span class="dot"></span> O programa</div>
-            <h2>Destrave seu Inglês</h2>
-            <p>Um percurso prático para ganhar confiança em conversas reais, sem prometer fluência milagrosa e sem fazer você começar tudo de novo.</p>
-            <a class="button" href={whatsapp} target="_blank" rel="noreferrer">Receber detalhes pelo WhatsApp</a>
-          </div>
-          <div>
-            <div class="grid pillar-grid">
-              <article class="card">
-                <div class="icon">1</div>
-                <h3>Sua vida vira assunto</h3>
-                <p>Rotina, trabalho, viagens, música, séries, família e histórias pessoais entram nas práticas.</p>
-              </article>
-              <article class="card">
-                <div class="icon">2</div>
-                <h3>Prática segura para falar</h3>
-                <p>Você fala aos poucos, com correção leve e sem interrupções que aumentam a vergonha.</p>
-              </article>
-              <article class="card">
-                <div class="icon">3</div>
-                <h3>Evolução possível na rotina</h3>
-                <p>Vídeos curtos preparam a aula ao vivo e missões simples mantêm contato com o idioma.</p>
-              </article>
-            </div>
-            <div class="card" style="margin-top: 18px">
-              <h3>O que está incluído</h3>
-              <CheckList items={included} />
-            </div>
-          </div>
-        </div>
-      </section>
+      <!-- MÉTODO / PROGRAMA -->
+      <ProgramMethodSection
+        id="programa"
+        eyebrow="O programa"
+        panelTitle="Destrave seu Inglês"
+        panelDescription="Um percurso prático para ganhar confiança em conversas reais, sem prometer fluência milagrosa e sem fazer você começar tudo de novo."
+        panelCtaText="Receber detalhes pelo WhatsApp"
+        panelCtaHref={whatsapp}
+        pillars={[
+          { icon: '1', title: 'Sua vida vira assunto', desc: 'Rotina, trabalho, viagens, música, séries, família e histórias pessoais entram nas práticas.' },
+          { icon: '2', title: 'Prática segura para falar', desc: 'Você fala aos poucos, com correção leve e sem interrupções que aumentam a vergonha.' },
+          { icon: '3', title: 'Evolução possível na rotina', desc: 'Vídeos curtos preparam a aula ao vivo e missões simples mantêm contato com o idioma.' }
+        ]}
+        includedItems={included}
+      />
 
-      <section id="natalia" class="band">
-        <div class="container teacher">
-          <div class="teacher-photo">
-            <picture>
-              <source srcset="/Nath.webp" type="image/webp" />
-              <img src="/Nath.jpg" alt="Professora Natalia Fernandes" width="576" height="1024" loading="lazy" decoding="async" />
-            </picture>
-          </div>
-          <div>
-            <div class="section-head">
-              <h2>Com Natalia Fernandes, professora de inglês há 15 anos.</h2>
-              <p>A Natalia trabalha com adultos que precisam transformar conhecimento solto em fala possível. A abordagem é próxima, acolhedora e prática, com temas da vida real para reduzir a trava e aumentar a confiança.</p>
-            </div>
-            <div class="grid cred-grid">
-              <div class="cred"><b>15</b><span>anos ensinando inglês</span></div>
-              <div class="cred"><b>Adultos</b><span>experiência com alunos que já tentaram antes</span></div>
-              <div class="cred"><b>In company</b><span>aulas para empresas como Yamaha, Eaton e Mahle</span></div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <!-- PROFESSORA -->
+      <TeacherSection
+        id="natalia"
+        isBand={true}
+        eyebrow="A Professora"
+        title="Com Natalia Fernandes, professora de inglês há 15 anos."
+        description="A Natalia trabalha com adultos que precisam transformar conhecimento solto em fala possível. A abordagem é próxima, acolhedora e prática, com temas da vida real para reduzir a trava e aumentar a confiança."
+        imageSrc="/Nath.jpg"
+        imageWebpSrc="/Nath.webp"
+        imageAlt="Professora Natalia Fernandes"
+        creds={[
+          { value: '15', label: 'anos ensinando inglês' },
+          { value: 'Adultos', label: 'experiência com alunos que já tentaram antes' },
+          { value: 'In company', label: 'aulas para empresas como Yamaha, Eaton e Mahle' }
+        ]}
+      />
 
-      <section>
-        <div class="container">
-          <div class="section-head center">
-            <h2>Uma jornada de 8 semanas para falar mais e travar menos.</h2>
-            <p>A meta é sair da paralisia e construir repertório para falar sobre rotina, gostos, trabalho, viagens e histórias pessoais.</p>
-          </div>
-          <div class="grid week-grid">
-            {weeks.map(([number, title, description]) => (
-              <article class="card week">
-                <span class="week-number">{number}</span>
-                <div>
-                  <h3>{title}</h3>
-                  <p>{description}</p>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+      <!-- JORNADA 8 SEMANAS -->
+      <CurriculumSection
+        title="Uma jornada de 8 semanas para falar mais e travar menos."
+        description="A meta é sair da paralisia e construir repertório para falar sobre rotina, gostos, trabalho, viagens e histórias pessoais."
+        steps={weeks}
+      />
 
-      <section id="oferta" class="band">
-        <div class="container offer">
-          <div class="card">
-            <div class="section-head">
-              <h2>Entre na lista de espera.</h2>
-              <p>A próxima turma será anunciada primeiro para quem demonstrar interesse. Entre na lista para receber as informações e entender se o programa faz sentido para você.</p>
-            </div>
-            <CheckList items={[
-              'Programa online de 8 semanas.',
-              'Aulas ao vivo e conteúdos gravados curtos.',
-              'Prática baseada na sua rotina e nos seus objetivos.',
-              'Turma pequena para manter um ambiente seguro.',
-              'Garantia de 7 dias.'
-            ]} />
-          </div>
-          <aside class="price-box" aria-label="Investimento da turma fundadora">
-            <div class="price-label">Turma fundadora</div>
-            <div class="price">R$ 497</div>
-            <p><strong>Condição especial de entrada.</strong></p>
-            <p>Preço cheio nas próximas turmas: R$ 997.</p>
-            <div class="offer-note">A condição de turma fundadora será apresentada aos interessados da lista de espera.</div>
-            <a class="button" href={whatsapp} target="_blank" rel="noreferrer">Entrar na lista de espera</a>
-            <p class="microcopy" style="margin-top: 14px">Sem compromisso. Você conversa com a equipe antes de decidir.</p>
-          </aside>
-        </div>
-      </section>
+      <!-- OFERTA & PREÇO -->
+      <OfferSection
+        id="oferta"
+        isBand={true}
+        title="Entre na lista de espera."
+        description="A próxima turma será anunciada primeiro para quem demonstrar interesse. Entre na lista para receber as informações e entender se o programa faz sentido para você."
+        checklist={[
+          'Programa online de 8 semanas.',
+          'Aulas ao vivo e conteúdos gravados curtos.',
+          'Prática baseada na sua rotina e nos seus objetivos.',
+          'Turma pequena para manter um ambiente seguro.',
+          'Garantia de 7 dias.'
+        ]}
+        priceAriaLabel="Investimento da condição de lançamento"
+        priceLabel="Condição de lançamento"
+        price="R$ 497"
+        priceDetails="<strong>Condição especial de entrada.</strong>"
+        priceFull="Preço cheio nas próximas turmas: R$ 997."
+        offerNote="A condição de lançamento será apresentada aos interessados da lista de espera."
+        ctaText="Entrar na lista de espera"
+        ctaHref={whatsapp}
+        ctaMicrocopy="Sem compromisso. Você conversa com a equipe antes de decidir."
+      />
 
-      <section id="faq">
-        <div class="container">
-          <div class="section-head">
-            <h2>Dúvidas comuns</h2>
-          </div>
-          <div class="grid faq-grid">
-            <details>
-              <summary>Tenho vergonha de falar. Esse curso é para mim?</summary>
-              <p>Sim. A proposta é criar um ambiente seguro para falar aos poucos, errar sem exposição desnecessária e ganhar confiança.</p>
-            </details>
-            <details>
-              <summary>Já tentei estudar antes e não evoluí. O que muda?</summary>
-              <p>O foco não é acumular mais teoria. Você usa temas da sua vida para praticar fala, escuta e reação em conversas reais.</p>
-            </details>
-            <details>
-              <summary>Meu inglês é muito básico. Posso entrar?</summary>
-              <p>O programa é para quem já teve contato com inglês. Não precisa falar bem, mas é importante reconhecer alguma base do idioma.</p>
-            </details>
-            <details>
-              <summary>Não tenho muito tempo. Vou conseguir acompanhar?</summary>
-              <p>O formato combina aulas gravadas curtas, um encontro semanal e missões simples para manter o inglês presente na rotina.</p>
-            </details>
-            <details>
-              <summary>Vou precisar falar na frente dos outros?</summary>
-              <p>Sim, mas de forma gradual e guiada. A turma existe para praticar, não para expor ou constranger.</p>
-            </details>
-            <details>
-              <summary>O curso promete fluência?</summary>
-              <p>Não. A proposta é construir confiança, repertório e prática para participar de conversas simples e travar menos.</p>
-            </details>
-            <details>
-              <summary>E se eu perceber que não é para mim?</summary>
-              <p>Você conta com garantia de 7 dias. Se o programa não fizer sentido nesse período, pode pedir cancelamento.</p>
-            </details>
-            <details>
-              <summary>Como faço a inscrição?</summary>
-              <p>Clique em um dos botões para chamar no WhatsApp. A equipe confirma a disponibilidade e envia os próximos passos.</p>
-            </details>
-          </div>
-        </div>
-      </section>
+      <!-- FAQ -->
+      <FAQSection
+        id="faq"
+        title="Dúvidas comuns"
+        faqs={faqs}
+      />
 
-      <section class="final-cta">
-        <div class="container final-grid">
-          <div>
-            <h2>Você já estudou inglês. Agora é hora de voltar a falar.</h2>
-            <p>Entre na lista de espera do Destrave seu Inglês e receba as informações da próxima turma.</p>
-          </div>
-          <a class="button" href={whatsapp} target="_blank" rel="noreferrer">Entrar na lista</a>
-        </div>
-      </section>
+      <!-- FINAL CTA -->
+      <CTABanner
+        title="Você já estudou inglês. Agora é hora de voltar a falar."
+        description="Entre na lista de espera do Destrave seu Inglês e receba as informações da próxima turma."
+        ctaText="Entrar na lista"
+        ctaHref={whatsapp}
+      />
     </main>
-    <div class="mobile-cta">
-      <a class="button" href={whatsapp} target="_blank" rel="noreferrer">Entrar na lista de espera</a>
-    </div>
-    <footer>
-      <div class="container footer-content">
-        <div>
-          <strong>Natalia Fernandes English</strong>
-          <p>Programa online para adultos que querem conversar em inglês com mais confiança.</p>
-        </div>
-        <div>
-          <a href="/" style="color: var(--gold); text-decoration: none; font-weight: 600;">← Conheça o site institucional</a>
-        </div>
-      </div>
-    </footer>
+
+    <!-- MOBILE CTA -->
+    <MobileCTA href={whatsapp} text="Entrar na lista de espera" />
+
+    <!-- FOOTER -->
+    <Footer
+      brandDescription="Programa online para adultos que querem conversar em inglês com mais confiança."
+      solutionsTitle="Navegação"
+      solutions={[
+        { label: '← Conheça o site institucional', href: '/' }
+      ]}
+      contactLinks={[
+        { label: 'WhatsApp da Equipe', href: whatsapp, isExternal: true },
+        { label: 'Voltar ao topo', href: '#top' }
+      ]}
+    />
   </div>
 </Layout>

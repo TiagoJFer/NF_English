@@ -1,0 +1,72 @@
+---
+interface Props {
+  id?: string;
+  eyebrow?: string;
+  title: string;
+  description?: string;
+  traditionalTitle?: string;
+  traditionalDesc?: string;
+  traditionalItems: string[];
+  nfTitle?: string;
+  nfDesc?: string;
+  nfBadge?: string;
+  nfItems: string[];
+  isBand?: boolean;
+}
+
+const {
+  id = 'comparativo',
+  eyebrow = 'Diferencial NF English',
+  title,
+  description,
+  traditionalTitle = 'Escolas Tradicionais & Apps',
+  traditionalDesc = 'Foco em memorização mecânica e listas desconectadas da sua realidade.',
+  traditionalItems = [],
+  nfTitle = 'Ensino Personalizado & Vida Real',
+  nfDesc = 'Abordagem centrada na sua rotina, suas metas de carreira e segurança emocional.',
+  nfBadge = 'O Método NF English',
+  nfItems = [],
+  isBand = false
+} = Astro.props;
+---
+
+<section id={id} class={isBand ? 'band' : ''}>
+  <div class="container">
+    <div class="section-head center">
+      {eyebrow && (
+        <div class="eyebrow"><span class="dot"></span> {eyebrow}</div>
+      )}
+      <h2 set:html={title} />
+      {description && <p set:html={description} />}
+    </div>
+
+    <div class="compare-grid">
+      <div class="compare-box traditional">
+        <h3>{traditionalTitle}</h3>
+        <p class="muted">{traditionalDesc}</p>
+        <ul class="compare-list traditional">
+          {traditionalItems.map((item) => (
+            <li>
+              <span class="compare-icon bad">✕</span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="compare-box nf">
+        {nfBadge && <span class="compare-badge">{nfBadge}</span>}
+        <h3>{nfTitle}</h3>
+        <p class="muted">{nfDesc}</p>
+        <ul class="compare-list">
+          {nfItems.map((item) => (
+            <li>
+              <span class="compare-icon good">✓</span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

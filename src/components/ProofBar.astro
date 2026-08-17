@@ -1,0 +1,27 @@
+---
+interface ProofItem {
+  value: string;
+  label: string;
+}
+
+interface Props {
+  ariaLabel?: string;
+  items: ProofItem[];
+}
+
+const {
+  ariaLabel = 'Métricas e destaques',
+  items = []
+} = Astro.props;
+---
+
+<div class="proof">
+  <div class="container proof-row" aria-label={ariaLabel}>
+    {items.map((item) => (
+      <div class="proof-item">
+        <b>{item.value}</b>
+        <span>{item.label}</span>
+      </div>
+    ))}
+  </div>
+</div>
