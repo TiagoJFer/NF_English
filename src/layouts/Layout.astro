@@ -32,7 +32,11 @@ const ruPath = normalizedPath === '/' ? '/ru' : `/ru${normalizedPath}`;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap" rel="stylesheet" />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..800;1,9..40,400..700&family=Fraunces:ital,opsz,wght@0,9..144,600..700;1,9..144,600..700&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..800;1,9..40,400..700&family=Fraunces:ital,opsz,wght@0,9..144,600..700;1,9..144,600..700&display=swap" media="print" onload="this.media='all'" />
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..800;1,9..40,400..700&family=Fraunces:ital,opsz,wght@0,9..144,600..700;1,9..144,600..700&display=swap" />
+    </noscript>
     <title>{title}</title>
     <meta name="description" content={description} />
     
@@ -40,7 +44,7 @@ const ruPath = normalizedPath === '/' ? '/ru' : `/ru${normalizedPath}`;
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="/Nath.jpg" />
+    <meta property="og:image" content={`${siteUrl}/Nath.jpg`} />
     <meta property="og:url" content={`${siteUrl}${canonicalPath}`} />
     
     <!-- Alternate languages (SEO) -->

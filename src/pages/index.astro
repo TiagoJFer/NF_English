@@ -93,7 +93,10 @@ const faqs = [
 
           <div class="hero-image-wrapper">
             <div class="hero-circle-frame">
-              <img src="/Nath.jpg" alt="Natalia Fernandes, fundadora da NF English" />
+              <picture>
+                <source srcset="/Nath.webp" type="image/webp" />
+                <img src="/Nath.jpg" alt="Natalia Fernandes, fundadora da NF English" width="576" height="1024" fetchpriority="high" loading="eager" decoding="async" />
+              </picture>
             </div>
             <div class="floating-note">
               <strong>Personalização de verdade:</strong>
@@ -301,7 +304,10 @@ const faqs = [
       <section id="sobre">
         <div class="container teacher">
           <div class="teacher-photo">
-            <img src="/Nath.jpg" alt="Professora Natalia Fernandes, fundadora da NF English" />
+            <picture>
+              <source srcset="/Nath.webp" type="image/webp" />
+              <img src="/Nath.jpg" alt="Professora Natalia Fernandes, fundadora da NF English" width="576" height="1024" loading="lazy" decoding="async" />
+            </picture>
           </div>
           <div>
             <div class="section-head">

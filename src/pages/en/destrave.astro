@@ -63,7 +63,10 @@ const weeks = [
           
           <div class="hero-image-wrapper">
             <div class="hero-circle-frame">
-              <img src="/Nath.jpg" alt="Natalia Fernandes, English Teacher and Coach" />
+              <picture>
+                <source srcset="/Nath.webp" type="image/webp" />
+                <img src="/Nath.jpg" alt="Natalia Fernandes, English Teacher and Coach" width="576" height="1024" fetchpriority="high" loading="eager" decoding="async" />
+              </picture>
             </div>
             <div class="floating-note">
               <strong>You don't need to start from scratch.</strong>
@@ -154,7 +157,10 @@ const weeks = [
       <section id="natalia" class="band">
         <div class="container teacher">
           <div class="teacher-photo">
-            <img src="/Nath.jpg" alt="Teacher Natalia Fernandes" />
+            <picture>
+              <source srcset="/Nath.webp" type="image/webp" />
+              <img src="/Nath.jpg" alt="Teacher Natalia Fernandes" width="576" height="1024" loading="lazy" decoding="async" />
+            </picture>
           </div>
           <div>
             <div class="section-head">
