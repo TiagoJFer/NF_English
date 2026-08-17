@@ -1,48 +1,118 @@
 ---
 interface Props {
   mode?: 'institutional' | 'destrave';
+  lang?: 'pt' | 'en' | 'ru';
 }
 
-const { mode = 'institutional' } = Astro.props;
+const { mode = 'institutional', lang = 'pt' } = Astro.props;
 
 const isInstitutional = mode === 'institutional';
-const whatsappInstitucional = 'https://wa.me/5511967165564?text=Ola%20Natalia,%20gostaria%20de%20conversar%20sobre%20um%20plano%20personalizado%20de%20ingles.';
-const whatsappDestrave = 'https://wa.me/5511967165564?text=Quero%20entrar%20na%20lista%20de%20espera%20do%20Destrave%20seu%20Ingles';
+const isEn = lang === 'en';
+const isRu = lang === 'ru';
+const isPt = !isEn && !isRu;
+
+// WhatsApp links
+const msgInstrucional = isRu
+  ? 'Здравствуйте, Наталья! Я хочу обсудить индивидуальный план обучения английскому языку.'
+  : isEn
+  ? 'Hi Natalia, I would like to learn more about your customized English programs.'
+  : 'Ola Natalia, gostaria de conversar sobre um plano personalizado de ingles.';
+
+const msgDestrave = isRu
+  ? 'Здравствуйте, Наталья! Я хочу записаться в лист ожидания программы Destrave seu Inglês.'
+  : isEn
+  ? 'Hi Natalia, I would like to join the Unlock Your English waiting list.'
+  : 'Quero entrar na lista de espera do Destrave seu Ingles';
+
+const whatsappInstitucional = `https://wa.me/5511967165564?text=${encodeURIComponent(msgInstrucional)}`;
+const whatsappDestrave = `https://wa.me/5511967165564?text=${encodeURIComponent(msgDestrave)}`;
+
+// Target URLs for language switcher
+const ptTarget = isInstitutional ? '/' : '/destrave';
+const enTarget = isInstitutional ? '/en' : '/en/destrave';
+const ruTarget = isInstitutional ? '/ru' : '/ru/destrave';
+const homeTarget = isRu ? '/ru' : isEn ? '/en' : '/';
 ---
 <header class="nav">
   <div class="container nav-inner">
-    <a class="brand" href={isInstitutional ? "#top" : "/"} aria-label="Natalia Fernandes English">
+    <a class="brand" href={isInstitutional ? "#top" : homeTarget} aria-label="Natalia Fernandes English">
       <span class="brand-mark">NF</span>
       <span>Natalia Fernandes English</span>
     </a>
-    <nav class="nav-links" aria-label="Navegação principal">
+
+    <nav class="nav-links" aria-label={isRu ? "Главное меню" : isEn ? "Main navigation" : "Navegação principal"}>
       {isInstitutional ? (
-        <>
-          <a href="#personalizacao">Personalização</a>
-          <a href="#solucoes">Soluções</a>
-          <a href="#sobre">Sobre a Natalia</a>
-          <a href="#empresas">Empresas</a>
-          <a href="/destrave" class="nav-highlight">Programa Destrave ↗</a>
-          <a href="#faq">FAQ</a>
-        </>
+        isRu ? (
+          <>
+            <a href="#personalization">Подход</a>
+            <a href="#solutions">Решения</a>
+            <a href="#about">О Наталье</a>
+            <a href="#corporate">Компаниям</a>
+            <a href="/ru/destrave" class="nav-highlight">Программа Destrave ↗</a>
+            <a href="#faq">FAQ</a>
+          </>
+        ) : isEn ? (
+          <>
+            <a href="#personalization">Personalization</a>
+            <a href="#solutions">Solutions</a>
+            <a href="#about">About Natalia</a>
+            <a href="#corporate">Corporate</a>
+            <a href="/en/destrave" class="nav-highlight">Unlock Program ↗</a>
+            <a href="#faq">FAQ</a>
+          </>
+        ) : (
+          <>
+            <a href="#personalizacao">Personalização</a>
+            <a href="#solucoes">Soluções</a>
+            <a href="#sobre">Sobre a Natalia</a>
+            <a href="#empresas">Empresas</a>
+            <a href="/destrave" class="nav-highlight">Programa Destrave ↗</a>
+            <a href="#faq">FAQ</a>
+          </>
+        )
       ) : (
-        <>
-          <a href="/" class="nav-back">← Início</a>
-          <a href="#programa">O Programa</a>
-          <a href="#natalia">Natalia</a>
-          <a href="#oferta">Turma</a>
-          <a href="#faq">FAQ</a>
-        </>
+        isRu ? (
+          <>
+            <a href="/ru" class="nav-back">← Главная</a>
+            <a href="#program">О программе</a>
+            <a href="#natalia">Наталья</a>
+            <a href="#offer">Группа</a>
+            <a href="#faq">FAQ</a>
+          </>
+        ) : isEn ? (
+          <>
+            <a href="/en" class="nav-back">← Home</a>
+            <a href="#program">The Program</a>
+            <a href="#natalia">Natalia</a>
+            <a href="#offer">Cohort</a>
+            <a href="#faq">FAQ</a>
+          </>
+        ) : (
+          <>
+            <a href="/" class="nav-back">← Início</a>
+            <a href="#programa">O Programa</a>
+            <a href="#natalia">Natalia</a>
+            <a href="#oferta">Turma</a>
+            <a href="#faq">FAQ</a>
+          </>
+        )
       )}
     </nav>
+
     <div class="nav-actions">
+      <div class="lang-switch" aria-label="Language selector / Выбор языка">
+        <a href={ptTarget} class={isPt ? 'active' : ''} aria-current={isPt ? 'true' : undefined}>PT</a>
+        <a href={enTarget} class={isEn ? 'active' : ''} aria-current={isEn ? 'true' : undefined}>EN</a>
+        <a href={ruTarget} class={isRu ? 'active' : ''} aria-current={isRu ? 'true' : undefined}>RU</a>
+      </div>
+
       {isInstitutional ? (
         <a class="button small" href={whatsappInstitucional} target="_blank" rel="noreferrer">
-          Falar no WhatsApp
+          {isRu ? 'В WhatsApp' : isEn ? 'WhatsApp Chat' : 'Falar no WhatsApp'}
         </a>
       ) : (
         <a class="button small" href={whatsappDestrave} target="_blank" rel="noreferrer">
-          Entrar na lista
+          {isRu ? 'В лист ожидания' : isEn ? 'Join Waitlist' : 'Entrar na lista'}
         </a>
       )}
     </div>

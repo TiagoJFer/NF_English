@@ -1,23 +1,57 @@
 ---
 import '../styles/global.css';
 
-const { title = 'Natalia Fernandes English | Destrave seu Inglês', description = 'Um programa prático para adultos que querem voltar a falar inglês com mais confiança.' } = Astro.props;
+interface Props {
+  title?: string;
+  description?: string;
+  lang?: 'pt-BR' | 'en' | 'ru';
+  canonicalPath?: string;
+}
+
+const { 
+  title = 'Natalia Fernandes English | Destrave seu Inglês', 
+  description = 'Um programa prático para adultos que querem voltar a falar inglês com mais confiança.',
+  lang = 'pt-BR',
+  canonicalPath = Astro.url.pathname
+} = Astro.props;
+
+const siteUrl = 'https://nfenglish.com.br';
+
+// Strip language prefixes (/en or /ru) to get base path
+const cleanPath = canonicalPath.replace(/^\/(en|ru)(\/|$)/, '/');
+const normalizedPath = cleanPath === '' ? '/' : cleanPath;
+
+const ptPath = normalizedPath;
+const enPath = normalizedPath === '/' ? '/en' : `/en${normalizedPath}`;
+const ruPath = normalizedPath === '/' ? '/ru' : `/ru${normalizedPath}`;
 ---
 <!doctype html>
-<html lang="pt-BR">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap" rel="stylesheet" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    
+    <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="/Nath.jpg" />
+    <meta property="og:url" content={`${siteUrl}${canonicalPath}`} />
+    
+    <!-- Alternate languages (SEO) -->
+    <link rel="alternate" hreflang="pt-BR" href={`${siteUrl}${ptPath}`} />
+    <link rel="alternate" hreflang="en" href={`${siteUrl}${enPath}`} />
+    <link rel="alternate" hreflang="ru" href={`${siteUrl}${ruPath}`} />
+    <link rel="alternate" hreflang="x-default" href={`${siteUrl}${ptPath}`} />
+    
     <meta name="theme-color" content="#35483d" />
   </head>
-  <body><slot /></body>
+  <body>
+    <slot />
+  </body>
 </html>

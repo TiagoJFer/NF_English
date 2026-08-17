@@ -1,0 +1,425 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+
+const msgDiagnostic = 'Здравствуйте, Наталья! Я хочу обсудить индивидуальный план обучения английскому языку.';
+const msgMentoring = 'Здравствуйте, Наталья! Меня интересует индивидуальное наставничество 1:1.';
+const msgCorporate = 'Здравствуйте, Наталья! Я хочу узнать о корпоративном обучении английскому языку для компании.';
+
+const whatsappDiagnostic = `https://wa.me/5511967165564?text=${encodeURIComponent(msgDiagnostic)}`;
+const whatsappMentoring = `https://wa.me/5511967165564?text=${encodeURIComponent(msgMentoring)}`;
+const whatsappCorporate = `https://wa.me/5511967165564?text=${encodeURIComponent(msgCorporate)}`;
+
+const pillars = [
+  {
+    num: '01',
+    title: 'Глубокая индивидуальная диагностика',
+    desc: 'Перед началом занятий мы детально разбираем ваш предыдущий опыт, психологические барьеры и конкретные карьерные цели, чтобы выстроить точный маршрут.'
+  },
+  {
+    num: '02',
+    title: 'Карта интересов и реальная жизнь',
+    desc: 'Ваша работа, терминология сферы, переговоры, поездки и личные увлечения становятся основой уроков — никакой абстрактной теории из стандартных учебников.'
+  },
+  {
+    num: '03',
+    title: 'Психологический комфорт и поддержка',
+    desc: 'Мы создаем безопасную среду, где ошибки воспринимаются как естественный этап роста. Вы начинаете говорить уверенно, без страха критики или неловких пауз.'
+  },
+  {
+    num: '04',
+    title: 'Формат для занятых профессионалов',
+    desc: 'Гибкая методика с продуманной нагрузкой и практическими микро-заданиями, созданная специально для взрослых с плотным рабочим графиком.'
+  }
+];
+
+const faqs = [
+  {
+    q: 'Как персонализация работает на практике?',
+    a: 'После стартовой диагностики мы формируем программу вокруг тем, лексики и ситуаций, с которыми вы сталкиваетесь каждый день: рабочие митинги, собеседования, поездки или нетворкинг. Мы не проходим шаблонные учебники страница за страницей.'
+  },
+  {
+    q: 'Для кого созданы программы NF English?',
+    a: 'Наши программы ориентированы исключительно на взрослых и специалистов: людей, которые уже учили язык ранее или понимают базу, но испытывают трудности в спонтанной речи и хотят обрести уверенность для карьеры и жизни.'
+  },
+  {
+    q: 'В чем разница между Менторством 1:1 и программой Destrave?',
+    a: 'Индивидуальное менторство 1:1 — это персональная траектория с гибким расписанием для срочных и специфических задач. Программа Destrave — это 8-недельный групповой онлайн-интенсив в небольших группах для преодоления языкового барьера.'
+  },
+  {
+    q: 'Как устроены корпоративные тренинги (In-Company)?',
+    a: 'Мы разрабатываем индивидуальные программы для команд и руководителей, интегрируя корпоративные процессы и профессиональную терминологию. Среди наших клиентов — такие бренды, как Yamaha, Eaton и Mahle.'
+  },
+  {
+    q: 'Занятия проходят онлайн или очно?',
+    a: 'Все форматы проходят на 100% в живом онлайн-режиме с современными интерактивными материалами и постоянной поддержкой преподавателя, что позволяет учиться из любой точки мира.'
+  },
+  {
+    q: 'С чего начать обучение?',
+    a: 'Нажмите на любую кнопку на этой странице, чтобы написать Наталье в WhatsApp. Мы проведем быструю консультацию и подберем наиболее эффективный формат для ваших целей.'
+  }
+];
+---
+
+<Layout 
+  title="Natalia Fernandes English | Персонализированное обучение английскому для взрослых и компаний" 
+  description="Премиальное обучение английскому языку с акцентом на преодоление языкового барьера, уверенность в речи и 15 лет экспертизы. Менторство 1:1, группы и корпоративные тренинги."
+  lang="ru"
+>
+  <div class="page" id="top">
+    <Header mode="institutional" lang="ru" />
+    
+    <main>
+      <!-- HERO -->
+      <section class="hero">
+        <div class="container hero-grid">
+          <div>
+            <div class="eyebrow"><span class="dot"></span> Качество & Персонализация</div>
+            <h1>Английский, который адаптируется к вашей жизни, карьере и ритму.</h1>
+            <p class="hero-copy">
+              Без шаблонных правил и скучных групп. Более 15 лет мы помогаем взрослым трансформировать пассивные знания в свободную разговорную речь по индивидуальной методике.
+            </p>
+            <div class="hero-actions">
+              <a class="button" href={whatsappDiagnostic} target="_blank" rel="noreferrer">
+                Обсудить план в WhatsApp
+              </a>
+              <a class="button secondary" href="#solutions">
+                Форматы обучения
+              </a>
+            </div>
+            <p class="microcopy">Дружелюбная и подробная консультация в WhatsApp. Без обязательств.</p>
+            <div class="hero-proof">
+              <span class="pill">15+ лет опыта</span>
+              <span class="pill">100% для взрослых</span>
+              <span class="pill">Корпоративный опыт</span>
+              <span class="pill">Индивидуально и в группах</span>
+            </div>
+          </div>
+
+          <div class="hero-image-wrapper">
+            <div class="hero-circle-frame">
+              <img src="/Nath.jpg" alt="Наталья Фернандес, основатель NF English" />
+            </div>
+            <div class="floating-note">
+              <strong>Настоящая персонализация:</strong>
+              <p>Материал уроков — это ваша профессия, интересы и реальные задачи вашего дня.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROOF BAR -->
+      <div class="proof">
+        <div class="container proof-row" aria-label="Преимущества и опыт NF English">
+          <div class="proof-item">
+            <b>15+ Лет</b>
+            <span>обучения исключительно взрослой аудитории</span>
+          </div>
+          <div class="proof-item">
+            <b>100% Персонализация</b>
+            <span>стратегия под ваш график и карьерные цели</span>
+          </div>
+          <div class="proof-item">
+            <b>In-Company</b>
+            <span>тренинги для крупных международных корпораций</span>
+          </div>
+          <div class="proof-item">
+            <b>Упор на речь</b>
+            <span>уверенность и свобода в реальных диалогах</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CORPORATE STRIP -->
+      <div class="corporate-strip" id="corporate">
+        <div class="container corporate-inner">
+          <span class="corporate-label">Нам доверяют ведущие специалисты и глобальные корпорации:</span>
+          <div class="corporate-logos">
+            <span class="corp-badge">YAMAHA</span>
+            <span class="corp-badge">EATON</span>
+            <span class="corp-badge">MAHLE</span>
+            <span class="corp-badge">+ Руководители и эксперты</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- THE PROBLEM -->
+      <section class="band">
+        <div class="container">
+          <div class="section-head center">
+            <div class="eyebrow"><span class="dot"></span> Проблема традиционного метода</div>
+            <h2>Почему шаблонные курсы не подходят занятым взрослым?</h2>
+            <p>
+              Обычные языковые школы ставят всех на один конвейер. Итог — разочарование, потеря времени и ложное ощущение, что у вас «нет способностей к языкам».
+            </p>
+          </div>
+
+          <div class="compare-grid">
+            <div class="compare-box traditional">
+              <h3>Типичные шаблонные курсы</h3>
+              <p class="muted">Устаревшая модель, игнорирующая реальность взрослого человека:</p>
+              <ul class="compare-list traditional">
+                <li>
+                  <span class="compare-icon bad">✕</span>
+                  <span>Одинаковые учебники с оторванными от жизни диалогами.</span>
+                </li>
+                <li>
+                  <span class="compare-icon bad">✕</span>
+                  <span>Большие группы с разным уровнем, где почти нет времени говорить.</span>
+                </li>
+                <li>
+                  <span class="compare-icon bad">✕</span>
+                  <span>Зазубривание сухой грамматики без применения в реальной речи.</span>
+                </li>
+                <li>
+                  <span class="compare-icon bad">✕</span>
+                  <span>Резкие исправления, порождающие языковой барьер и страх ошибок.</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="compare-box nf">
+              <span class="compare-badge">Преимущество NF English</span>
+              <h3>Обучение с реальной персонализацией</h3>
+              <p class="muted">Метод, который подстраивается под вашу личность и цели:</p>
+              <ul class="compare-list">
+                <li>
+                  <span class="compare-icon good">✓</span>
+                  <span><strong>Живой контент:</strong> ваша карьера, проекты и хобби становятся темами занятий.</span>
+                </li>
+                <li>
+                  <span class="compare-icon good">✓</span>
+                  <span><strong>Психологический комфорт:</strong> ошибки — это естественный инструмент совершенствования речи.</span>
+                </li>
+                <li>
+                  <span class="compare-icon good">✓</span>
+                  <span><strong>Быстрый результат:</strong> фразы и выражения, применимые на работе в тот же день.</span>
+                </li>
+                <li>
+                  <span class="compare-icon good">✓</span>
+                  <span><strong>Поддержка наставника:</strong> бережное сопровождение с пониманием графика занятого человека.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4 PILLARS -->
+      <section id="personalization">
+        <div class="container">
+          <div class="section-head">
+            <div class="eyebrow sage"><span class="dot"></span> Авторская методика</div>
+            <h2>4 столпа персонализированного обучения</h2>
+            <p>Педагогическая структура, гарантирующая пользу каждой минуты вашего занятия.</p>
+          </div>
+
+          <div class="pillars-4">
+            {pillars.map((pillar) => (
+              <div class="pillar-card">
+                <div class="pillar-num">{pillar.num}</div>
+                <div class="pillar-content">
+                  <h3>{pillar.title}</h3>
+                  <p>{pillar.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- SOLUTIONS -->
+      <section id="solutions" class="band">
+        <div class="container">
+          <div class="section-head center">
+            <div class="eyebrow"><span class="dot"></span> Наши решения</div>
+            <h2>Формат, подходящий под ваши цели и график</h2>
+            <p>От индивидуального наставничества до групповых программ и корпоративных тренингов.</p>
+          </div>
+
+          <div class="solutions-grid">
+            <!-- 1:1 Mentoring -->
+            <div class="solution-card">
+              <div>
+                <div class="solution-tag">Индивидуально & Премиум</div>
+                <h3>Менторство 1:1 под ключ</h3>
+                <p class="solution-desc">
+                  Персональное сопровождение для ключевых карьерных задач, международных переговоров, конференций и переезда.
+                </p>
+                <ul class="solution-features">
+                  <li><span class="chk">✓</span> Полностью индивидуальный план занятий</li>
+                  <li><span class="chk">✓</span> Отработка реальных рабочих сценариев</li>
+                  <li><span class="chk">✓</span> Гибкий график и персональный темп</li>
+                  <li><span class="chk">✓</span> Обратная связь по произношению и беглости</li>
+                </ul>
+              </div>
+              <a class="button secondary" href={whatsappMentoring} target="_blank" rel="noreferrer">
+                Узнать о менторстве 1:1
+              </a>
+            </div>
+
+            <!-- Destrave (Featured) -->
+            <div class="solution-card featured">
+              <span class="solution-featured-tag">Групповая программа</span>
+              <div>
+                <div class="solution-tag">Малые группы</div>
+                <h3>Программа «Destrave»</h3>
+                <p class="solution-desc">
+                  8-недельный практический курс для тех, кто учил язык, но испытывает барьер в речи. Безопасная практика и живой лексикон.
+                </p>
+                <ul class="solution-features">
+                  <li><span class="chk">✓</span> 8 живых онлайн-сессий в мини-группах</li>
+                  <li><span class="chk">✓</span> 24 емких видеоурока для подготовки</li>
+                  <li><span class="chk">✓</span> Карта интересов и личный Phrase Bank</li>
+                  <li><span class="chk">✓</span> Итоговый диалог 10–15 минут с оценкой прогресса</li>
+                </ul>
+              </div>
+              <a class="button" href="/ru/destrave">
+                Подробнее о программе ↗
+              </a>
+            </div>
+
+            <!-- Corporate -->
+            <div class="solution-card">
+              <div>
+                <div class="solution-tag">Для компаний и команд</div>
+                <h3>Корпоративное обучение</h3>
+                <p class="solution-desc">
+                  Индивидуальные решения для сотрудников и лидеров, которым нужна уверенная деловая коммуникация в международной среде.
+                </p>
+                <ul class="solution-features">
+                  <li><span class="chk">✓</span> Аудит уровня владения языком в команде</li>
+                  <li><span class="chk">✓</span> Обучение на материалах и процессах компании</li>
+                  <li><span class="chk">✓</span> Опыт работы с Yamaha, Eaton, Mahle</li>
+                  <li><span class="chk">✓</span> Регулярные отчеты о динамике и посещаемости</li>
+                </ul>
+              </div>
+              <a class="button secondary" href={whatsappCorporate} target="_blank" rel="noreferrer">
+                Корпоративные программы
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT NATALIA -->
+      <section id="about">
+        <div class="container teacher">
+          <div class="teacher-photo">
+            <img src="/Nath.jpg" alt="Преподаватель Наталья Фернандес" />
+          </div>
+          <div>
+            <div class="section-head">
+              <div class="eyebrow"><span class="dot"></span> Основатель & Ведущий преподаватель</div>
+              <h2>Познакомьтесь с Натальей Фернандес</h2>
+              <p>
+                Более 15 лет Наталья посвятила обучению взрослых — помогая как специалистам с негативным опытом традиционной школы, так и топ-менеджерам международных корпораций обрести уверенность и свободу речи.
+              </p>
+            </div>
+
+            <div class="grid cred-grid">
+              <div class="cred">
+                <b>15+ Лет</b>
+                <span>преподавания и менторства для взрослых</span>
+              </div>
+              <div class="cred">
+                <b>Специалист</b>
+                <span>в преодолении языкового барьера и разговорной практике</span>
+              </div>
+              <div class="cred">
+                <b>In-Company</b>
+                <span>программы для международных промышленных лидеров</span>
+              </div>
+            </div>
+
+            <div class="teacher-manifesto">
+              «Свободное владение языком — это не идеальный акцент или безупречная грамматика. Это свобода выражать свои мысли, отстаивать идеи и общаться с миром без страха.»
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section id="faq" class="band">
+        <div class="container">
+          <div class="section-head center">
+            <div class="eyebrow"><span class="dot"></span> Вопросы и ответы</div>
+            <h2>Часто задаваемые вопросы</h2>
+            <p>Ответы о методике, форматах и о том, как начать обучение.</p>
+          </div>
+
+          <div class="grid faq-grid">
+            {faqs.map((faq) => (
+              <details>
+                <summary>{faq.q}</summary>
+                <p>{faq.a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- FINAL CTA -->
+      <section class="final-cta">
+        <div class="container final-grid">
+          <div>
+            <h2>Готовы говорить по-английски уверенно и свободно?</h2>
+            <p>
+              Напишите нам в WhatsApp, чтобы задать вопросы, пройти вводную диагностику или выбрать подходящий формат.
+            </p>
+          </div>
+          <a class="button gold" href={whatsappDiagnostic} target="_blank" rel="noreferrer">
+            Написать в WhatsApp
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <!-- MOBILE FLOATING CTA -->
+    <div class="mobile-cta">
+      <a class="button" href={whatsappDiagnostic} target="_blank" rel="noreferrer">
+        Написать в WhatsApp
+      </a>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-col">
+            <div class="brand" style="margin-bottom: 14px;">
+              <span class="brand-mark">NF</span>
+              <span>Natalia Fernandes English</span>
+            </div>
+            <p class="muted">
+              Персонализированное обучение английскому языку для взрослых, руководителей и компаний. Превращаем пассивные знания в уверенную речь с поддержкой и заботой.
+            </p>
+          </div>
+
+          <div class="footer-col">
+            <strong>Решения</strong>
+            <ul class="footer-links">
+              <li><a href={whatsappMentoring} target="_blank" rel="noreferrer">Менторство 1:1</a></li>
+              <li><a href="/ru/destrave">Программа Destrave</a></li>
+              <li><a href={whatsappCorporate} target="_blank" rel="noreferrer">Обучение для компаний</a></li>
+              <li><a href="#personalization">Методология и столпы</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <strong>Контакты</strong>
+            <ul class="footer-links">
+              <li><a href={whatsappDiagnostic} target="_blank" rel="noreferrer">WhatsApp: +55 (11) 96716-5564</a></li>
+              <li><a href="#top">Наверх ↑</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <div>© {new Date().getFullYear()} Natalia Fernandes English. Все права защищены.</div>
+          <div>nfenglish.com.br</div>
+        </div>
+      </div>
+    </footer>
+  </div>
+</Layout>

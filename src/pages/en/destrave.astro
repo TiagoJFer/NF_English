@@ -1,0 +1,293 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import CheckList from '../../components/CheckList.astro';
+
+const whatsapp = 'https://wa.me/5511967165564?text=Hi%20Natalia,%20I%20would%20like%20to%20join%20the%20Unlock%20Your%20English%20waiting%20list.';
+
+const included = [
+  '8 weeks of online live coaching and guidance.',
+  'Live interactive sessions and short bite-sized videos for vocabulary and listening.',
+  'Personalized missions tailored directly to your career and personal interests.',
+  'Affinity Map to use your real life as classroom material.',
+  'Personal Phrase Bank with high-frequency expressions for real conversations.',
+  '10 to 15-minute final conversation milestone, with progress review and next steps.'
+];
+
+const weeks = [
+  ['1', "I'm back", 'A fresh start without shame and essential survival phrases.'],
+  ['2', 'Things I like', 'Interests, hobbies, music, series, food, and sports.'],
+  ['3', 'My routine', 'Real routine, work projects, home life, and free time.'],
+  ['4', 'Small talk', 'Starting and maintaining natural small talk without panic.'],
+  ['5', 'My stories', 'Sharing past anecdotes and experiences smoothly.'],
+  ['6', 'Opinions', 'Giving opinions, agreeing, disagreeing, and explaining reasons.'],
+  ['7', 'Real situations', 'Listening practice and simulations for travel, work, and socializing.'],
+  ['8', 'Final conversation', '10–15 minute live conversation milestone, feedback, and roadmap.']
+];
+---
+
+<Layout 
+  title="Unlock Your English | Natalia Fernandes English" 
+  description="8-week online program for adults who have studied English before but freeze when speaking. Gain real conversational confidence."
+  lang="en"
+>
+  <div class="page" id="top">
+    <Header mode="destrave" lang="en" />
+    
+    <main>
+      <!-- HERO -->
+      <section class="hero">
+        <div class="container hero-grid">
+          <div>
+            <div class="eyebrow"><span class="dot"></span> Unlock Your English</div>
+            <h1>Gain confidence to speak English without freezing.</h1>
+            <p class="hero-copy">
+              An online program for those who have studied English before, but still feel stuck when it is time to speak. Practice real conversations using your routine, interests, and stories as your starting point.
+            </p>
+            <div class="hero-actions">
+              <a class="button" href={whatsapp} target="_blank" rel="noreferrer">
+                Unlock My English
+              </a>
+              <a class="button secondary" href="#offer">
+                View Cohort & Investment
+              </a>
+            </div>
+            <p class="microcopy">Join the waiting list to receive early access information without commitment.</p>
+            <div class="hero-proof">
+              <span class="pill">8 weeks</span>
+              <span class="pill">Live classes</span>
+              <span class="pill">Small cohorts</span>
+              <span class="pill">7-day guarantee</span>
+            </div>
+          </div>
+          
+          <div class="hero-image-wrapper">
+            <div class="hero-circle-frame">
+              <img src="/Nath.jpg" alt="Natalia Fernandes, English Teacher and Coach" />
+            </div>
+            <div class="floating-note">
+              <strong>You don't need to start from scratch.</strong>
+              <p>The focus is reorganizing what you already know and putting it into safe, active use.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROOF METRICS -->
+      <div class="proof">
+        <div class="container proof-row" aria-label="Program overview">
+          <div class="proof-item"><b>15+ Years</b><span>of teaching experience with adults</span></div>
+          <div class="proof-item"><b>8</b><span>live interactive online sessions</span></div>
+          <div class="proof-item"><b>24</b><span>bite-sized recorded lessons</span></div>
+          <div class="proof-item"><b>10–15 min</b><span>final conversation to measure your growth</span></div>
+        </div>
+      </div>
+
+      <!-- PAIN POINTS -->
+      <section class="band">
+        <div class="container">
+          <div class="section-head">
+            <h2>If you have studied before and still freeze, capability is not the issue.</h2>
+            <p>Most adults hoard grammar rules, word lists, and apps, but lack a psychologically safe space to speak, make mistakes, adjust, and try again.</p>
+          </div>
+          <div class="grid pain-grid">
+            <article class="card">
+              <div class="icon">?</div>
+              <h3>Mind goes blank</h3>
+              <p>You understand parts of the conversation, but words get stuck the moment someone speaks to you.</p>
+            </article>
+            <article class="card">
+              <div class="icon">!</div>
+              <h3>Fear of making mistakes</h3>
+              <p>Worrying about perfect pronunciation and flawless grammar blocks you before the first sentence.</p>
+            </article>
+            <article class="card">
+              <div class="icon">+</div>
+              <h3>Tried before without success</h3>
+              <p>You studied for months or years, but still feel like your spoken English never took off.</p>
+            </article>
+            <article class="card">
+              <div class="icon">✓</div>
+              <h3>Tight schedule</h3>
+              <p>You need a sustainable, lightweight routine that fits your career without requiring hours every day.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- THE PROGRAM & METHOD -->
+      <section id="program">
+        <div class="container method">
+          <div class="method-panel">
+            <div class="eyebrow"><span class="dot"></span> The Program</div>
+            <h2>Unlock Your English ("Destrave")</h2>
+            <p>A practical path to gain real conversational confidence without fake miracle promises and without forcing you to start over.</p>
+            <a class="button" href={whatsapp} target="_blank" rel="noreferrer">Get Details on WhatsApp</a>
+          </div>
+          <div>
+            <div class="grid pillar-grid">
+              <article class="card">
+                <div class="icon">1</div>
+                <h3>Your life is the curriculum</h3>
+                <p>Routine, work, travel, music, series, family, and personal stories form the foundation of our classes.</p>
+              </article>
+              <article class="card">
+                <div class="icon">2</div>
+                <h3>Psychologically safe speaking</h3>
+                <p>Speak step by step with gentle, constructive guidance without intimidating interruptions.</p>
+              </article>
+              <article class="card">
+                <div class="icon">3</div>
+                <h3>Sustainable progress</h3>
+                <p>Short videos prepare each live class, and quick missions keep English active in your daily life.</p>
+              </article>
+            </div>
+            <div class="card" style="margin-top: 18px">
+              <h3>What's included in the program</h3>
+              <CheckList items={included} />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT NATALIA -->
+      <section id="natalia" class="band">
+        <div class="container teacher">
+          <div class="teacher-photo">
+            <img src="/Nath.jpg" alt="Teacher Natalia Fernandes" />
+          </div>
+          <div>
+            <div class="section-head">
+              <h2>With Natalia Fernandes, 15 years teaching English.</h2>
+              <p>Natalia specializes in helping adult learners turn fragmented theoretical knowledge into real, spontaneous speech. Her approach is close, welcoming, and practical, grounded in real-life context to reduce anxiety and build true speaking security.</p>
+            </div>
+            <div class="grid cred-grid">
+              <div class="cred"><b>15</b><span>years teaching English</span></div>
+              <div class="cred"><b>Adults</b><span>specialized in unlocking past mental blocks</span></div>
+              <div class="cred"><b>In-Company</b><span>experience with corporate leaders like Yamaha, Eaton & Mahle</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 8-WEEK JOURNEY -->
+      <section>
+        <div class="container">
+          <div class="section-head center">
+            <h2>An 8-week journey to speak more and freeze less.</h2>
+            <p>The goal is to overcome paralysis and build a rich personal repertoire to talk about your daily life, work, travel, and perspectives.</p>
+          </div>
+          <div class="grid week-grid">
+            {weeks.map(([number, title, description]) => (
+              <article class="card week">
+                <span class="week-number">{number}</span>
+                <div>
+                  <h3>{title}</h3>
+                  <p>{description}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- OFFER & INVESTMENT -->
+      <section id="offer" class="band">
+        <div class="container offer">
+          <div class="card">
+            <div class="section-head">
+              <h2>Join the waiting list.</h2>
+              <p>The upcoming cohort will be offered first to those registered on the waitlist. Join now to receive complete details and evaluate if this program fits your goals.</p>
+            </div>
+            <CheckList items={[
+              '8-week online immersive program.',
+              'Live interactive sessions plus bite-sized preparatory video lessons.',
+              'Practice based entirely on your routine and real-world goals.',
+              'Small cohort to ensure a safe, comfortable atmosphere.',
+              '7-day satisfaction guarantee.'
+            ]} />
+          </div>
+          <aside class="price-box" aria-label="Founding cohort investment">
+            <div class="price-label">Founding Cohort</div>
+            <div class="price">R$ 497</div>
+            <p><strong>Special entry condition.</strong></p>
+            <p>Standard future price: R$ 997.</p>
+            <div class="offer-note">Founding cohort spots and pricing will be offered directly to waitlist members.</div>
+            <a class="button" href={whatsapp} target="_blank" rel="noreferrer">Join the Waiting List</a>
+            <p class="microcopy" style="margin-top: 14px">No obligations. Chat with our team before deciding.</p>
+          </aside>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section id="faq">
+        <div class="container">
+          <div class="section-head">
+            <h2>Frequently Asked Questions</h2>
+          </div>
+          <div class="grid faq-grid">
+            <details>
+              <summary>I feel shy and nervous when speaking. Is this program for me?</summary>
+              <p>Yes. The entire methodology is designed to create a psychologically safe space where you can speak gradually, make mistakes without awkward exposure, and build genuine confidence.</p>
+            </details>
+            <details>
+              <summary>I have tried studying before and did not evolve. What is different?</summary>
+              <p>Our focus is not on memorizing more rules. You use subjects from your actual life to practice speaking, listening, and reacting in real-world dialogues.</p>
+            </details>
+            <details>
+              <summary>My English is very basic. Can I still join?</summary>
+              <p>The program is built for those who have had some contact with English before. You don't need to speak well, but recognizing basic words and simple structures is recommended.</p>
+            </details>
+            <details>
+              <summary>I don't have much free time. Will I be able to keep up?</summary>
+              <p>The structure combines short bite-sized recorded lessons, 1 weekly live hour, and lightweight missions designed specifically for busy working adults.</p>
+            </details>
+            <details>
+              <summary>Will I have to speak in front of other students?</summary>
+              <p>Yes, but in a gradual, guided, and warm group dynamic. The cohort exists for safe practice and mutual encouragement, never for judgment or pressure.</p>
+            </details>
+            <details>
+              <summary>Does the program promise instant fluency?</summary>
+              <p>No. We build real speaking confidence, functional vocabulary, and practical autonomy to hold 10–15 minute real conversations without freezing.</p>
+            </details>
+            <details>
+              <summary>What if I feel the program isn't right for me?</summary>
+              <p>You have a 7-day money-back guarantee. If you decide within 7 days that the format isn't a match, you can request a full refund.</p>
+            </details>
+            <details>
+              <summary>How do I register?</summary>
+              <p>Click any button on this page to message us on WhatsApp. Our team will verify cohort availability and provide your onboarding steps.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- FINAL CTA -->
+      <section class="final-cta">
+        <div class="container final-grid">
+          <div>
+            <h2>You have already studied English. Now it's time to speak.</h2>
+            <p>Join the Unlock Your English waiting list and get early access to the upcoming cohort.</p>
+          </div>
+          <a class="button" href={whatsapp} target="_blank" rel="noreferrer">Join the Waitlist</a>
+        </div>
+      </section>
+    </main>
+
+    <div class="mobile-cta">
+      <a class="button" href={whatsapp} target="_blank" rel="noreferrer">Join the Waiting List</a>
+    </div>
+
+    <footer>
+      <div class="container footer-content">
+        <div>
+          <strong>Natalia Fernandes English</strong>
+          <p>Online program for adults ready to speak English with authentic confidence.</p>
+        </div>
+        <div>
+          <a href="/en" style="color: var(--gold); text-decoration: none; font-weight: 600;">← Visit institutional website</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+</Layout>

@@ -1,0 +1,294 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import CheckList from '../../components/CheckList.astro';
+
+const msgWaitlist = 'Здравствуйте, Наталья! Я хочу записаться в лист ожидания программы Destrave seu Inglês.';
+const whatsapp = `https://wa.me/5511967165564?text=${encodeURIComponent(msgWaitlist)}`;
+
+const included = [
+  '8 недель онлайн-сопровождения и практики в живом эфире.',
+  'Живые интерактивные сессии и короткие видеоуроки для лексики и восприятия на слух.',
+  'Персональные миссии, напрямую связанные с вашей работой и увлечениями.',
+  'Карта интересов для использования контекста вашей жизни как основы уроков.',
+  'Личный Phrase Bank с ключевыми выражениями для реального общения.',
+  'Итоговый диалог 10–15 минут с разбором прогресса и рекомендациями на будущее.'
+];
+
+const weeks = [
+  ['1', "I'm back", 'Перезагрузка без стеснения и базовые фразы для старта.'],
+  ['2', 'Things I like', 'Увлечения, хобби, музыка, сериалы, гастрономия и спорт.'],
+  ['3', 'My routine', 'Реальный распорядок дня, рабочие задачи, дом и досуг.'],
+  ['4', 'Small talk', 'Умение начинать и легко поддерживать диалог без стресса.'],
+  ['5', 'My stories', 'Рассказ о событиях прошлого и личном опыте без запинок.'],
+  ['6', 'Opinions', 'Выражение собственного мнения, согласие, несогласие и аргументы.'],
+  ['7', 'Real situations', 'Практика на слух и симуляции: путешествия, работа, сервисы.'],
+  ['8', 'Final conversation', 'Итоговый живой диалог 10–15 минут, оценка роста и дальнейший план.']
+];
+---
+
+<Layout 
+  title="Программа Destrave | Natalia Fernandes English" 
+  description="8-недельная онлайн-программа для взрослых, которые учили английский, но испытывают языковой барьер. Обретите настоящую уверенность в речи."
+  lang="ru"
+>
+  <div class="page" id="top">
+    <Header mode="destrave" lang="ru" />
+    
+    <main>
+      <!-- HERO -->
+      <section class="hero">
+        <div class="container hero-grid">
+          <div>
+            <div class="eyebrow"><span class="dot"></span> Программа Destrave</div>
+            <h1>Обретите уверенность говорить по-английски без языкового барьера.</h1>
+            <p class="hero-copy">
+              Практический онлайн-курс для тех, кто уже учил английский, но застревает в спонтанном разговоре. Тренируйте живую речь на основе ваших реальных историй, работы и увлечений.
+            </p>
+            <div class="hero-actions">
+              <a class="button" href={whatsapp} target="_blank" rel="noreferrer">
+                Преодолеть языковой барьер
+              </a>
+              <a class="button secondary" href="#offer">
+                Условия и стоимость
+              </a>
+            </div>
+            <p class="microcopy">Запишитесь в лист ожидания, чтобы получить информацию о наборе без обязательств.</p>
+            <div class="hero-proof">
+              <span class="pill">8 недель</span>
+              <span class="pill">Живые сессии</span>
+              <span class="pill">Малые группы</span>
+              <span class="pill">Гарантия 7 дней</span>
+            </div>
+          </div>
+          
+          <div class="hero-image-wrapper">
+            <div class="hero-circle-frame">
+              <img src="/Nath.jpg" alt="Наталья Фернандес, преподаватель английского языка" />
+            </div>
+            <div class="floating-note">
+              <strong>Вам не нужно начинать с нуля.</strong>
+              <p>Мы структурируем уже имеющиеся знания и переводим их в активную, уверенную речь.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROOF METRICS -->
+      <div class="proof">
+        <div class="container proof-row" aria-label="Обзор программы">
+          <div class="proof-item"><b>15+ Лет</b><span>опыта преподавания взрослым</span></div>
+          <div class="proof-item"><b>8</b><span>живых онлайн-сессий в эфире</span></div>
+          <div class="proof-item"><b>24</b><span>коротких видеоурока</span></div>
+          <div class="proof-item"><b>10–15 мин</b><span>итоговый разговор для наглядной оценки прогресса</span></div>
+        </div>
+      </div>
+
+      <!-- PAIN POINTS -->
+      <section class="band">
+        <div class="container">
+          <div class="section-head">
+            <h2>Если вы учили язык и все равно боитесь говорить — дело не в способностях.</h2>
+            <p>Большинство людей годами копят правила и слова в приложениях, но у них нет безопасного пространства, чтобы практиковать речь, ошибаться без стеснения и адаптироваться.</p>
+          </div>
+          <div class="grid pain-grid">
+            <article class="card">
+              <div class="icon">?</div>
+              <h3>Ступор при разговоре</h3>
+              <p>Вы понимаете собеседника, но нужные слова исчезают из памяти в момент ответа.</p>
+            </article>
+            <article class="card">
+              <div class="icon">!</div>
+              <h3>Страх сделать ошибку</h3>
+              <p>Желание выстроить идеальную грамматику и акцент блокирует вас перед первой фразой.</p>
+            </article>
+            <article class="card">
+              <div class="icon">+</div>
+              <h3>Прошлые попытки без эффекта</h3>
+              <p>Вы учились месяцами или годами, но так и не начали свободно общаться в жизни.</p>
+            </article>
+            <article class="card">
+              <div class="icon">✓</div>
+              <h3>Нехватка времени</h3>
+              <p>Вам нужен посильный формат, который легко встраивается в график без многочасовых зубрежек.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- THE PROGRAM -->
+      <section id="program">
+        <div class="container method">
+          <div class="method-panel">
+            <div class="eyebrow"><span class="dot"></span> О курсе</div>
+            <h2>Программа Destrave</h2>
+            <p>Практический путь к уверенному общению без иллюзорных обещаний «мгновенной беглости» и без необходимости начинать все сначала.</p>
+            <a class="button" href={whatsapp} target="_blank" rel="noreferrer">Узнать детали в WhatsApp</a>
+          </div>
+          <div>
+            <div class="grid pillar-grid">
+              <article class="card">
+                <div class="icon">1</div>
+                <h3>Ваша жизнь — тема уроков</h3>
+                <p>Работа, поездки, музыка, семья и личный опыт становятся материалом для разговорной практики.</p>
+              </article>
+              <article class="card">
+                <div class="icon">2</div>
+                <h3>Безопасная разговорная среда</h3>
+                <p>Вы говорите постепенно, получая мягкие подсказки без стрессовых и резких замечаний.</p>
+              </article>
+              <article class="card">
+                <div class="icon">3</div>
+                <h3>Реальный прогресс в графике</h3>
+                <p>Короткие видео готовят к живым урокам, а микро-миссии поддерживают тонус каждый день.</p>
+              </article>
+            </div>
+            <div class="card" style="margin-top: 18px">
+              <h3>Что включено в программу</h3>
+              <CheckList items={included} />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT NATALIA -->
+      <section id="natalia" class="band">
+        <div class="container teacher">
+          <div class="teacher-photo">
+            <img src="/Nath.jpg" alt="Преподаватель Наталья Фернандес" />
+          </div>
+          <div>
+            <div class="section-head">
+              <h2>С Натальей Фернандес — 15 лет преподавания английского.</h2>
+              <p>Наталья помогает взрослым студентам превратить разрозненные теоретические знания в живую, уверенную речь. Ее подход — чуткий, практичный и ориентированный на реальную жизнь, что снижает тревожность и дает настоящую свободу общения.</p>
+            </div>
+            <div class="grid cred-grid">
+              <div class="cred"><b>15</b><span>лет преподавания языка</span></div>
+              <div class="cred"><b>Взрослые</b><span>экспертиза в преодолении языковых блоков</span></div>
+              <div class="cred"><b>In-Company</b><span>опыт с лидерами индустрии: Yamaha, Eaton, Mahle</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 8-WEEK JOURNEY -->
+      <section>
+        <div class="container">
+          <div class="section-head center">
+            <h2>8-недельный путь: говорите больше, сомневайтесь меньше.</h2>
+            <p>Цель — преодолеть скованность и сформировать прочный багаж выражений для тем о карьере, путешествиях, интересах и планах.</p>
+          </div>
+          <div class="grid week-grid">
+            {weeks.map(([number, title, description]) => (
+              <article class="card week">
+                <span class="week-number">{number}</span>
+                <div>
+                  <h3>{title}</h3>
+                  <p>{description}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- OFFER -->
+      <section id="offer" class="band">
+        <div class="container offer">
+          <div class="card">
+            <div class="section-head">
+              <h2>Запишитесь в лист ожидания.</h2>
+              <p>Следующий набор будет открыт в первую очередь для участников листа ожидания. Оставьте заявку, чтобы получить условия и узнать, подходит ли вам программа.</p>
+            </div>
+            <CheckList items={[
+              '8-недельная практическая онлайн-программа.',
+              'Живые сессии и короткие видеоматериалы для подготовки.',
+              'Практика, построенная на ваших задачах и реальной жизни.',
+              'Малая группа для максимального комфорта каждого.',
+              'Гарантия возврата средств 7 дней.'
+            ]} />
+          </div>
+          <aside class="price-box" aria-label="Стоимость участия">
+            <div class="price-label">Стартовая группа</div>
+            <div class="price">R$ 497</div>
+            <p><strong>Специальные условия набора.</strong></p>
+            <p>Обычная стоимость следующих потоков: R$ 997.</p>
+            <div class="offer-note">Специальная цена будет предложена участникам из листа ожидания.</div>
+            <a class="button" href={whatsapp} target="_blank" rel="noreferrer">В лист ожидания</a>
+            <p class="microcopy" style="margin-top: 14px">Без обязательств. Вы сможете задать все вопросы до принятия решения.</p>
+          </aside>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section id="faq">
+        <div class="container">
+          <div class="section-head">
+            <h2>Часто задаваемые вопросы</h2>
+          </div>
+          <div class="grid faq-grid">
+            <details>
+              <summary>Я стесняюсь говорить. Подойдет ли мне этот курс?</summary>
+              <p>Да. Вся методика построена на создании безопасной психологической среды, где вы говорите шаг за шагом, не боясь осуждения.</p>
+            </details>
+            <details>
+              <summary>Я уже учил язык и не продвинулся. В чем отличие?</summary>
+              <p>Мы не заучиваем очередные списки правил. Вы сразу используете темы своей жизни для тренировки речи, аудирования и спонтанной реакции.</p>
+            </details>
+            <details>
+              <summary>У меня очень базовый уровень. Смогу ли я участвовать?</summary>
+              <p>Программа рассчитана на тех, кто уже имел контакт с языком. Свободная речь не требуется, но понимание элементарных слов желательно.</p>
+            </details>
+            <details>
+              <summary>У меня мало свободного времени. Получится ли совмещать?</summary>
+              <p>Формат включает короткие видео, 1 часовую живую встречу в неделю и простые микро-миссии, легко вписывающиеся в рабочий график.</p>
+            </details>
+            <details>
+              <summary>Придется ли говорить перед другими участниками?</summary>
+              <p>Да, но в бережной и поддерживающей атмосфере. Группа существует для взаимной практики, а не для экзаменов и стресса.</p>
+            </details>
+            <details>
+              <summary>Обещает ли курс мгновенную беглость?</summary>
+              <p>Нет. Мы формируем уверенность, устойчивый словарный запас и автономию для ведения 10–15 минутного живого диалога без ступора.</p>
+            </details>
+            <details>
+              <summary>Что если мне не подойдет формат?</summary>
+              <p>Действует гарантия 7 дней. Если в течение первой недели вы решите, что программа вам не подходит, мы вернем оплату.</p>
+            </details>
+            <details>
+              <summary>Как записаться?</summary>
+              <p>Нажмите на любую кнопку, чтобы написать нам в WhatsApp. Мы подтвердим наличие мест и пришлем все детали.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- FINAL CTA -->
+      <section class="final-cta">
+        <div class="container final-grid">
+          <div>
+            <h2>Вы уже учили английский. Пришло время заговорить.</h2>
+            <p>Присоединяйтесь к листу ожидания программы Destrave и получите ранний доступ к набору.</p>
+          </div>
+          <a class="button" href={whatsapp} target="_blank" rel="noreferrer">В лист ожидания</a>
+        </div>
+      </section>
+    </main>
+
+    <div class="mobile-cta">
+      <a class="button" href={whatsapp} target="_blank" rel="noreferrer">В лист ожидания</a>
+    </div>
+
+    <footer>
+      <div class="container footer-content">
+        <div>
+          <strong>Natalia Fernandes English</strong>
+          <p>Онлайн-программа для взрослых, готовых говорить по-английски с настоящей уверенностью.</p>
+        </div>
+        <div>
+          <a href="/ru" style="color: var(--gold); text-decoration: none; font-weight: 600;">← Перейти на главный сайт</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+</Layout>
