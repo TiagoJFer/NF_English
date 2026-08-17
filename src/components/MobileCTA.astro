@@ -12,8 +12,33 @@ const {
 } = Astro.props;
 ---
 
-<div class="mobile-cta">
+<div class="mobile-cta" id="mobile-sticky-cta" aria-hidden="true">
   <a class="button" href={href} target={target} rel={target === '_blank' ? 'noreferrer' : undefined}>
     {text}
   </a>
 </div>
+
+<script>
+  function initStickyCTA() {
+    const stickyCta = document.getElementById('mobile-sticky-cta');
+    if (!stickyCta) return;
+
+    const onScroll = () => {
+      // Exibe a barra fixa apenas após rolar além da primeira dobra (~300px)
+      if (window.scrollY > 300) {
+        stickyCta.classList.add('is-visible');
+        stickyCta.setAttribute('aria-hidden', 'false');
+      } else {
+        stickyCta.classList.remove('is-visible');
+        stickyCta.setAttribute('aria-hidden', 'true');
+      }
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+
+  initStickyCTA();
+  document.addEventListener('astro:page-load', initStickyCTA);
+</script>
+
