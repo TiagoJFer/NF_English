@@ -99,7 +99,7 @@ const {
       <p class="hero-copy" set:html={description} />
 
       {(primaryAction || secondaryAction) && (
-        <div class="hero-actions">
+        <div class={`hero-actions ${primaryAction && secondaryAction ? 'has-both-actions' : ''}`}>
           {primaryAction && (
             <a
               class={`button hero-primary ${primaryAction.isSecondary ? 'secondary' : ''}`}
