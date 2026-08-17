@@ -1,11 +1,50 @@
+---
+interface Props {
+  mode?: 'institutional' | 'destrave';
+}
+
+const { mode = 'institutional' } = Astro.props;
+
+const isInstitutional = mode === 'institutional';
+const whatsappInstitucional = 'https://wa.me/5511967165564?text=Ola%20Natalia,%20gostaria%20de%20conversar%20sobre%20um%20plano%20personalizado%20de%20ingles.';
+const whatsappDestrave = 'https://wa.me/5511967165564?text=Quero%20entrar%20na%20lista%20de%20espera%20do%20Destrave%20seu%20Ingles';
+---
 <header class="nav">
   <div class="container nav-inner">
-    <a class="brand" href="#top" aria-label="Natalia Fernandes English">
-      <span class="brand-mark">NF</span><span>Natalia Fernandes English</span>
+    <a class="brand" href={isInstitutional ? "#top" : "/"} aria-label="Natalia Fernandes English">
+      <span class="brand-mark">NF</span>
+      <span>Natalia Fernandes English</span>
     </a>
     <nav class="nav-links" aria-label="Navegação principal">
-      <a href="#programa">Programa</a><a href="#natalia">Natalia</a><a href="#oferta">Turma</a><a href="#faq">FAQ</a>
+      {isInstitutional ? (
+        <>
+          <a href="#personalizacao">Personalização</a>
+          <a href="#solucoes">Soluções</a>
+          <a href="#sobre">Sobre a Natalia</a>
+          <a href="#empresas">Empresas</a>
+          <a href="/destrave" class="nav-highlight">Programa Destrave ↗</a>
+          <a href="#faq">FAQ</a>
+        </>
+      ) : (
+        <>
+          <a href="/" class="nav-back">← Início</a>
+          <a href="#programa">O Programa</a>
+          <a href="#natalia">Natalia</a>
+          <a href="#oferta">Turma</a>
+          <a href="#faq">FAQ</a>
+        </>
+      )}
     </nav>
-    <a class="button" href="https://wa.me/5511967165564?text=Quero%20entrar%20na%20lista%20de%20espera%20do%20Destrave%20seu%20Ingles" target="_blank" rel="noreferrer">Entrar na lista</a>
+    <div class="nav-actions">
+      {isInstitutional ? (
+        <a class="button small" href={whatsappInstitucional} target="_blank" rel="noreferrer">
+          Falar no WhatsApp
+        </a>
+      ) : (
+        <a class="button small" href={whatsappDestrave} target="_blank" rel="noreferrer">
+          Entrar na lista
+        </a>
+      )}
+    </div>
   </div>
 </header>
