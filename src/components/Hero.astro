@@ -46,37 +46,60 @@ const {
         <div class="eyebrow"><span class="dot"></span> {eyebrow}</div>
       )}
       
-      <div class="hero-header-row">
-        <div class="hero-mobile-avatar">
-          <div class="hero-circle-frame">
+      <h1 class="hero-title" set:html={title} />
+
+      <div class="hero-mobile-media">
+        {imageFrameType === 'circle' ? (
+          <div class="hero-image-wrapper">
+            <div class="hero-circle-frame">
+              <picture>
+                {imageWebpSrc && <source srcset={imageWebpSrc} type="image/webp" />}
+                <img
+                  src={imageSrc}
+                  alt={imageAlt}
+                  width="440"
+                  height="440"
+                  fetchpriority="high"
+                  loading="eager"
+                  decoding="async"
+                />
+              </picture>
+            </div>
+            {(floatingNoteTitle || floatingNoteText) && (
+              <div class="floating-note">
+                {floatingNoteTitle && <strong>{floatingNoteTitle}</strong>}
+                {floatingNoteText && <p>{floatingNoteText}</p>}
+              </div>
+            )}
+          </div>
+        ) : (
+          <div class="portrait-frame">
             <picture>
               {imageWebpSrc && <source srcset={imageWebpSrc} type="image/webp" />}
               <img
                 src={imageSrc}
                 alt={imageAlt}
-                width="160"
-                height="160"
+                width="440"
+                height="560"
                 fetchpriority="high"
                 loading="eager"
                 decoding="async"
               />
             </picture>
+            {(floatingNoteTitle || floatingNoteText) && (
+              <div class="floating-note">
+                {floatingNoteTitle && <strong>{floatingNoteTitle}</strong>}
+                {floatingNoteText && <p>{floatingNoteText}</p>}
+              </div>
+            )}
           </div>
-        </div>
-        <h1 set:html={title} />
+        )}
       </div>
-
-      {(floatingNoteTitle || floatingNoteText) && (
-        <div class="floating-note hero-mobile-note">
-          {floatingNoteTitle && <strong>{floatingNoteTitle}</strong>}
-          {floatingNoteText && <p>{floatingNoteText}</p>}
-        </div>
-      )}
 
       <p class="hero-copy" set:html={description} />
 
       {(primaryAction || secondaryAction) && (
-        <div class={`hero-actions ${primaryAction && secondaryAction ? 'has-both-actions' : ''}`}>
+        <div class="hero-actions">
           {primaryAction && (
             <a
               class={`button hero-primary ${primaryAction.isSecondary ? 'secondary' : ''}`}
