@@ -107,9 +107,9 @@ h3 { font-size: 22px; margin-bottom: 10px; font-weight: 700; }
 
 /* Hero Circular Frame */
 .hero-image-wrapper { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; max-width: 440px; margin: 0 auto; }
-.hero-circle-frame { width: min(420px, 80vw); height: min(420px, 80vw); aspect-ratio: 1 / 1; border-radius: 50%; overflow: hidden; position: relative; border: 6px solid var(--surface); box-shadow: 0 0 0 2px var(--line), 0 24px 60px rgba(31, 36, 33, 0.16), 0 0 0 12px rgba(241, 189, 97, 0.2); background: var(--surface-soft); }
+.hero-circle-frame { width: min(400px, 80vw); height: min(400px, 80vw); aspect-ratio: 1 / 1; border-radius: 50%; overflow: hidden; position: relative; border: 6px solid var(--surface); box-shadow: 0 0 0 2px var(--line), 0 24px 60px rgba(31, 36, 33, 0.16), 0 0 0 12px rgba(241, 189, 97, 0.2); background: var(--surface-soft); }
 .hero-circle-frame img { width: 100%; height: 100%; object-fit: cover; object-position: center 18%; display: block; }
-.hero-image-wrapper .floating-note { position: absolute; right: -16px; bottom: 8px; z-index: 2; }
+.hero-image-wrapper .floating-note { position: relative; right: auto; bottom: auto; margin-top: 20px; width: min(390px, 100%); text-align: center; border-radius: 14px; box-shadow: 0 12px 30px rgba(31, 36, 33, 0.08); z-index: 2; }
 
 /* Proof Bar */
 .proof { padding: 12px 0 40px; }
