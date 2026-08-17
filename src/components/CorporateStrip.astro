@@ -1,22 +1,55 @@
 ---
-interface Props {
-  label?: string;
-  badges: string[];
+export interface BrandItem {
+  name: string;
+  logo?: string;
+  alt?: string;
 }
 
+interface Props {
+  label?: string;
+  brands?: BrandItem[];
+  badges?: string[];
+  extraBadge?: string;
+}
+
+const defaultBrands: BrandItem[] = [
+  { name: 'Yamaha', logo: '/yamaha.svg', alt: 'Yamaha' },
+  { name: 'Eaton', logo: '/eaton.svg', alt: 'Eaton' },
+  { name: 'Mahle', logo: '/mahle.svg', alt: 'Mahle' }
+];
+
 const {
-  label = 'Treinamentos Corporativos & Confiança Empresarial',
-  badges = ['YAMAHA', 'EATON', 'MAHLE', 'EXECUTIVOS C-LEVEL', 'LÍDERES GLOBAIS']
+  label = 'Confiança comprovada por profissionais e grandes corporações:',
+  brands = defaultBrands,
+  badges,
+  extraBadge
 } = Astro.props;
 ---
 
 <div class="corporate-strip">
   <div class="container corporate-inner">
-    <span class="corporate-label">{label}</span>
+    {label && <span class="corporate-label">{label}</span>}
     <div class="corporate-logos">
-      {badges.map((badge) => (
-        <span class="corp-badge">{badge}</span>
+      {brands.map((brand) => (
+        <div class="corp-logo-item" title={brand.name}>
+          {brand.logo ? (
+            <img src={brand.logo} alt={brand.alt || brand.name} class="corp-logo-img" loading="lazy" width="120" height="32" />
+          ) : (
+            <span class="corp-badge">{brand.name}</span>
+          )}
+        </div>
+      ))}
+      {extraBadge && (
+        <div class="corp-logo-item badge-item">
+          <span class="corp-badge">{extraBadge}</span>
+        </div>
+      )}
+      {badges && badges.map((badge) => (
+        <div class="corp-logo-item badge-item">
+          <span class="corp-badge">{badge}</span>
+        </div>
       ))}
     </div>
   </div>
 </div>
+

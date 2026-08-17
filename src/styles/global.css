@@ -214,11 +214,70 @@ section { padding: 88px 0; }
 .solution-card .button { width: 100%; }
 
 /* Corporate Proof Strip */
-.corporate-strip { padding: 40px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--surface); }
-.corporate-inner { display: flex; flex-direction: column; align-items: center; gap: 20px; text-align: center; }
-.corporate-label { font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
-.corporate-logos { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 40px; }
-.corp-badge { font-family: Fraunces, Georgia, serif; font-size: 22px; font-weight: 700; color: var(--sage-dark); letter-spacing: -0.02em; padding: 8px 18px; border-radius: 8px; background: var(--surface-soft); border: 1px solid var(--line); }
+.corporate-strip {
+  padding: 38px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: var(--surface);
+}
+.corporate-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  text-align: center;
+}
+.corporate-label {
+  font-size: 12.5px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--muted);
+}
+.corporate-logos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+}
+.corp-logo-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 52px;
+  padding: 8px 22px;
+  border-radius: 12px;
+  background: var(--surface-soft);
+  border: 1px solid var(--line);
+  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+.corp-logo-item:hover {
+  transform: translateY(-2px);
+  border-color: var(--line-strong);
+  box-shadow: var(--shadow-sm);
+}
+.corp-logo-img {
+  height: 24px;
+  max-height: 24px;
+  width: auto;
+  max-width: 120px;
+  object-fit: contain;
+  filter: grayscale(100%) opacity(0.8);
+  transition: filter .2s ease, opacity .2s ease;
+}
+.corp-logo-item:hover .corp-logo-img {
+  filter: none;
+  opacity: 1;
+}
+.corp-badge {
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: 800;
+  color: var(--sage-dark);
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
 
 /* Teacher / Authority */
 .teacher { display: grid; grid-template-columns: minmax(280px, .58fr) minmax(0, 1fr); gap: 44px; align-items: center; }
@@ -335,6 +394,13 @@ footer { padding: 48px 0 60px; color: var(--muted); font-size: 14px; border-top:
   .proof-row, .pain-grid, .pillar-grid, .week-grid, .cred-grid, .faq-grid { grid-template-columns: 1fr; }
   .proof-item { border-right: 0; border-bottom: 1px solid var(--line); }
   .proof-item:last-child { border-bottom: 0; }
+  .corporate-strip { padding: 28px 0; }
+  .corporate-inner { gap: 14px; }
+  .corporate-label { font-size: 11px; letter-spacing: .04em; max-width: 320px; line-height: 1.4; }
+  .corporate-logos { gap: 10px; }
+  .corp-logo-item { height: 44px; padding: 6px 14px; border-radius: 9px; }
+  .corp-logo-img { height: 20px; max-height: 20px; max-width: 90px; }
+  .corp-badge { font-size: 12px; }
   section { padding: 54px 0; }
   .footer-grid { grid-template-columns: 1fr; gap: 28px; }
   .footer-bottom, .footer-content { flex-direction: column; align-items: flex-start; gap: 12px; }
