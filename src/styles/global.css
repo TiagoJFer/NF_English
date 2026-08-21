@@ -201,18 +201,38 @@ section { padding: 88px 0; }
 .pillar-content h3 { font-size: 20px; margin-bottom: 8px; color: var(--ink); }
 .pillar-content p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.5; }
 
-/* Solutions Grid (3 Tiers) */
-.solutions-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-.solution-card { background: var(--surface); border: 1px solid var(--line); border-radius: 4px 24px 4px 24px; padding: 32px; display: flex; flex-direction: column; justify-content: space-between; transition: transform .25s ease, box-shadow .25s ease; position: relative; }
+/* Solutions Grid (Flexible: 2x2 on desktop for 4 cards, 3-col for 3 cards, 1-col on mobile) */
+.solutions-grid { 
+  display: grid; 
+  grid-template-columns: repeat(2, 1fr); 
+  gap: 28px; 
+  max-width: 1040px; 
+  margin: 0 auto; 
+}
+.solutions-grid:has(> :last-child:nth-child(3)) { 
+  grid-template-columns: repeat(3, 1fr); 
+  max-width: 100%; 
+}
+.solution-card { 
+  background: var(--surface); 
+  border: 1px solid var(--line); 
+  border-radius: 4px 24px 4px 24px; 
+  padding: 32px 28px; 
+  display: flex; 
+  flex-direction: column; 
+  justify-content: space-between; 
+  transition: transform .25s ease, box-shadow .25s ease; 
+  position: relative; 
+}
 .solution-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
 .solution-card.featured { border: 2px solid var(--brand); box-shadow: 0 20px 50px rgba(184, 79, 71, .15); }
 .solution-tag { font-size: 12px; font-weight: 850; text-transform: uppercase; letter-spacing: .04em; color: var(--brand-dark); margin-bottom: 12px; }
 .solution-featured-tag { position: absolute; top: -14px; left: 24px; background: var(--brand); color: white; font-size: 11px; font-weight: 850; padding: 4px 12px; border-radius: 999px; text-transform: uppercase; }
-.solution-card h3 { font-size: 24px; margin-bottom: 12px; }
+.solution-card h3 { font-size: clamp(21px, 2vw, 24px); margin-bottom: 12px; line-height: 1.25; }
 .solution-card .solution-desc { color: var(--muted); font-size: 15px; margin-bottom: 22px; line-height: 1.5; }
-.solution-features { list-style: none; padding: 0; margin: 0 0 28px; display: grid; gap: 10px; }
-.solution-features li { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; color: var(--ink); }
-.solution-features .chk { color: var(--brand); font-weight: 900; }
+.solution-features { list-style: none; padding: 0; margin: 0 0 28px; display: grid; gap: 12px; }
+.solution-features li { display: flex; gap: 10px; align-items: flex-start; font-size: 14.5px; color: var(--ink); line-height: 1.45; }
+.solution-features .chk { color: var(--brand); font-weight: 900; flex-shrink: 0; margin-top: 1px; }
 .solution-card .button { width: 100%; }
 
 /* Corporate Proof Strip */

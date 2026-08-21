@@ -15,18 +15,19 @@ import CTABanner from '../../components/CTABanner.astro';
 
 const whatsappDiagnostic = 'https://wa.me/5511967165564?text=Hi%20Natalia,%20I%20would%20like%20to%20talk%20about%20a%20tailored%20English%20plan.';
 const whatsappMentoring = 'https://wa.me/5511967165564?text=Hi%20Natalia,%20I%20am%20interested%20in%201:1%20Executive%20Mentoring%20sessions.';
+const whatsappKids = 'https://wa.me/5511967165564?text=Hi%20Natalia,%20I%20would%20like%20to%20learn%20more%20about%20English%20lessons%20for%20kids%20and%20expat%20families.';
 const whatsappCorporate = 'https://wa.me/5511967165564?text=Hi%20Natalia,%20I%20would%20like%20information%20about%20corporate%20in-company%20English%20training.';
 
 const pillars = [
   {
     num: '01',
     title: 'Deep Individual Diagnostic',
-    desc: 'Before your first class, we analyze your history with the language, your main speaking barriers, and your immediate career goals to design the ideal path.'
+    desc: 'Before the first class, we analyze background history with the language, emotional speaking barriers, and immediate goals to design the ideal path.'
   },
   {
     num: '02',
     title: 'Affinity Map & Real Life',
-    desc: 'Your professional routine, industry vocabulary, meetings, travels, and personal interests become the core class material — zero generic textbook filler.'
+    desc: 'Your professional routine, personal interests, travels, or a child’s unique world become the core class material — zero generic textbook filler.'
   },
   {
     num: '03',
@@ -35,8 +36,8 @@ const pillars = [
   },
   {
     num: '04',
-    title: 'Built for Busy Professionals',
-    desc: 'A flexible methodology with smart scheduling and actionable missions, specifically designed for adults with demanding careers and limited time.'
+    title: 'Tailored Pacing & Methodology',
+    desc: 'A flexible methodology with smart scheduling, actionable missions, and age-adjusted pacing — whether for busy executives or children who thrive on playful engagement.'
   }
 ];
 
@@ -72,6 +73,21 @@ const solutions = [
     ctaHref: '/en/destrave'
   },
   {
+    tag: 'Kids, Teens & Expats',
+    title: 'Kids & Teens Lessons (7+)',
+    desc: 'Warm, engaging online coaching for children and youth aged 7+. Ideal for natural fluency development and international expat families.',
+    features: [
+      'Playful, stress-free methodology with zero rote memorization',
+      'Focus on spontaneous speaking and real-world vocabulary',
+      'Proven track record with expat families (Brazil, Dubai, globally)',
+      '100% live online classes with close teacher mentorship'
+    ],
+    ctaText: 'Inquire About Kids Lessons',
+    ctaHref: whatsappKids,
+    ctaClass: 'secondary',
+    isExternal: true
+  },
+  {
     tag: 'For Teams & Corporations',
     title: 'In-Company Training',
     desc: 'Tailored corporate language solutions for teams and executives needing confident, clear communication in global business settings.',
@@ -91,15 +107,19 @@ const solutions = [
 const faqs = [
   {
     q: 'How does personalization work in practice?',
-    a: 'After an initial assessment of your profile and goals, we build your syllabus around topics, vocabulary, and situations directly relevant to your daily routine — whether for business meetings, international interviews, travel, or networking. No rigid page-by-page textbook following.'
+    a: 'After an initial assessment of your profile and goals, we build your syllabus around topics, vocabulary, and situations directly relevant to your daily routine or your child’s learning stage — whether for business meetings, international school environments, travel, or networking. No rigid page-by-page textbook following.'
   },
   {
     q: 'Who are NF English programs designed for?',
-    a: 'Our programs are exclusively tailored for adults and working professionals: people who have studied English before or understand the basics, but freeze when speaking and need confidence to communicate in their career and personal life.'
+    a: 'We teach adults and working professionals who need to overcome speaking barriers for career and personal growth, as well as children and teens (from age 7) and expat families (in Brazil, Dubai, and worldwide) seeking top-tier personalized coaching.'
+  },
+  {
+    q: 'How do lessons for kids (7+) and expat families abroad work?',
+    a: 'Classes for children combine interactive storytelling, gamified dynamics, and contextual conversations to build genuine fluency and confidence early on without rigid textbooks. For international students and expat families abroad (such as in Dubai or Europe), lessons are conducted 100% live online with flexible timezone scheduling.'
   },
   {
     q: 'What is the difference between 1:1 Mentoring and the Unlock Program?',
-    a: '1:1 Mentoring is an exclusive private track with flexible scheduling and 100% custom focus for urgent, high-stakes goals. The Unlock Your English Program (Destrave) is an 8-week immersive group experience in small cohorts, designed to unlock speaking in a supportive collective environment.'
+    a: '1:1 Mentoring is an exclusive private track with flexible scheduling and 100% custom focus for urgent, high-stakes goals. The Unlock Your English Program (Destrave) is an 8-week immersive group experience in small cohorts, designed for adults to unlock speaking in a supportive collective environment.'
   },
   {
     q: 'How do corporate In-Company trainings work?',
@@ -107,18 +127,18 @@ const faqs = [
   },
   {
     q: 'Are classes online or in person?',
-    a: 'All our solutions are conducted 100% live online, using modern interactive tools and close teacher guidance, allowing you to join from anywhere with complete convenience.'
+    a: 'All our solutions are conducted 100% live online, using modern interactive tools and close teacher guidance, allowing you or your children to join from anywhere in Brazil or across the globe with complete convenience.'
   },
   {
     q: 'How do I take the first step?',
-    a: 'Simply click any button on this page to chat directly with Natalia or our team on WhatsApp. We will conduct a quick diagnostic of your current stage and recommend the best format for you.'
+    a: 'Simply click any button on this page to chat directly with Natalia or our team on WhatsApp. We will conduct a quick diagnostic of your current stage (or your child’s) and recommend the best format for you.'
   }
 ];
 ---
 
 <Layout 
-  title="Natalia Fernandes English | Personalized English Coaching for Adults & Companies" 
-  description="Premium personalized English education focusing on speaking confidence, psychological safety, and 15 years of authority. 1:1 mentoring, group programs, and corporate training."
+  title="Natalia Fernandes English | Tailored English Coaching for Adults, Kids (7+) & Companies" 
+  description="Premium personalized English education focusing on speaking confidence, psychological safety, and 15 years of authority. 1:1 sessions for adults & kids (7+), group tracks, and corporate training."
   lang="en"
 >
   <div class="page" id="top">
@@ -127,27 +147,27 @@ const faqs = [
     <main>
       <!-- HERO -->
       <Hero
-        title="English that adapts to your life, your career, and your rhythm."
-        description="No generic formulas or rigid classrooms. For 15 years, we have been helping adults transform passive knowledge into confident, natural speaking through tailored coaching."
+        title="English that adapts to your life, your career, and your family."
+        description="No generic formulas or rigid classrooms. For 15 years, we have helped adults, working professionals, and children aged 7+ transform passive knowledge into confident, natural communication."
         primaryAction={{ text: 'Discuss Your Plan on WhatsApp', href: whatsappDiagnostic, isExternal: true }}
         secondaryAction={{ text: 'Explore Programs', href: '#solutions' }}
         microcopy="Consultative and welcoming conversation via WhatsApp. No obligations."
-        pills={['15+ years experience', '100% adult-focused', 'Corporate expertise', '1:1 and group tracks']}
+        pills={['15+ years experience', 'Adults, Teens & Kids (7+)', 'Students in Brazil & Worldwide', '1:1 & Group Tracks']}
         imageFrameType="circle"
         imageSrc="/Nath.jpg"
         imageWebpSrc="/Nath.webp"
         imageAlt="Natalia Fernandes, founder of NF English"
         floatingNoteTitle="Genuine Personalization:"
-        floatingNoteText="Your classes are built around your real profession, interests, and actual day-to-day challenges."
+        floatingNoteText="Your classes are built around your real life, interests, and actual day-to-day challenges."
       />
 
       <!-- METRICS -->
       <ProofBar
         ariaLabel="NF English Credentials & Highlights"
         items={[
-          { value: '15+ Years', label: 'dedicated exclusively to adult language education' },
-          { value: '100% Tailored', label: 'strategies built around your goals and schedule' },
-          { value: 'In-Company', label: 'training for multinational enterprises and leaders' },
+          { value: '15+ Years', label: 'of dedicated personalized and supportive language teaching' },
+          { value: '100% Tailored', label: 'strategies built around your goals, age, and schedule' },
+          { value: 'Brazil & Global', label: 'students in Dubai, Florianópolis, and international hubs' },
           { value: 'Speaking Focus', label: 'psychological safety to communicate in the real world' }
         ]}
       />
@@ -165,10 +185,10 @@ const faqs = [
         id="personalization"
         isBand={true}
         eyebrow="The Flaw of Traditional Teaching"
-        title="Why generic courses fail busy adults"
+        title="Why generic courses fail in real life"
         description="Most traditional schools put every student on the same assembly line. The result is frustration, lost time, and the false belief that you 'just are not good at languages'."
         traditionalTitle="Off-the-Shelf Traditional Schools"
-        traditionalDesc="The rigid model that ignores adult learners' realities:"
+        traditionalDesc="The rigid model that ignores individual learners:"
         traditionalItems={[
           'Standardized textbooks filled with artificial dialogues unrelated to your life.',
           'Overcrowded mixed-level classes fostering anxiety and minimal speaking time.',
@@ -179,10 +199,10 @@ const faqs = [
         nfDesc="A methodology shaped entirely around who you are and what you need:"
         nfBadge="The NF English Difference"
         nfItems={[
-          'Living content: your career, projects, travels, and personal stories become the class material.',
+          'Living content: your career, projects, travels, family, or personal interests become the class material.',
           'Psychological safety: a supportive space where mistakes are treated as natural learning cues.',
-          'Immediate relevance: acquire expressions and vocabulary you can use at work on the same day.',
-          'Close mentorship: human guidance from an educator who understands demanding schedules.'
+          'Immediate relevance: acquire expressions and vocabulary you can use in real life on the same day.',
+          'Close mentorship: human guidance from an educator who understands individual goals and ages.'
         ]}
       />
 
@@ -201,7 +221,7 @@ const faqs = [
         isBand={true}
         eyebrow="Our Solutions"
         title="The right format for your goals and availability"
-        description="From 1:1 private coaching to immersive group tracks and enterprise training, we have a solution crafted for you."
+        description="From 1:1 private coaching for adults and children to immersive group tracks and enterprise training."
         solutions={solutions}
       />
 
@@ -210,14 +230,14 @@ const faqs = [
         id="about"
         eyebrow="Founder & Educator"
         title="Meet Natalia Fernandes"
-        description="With over 15 years dedicated to teaching English, Natalia built a methodology specifically for adult learners — helping everyone from professionals with past classroom trauma to C-level executives achieve true conversational freedom."
+        description="With over 15 years dedicated to teaching English, Natalia built a methodology centered on real human connection — helping everyone from corporate executives and adults with speaking anxiety to young learners (aged 7+) and expat families find joy and confidence communicating with the world."
         imageSrc="/Nath.jpg"
         imageWebpSrc="/Nath.webp"
         imageAlt="Natalia Fernandes, founder of NF English"
         creds={[
-          { value: '15+ Years', label: 'of classroom and 1:1 executive coaching experience' },
-          { value: 'Adults', label: 'specialist in unlocking speech and real-world communication' },
-          { value: 'In-Company', label: 'trusted trainer for international corporations' }
+          { value: '15+ Years', label: 'of classroom, 1:1 mentoring, and cohort coaching' },
+          { value: 'Personalization', label: 'supportive teaching for adults, teens, and kids (7+)' },
+          { value: 'Global & In-Company', label: 'students in Brazil, Dubai, and multinational teams' }
         ]}
         manifesto="&ldquo;Fluency does not mean speaking without mistakes or having a native accent. Fluency is having the confidence to express your ideas, lead discussions, and participate in the world without fear.&rdquo;"
       />
@@ -246,10 +266,11 @@ const faqs = [
 
     <!-- FOOTER -->
     <Footer
-      brandDescription="Premium personalized English education for adults, leaders, and global corporations. Transforming knowledge into confident communication with psychological safety."
+      brandDescription="Premium personalized English education for adults, kids (7+), expat families, and global corporations. Transforming knowledge into confident communication."
       solutionsTitle="Solutions"
       solutions={[
         { label: '1:1 Executive Mentoring', href: whatsappMentoring, isExternal: true },
+        { label: 'Kids & Teens Lessons (7+)', href: whatsappKids, isExternal: true },
         { label: 'Unlock Your English Program', href: '/en/destrave' },
         { label: 'In-Company Corporate Training', href: whatsappCorporate, isExternal: true },
         { label: 'Methodology & Pillars', href: '#personalization' }

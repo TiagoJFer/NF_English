@@ -15,18 +15,19 @@ import CTABanner from '../components/CTABanner.astro';
 
 const whatsappDiagnostic = 'https://wa.me/5511967165564?text=Ola%20Natalia,%20gostaria%20de%20conversar%20sobre%20um%20plano%20personalizado%20de%20ingles.';
 const whatsappMentoring = 'https://wa.me/5511967165564?text=Ola%20Natalia,%20tenho%20interesse%20nas%20Aulas%20Individuais%20e%20Mentoria%201:1.';
+const whatsappKids = 'https://wa.me/5511967165564?text=Ola%20Natalia,%20gostaria%20de%20conversar%20sobre%20as%20aulas%20de%20ingles%20para%20criancas%20e%20familias.';
 const whatsappCorporate = 'https://wa.me/5511967165564?text=Ola%20Natalia,%20gostaria%20de%20informacoes%20sobre%20treinamentos%20de%20ingles%20in%20company%20para%20minha%20empresa.';
 
 const pillars = [
   {
     num: '01',
     title: 'Diagnóstico Individual Profundo',
-    desc: 'Antes de qualquer aula, analisamos seu histórico com o idioma, suas maiores travas emocionais e seus objetivos imediatos para desenhar a rota ideal.'
+    desc: 'Antes de qualquer aula, analisamos o histórico com o idioma, eventuais travas emocionais e os objetivos imediatos para desenhar a rota ideal.'
   },
   {
     num: '02',
     title: 'Mapa de Afinidades & Vida Real',
-    desc: 'Sua rotina profissional, termos da sua área, reuniões, viagens e interesses pessoais viram o material das práticas — zero aulas com assuntos abstratos.'
+    desc: 'Sua rotina profissional, interesses pessoais, viagens ou universo infantil viram o material das práticas — zero aulas com assuntos abstratos.'
   },
   {
     num: '03',
@@ -35,8 +36,8 @@ const pillars = [
   },
   {
     num: '04',
-    title: 'Ritmo Adaptado para Adultos Ocupados',
-    desc: 'Metodologia flexível com carga horária inteligente e missões aplicáveis no dia a dia, pensada para quem tem rotina intensa e pouco tempo livre.'
+    title: 'Ritmo & Didática Sob Medida',
+    desc: 'Metodologia flexível com carga horária inteligente, missões práticas e didática ajustada para cada fase — seja para adultos ocupados ou crianças com aprendizado dinâmico.'
   }
 ];
 
@@ -61,7 +62,7 @@ const solutions = [
     isFeatured: true,
     featuredTag: 'Programa em Grupo',
     title: 'Destrave seu Inglês',
-    desc: 'Programa prático de 8 semanas para quem já estudou antes, mas trava quando precisa conversar. Prática acolhedora e repertório real.',
+    desc: 'Programa prático de 8 semanas para adultos que já estudaram antes, mas travam quando precisam conversar. Prática acolhedora e repertório real.',
     features: [
       '8 encontros online ao vivo',
       '24 aulas curtas gravadas',
@@ -70,6 +71,21 @@ const solutions = [
     ],
     ctaText: 'Ver Detalhes do Programa ↗',
     ctaHref: '/destrave'
+  },
+  {
+    tag: 'Kids, Jovens & Expats',
+    title: 'Aulas Kids & Teens (7+)',
+    desc: 'Ensino acolhedor e dinâmico para crianças e jovens a partir de 7 anos. Ideal para desenvolvimento natural da fala e famílias expatriadas.',
+    features: [
+      'Didática lúdica e personalizada, sem pressão mecânica',
+      'Estímulo à fala espontânea e vocabulário contextual',
+      'Atendimento a famílias expatriadas (Brasil, Dubai e exterior)',
+      'Aulas 100% online ao vivo com interação próxima e segura'
+    ],
+    ctaText: 'Consultar Aulas Kids & Teens',
+    ctaHref: whatsappKids,
+    ctaClass: 'secondary',
+    isExternal: true
   },
   {
     tag: 'Para Empresas & Equipes',
@@ -91,15 +107,19 @@ const solutions = [
 const faqs = [
   {
     q: 'Como funciona a personalização do ensino na prática?',
-    a: 'Após uma avaliação inicial de perfil e objetivos, construímos o planejamento com temas, vocabulário e situações diretamente ligadas ao seu cotidiano — sejam reuniões de trabalho, entrevistas internacionais, viagens ou conversas casuais. Nada de seguir livros genéricos página por página.'
+    a: 'Após uma avaliação inicial de perfil e objetivos, construímos o planejamento com temas, vocabulário e situações diretamente ligadas ao seu cotidiano ou ao momento do seu filho — sejam reuniões de trabalho, viagens, ambiente escolar internacional ou conversas casuais. Nada de seguir livros genéricos página por página.'
   },
   {
-    q: 'Para quem são indicadas as aulas e mentorias da NF English?',
-    a: 'Nosso foco é exclusivamente o público adulto e profissional: pessoas que já tiveram contato prévio com o idioma ou estudaram anos, mas ainda travam na hora de falar e precisam de segurança para se comunicar no trabalho e na vida pessoal.'
+    q: 'Para quem são indicadas as aulas e programas da NF English?',
+    a: 'Atendemos adultos e profissionais que precisam destravar a fala para carreira e vida pessoal, bem como crianças e jovens a partir de 7 anos e famílias expatriadas (no Brasil ou no exterior, como Dubai e Europa) que buscam ensino personalizado, acolhedor e de alto nível pedagógico.'
+  },
+  {
+    q: 'Como funcionam as aulas para crianças (a partir de 7 anos) e famílias no exterior?',
+    a: 'As aulas para crianças combinam dinâmicas lúdicas, conversação contextualizada e histórias, desenvolvendo fluência e segurança desde cedo sem o estresse de métodos tradicionais. Para famílias expatriadas ou alunas fora do Brasil (como em Dubai), as aulas são 100% online ao vivo com flexibilidade de fusos horários.'
   },
   {
     q: 'Qual a diferença entre a Mentoria 1:1 e o Programa Destrave seu Inglês?',
-    a: 'A Mentoria 1:1 é um acompanhamento individual exclusivo, com agenda flexível e foco 100% sob medida para metas urgentes e específicas. O Destrave seu Inglês é um programa imersivo em grupo de 8 semanas com turmas reduzidas, ideal para destravar a conversação em um ambiente coletivo seguro.'
+    a: 'A Mentoria 1:1 é um acompanhamento individual exclusivo, com agenda flexível e foco 100% sob medida para metas urgentes e específicas. O Destrave seu Inglês é um programa imersivo em grupo de 8 semanas com turmas reduzidas, ideal para adultos destravarem a conversação em um ambiente coletivo seguro.'
   },
   {
     q: 'Como funcionam os treinamentos corporativos (In Company)?',
@@ -107,18 +127,18 @@ const faqs = [
   },
   {
     q: 'As aulas são online ou presenciais?',
-    a: 'Todas as soluções são realizadas 100% online ao vivo, com ferramentas interativas e suporte próximo, permitindo que você participe de qualquer lugar com total conveniência.'
+    a: 'Todas as soluções são realizadas 100% online ao vivo, com ferramentas interativas e suporte próximo, permitindo que você ou seu filho participem de qualquer lugar do Brasil ou do mundo com total conveniência.'
   },
   {
     q: 'Como posso dar o primeiro passo?',
-    a: 'Basta clicar em qualquer um dos botões desta página para conversar diretamente com a Natalia ou nossa equipe no WhatsApp. Faremos um diagnóstico rápido do seu momento para recomendar o melhor formato para você.'
+    a: 'Basta clicar em qualquer um dos botões desta página para conversar diretamente com a Natalia ou nossa equipe no WhatsApp. Faremos um diagnóstico rápido do seu momento (ou do seu filho) para recomendar o melhor formato.'
   }
 ];
 ---
 
 <Layout 
-  title="Natalia Fernandes English | Ensino Personalizado de Inglês para Adultos e Empresas" 
-  description="Ensino de inglês de excelência com foco em hiper-personalização, segurança para falar e autoridade de 15 anos. Aulas 1:1, programas em grupo e in-company."
+  title="Natalia Fernandes English | Ensino Personalizado para Adultos, Crianças (7+) e Empresas" 
+  description="Ensino de inglês de excelência com foco em hiper-personalização, segurança psicológica e autoridade de 15 anos. Aulas 1:1 para adultos e crianças (7+), imersões e in-company."
 >
   <div class="page" id="top">
     <Header mode="institutional" />
@@ -126,28 +146,28 @@ const faqs = [
     <main>
       <!-- HERO -->
       <Hero
-        title="O inglês que se adapta à sua vida, à sua carreira e ao seu ritmo."
-        description="Sem fórmulas prontas ou turmas genéricas. Há 15 anos transformamos conhecimento passivo em segurança para falar, através de uma metodologia sob medida para adultos e profissionais."
+        title="O inglês que se adapta à sua vida, à sua carreira e à sua família."
+        description="Sem fórmulas prontas ou turmas genéricas. Há 15 anos transformamos conhecimento passivo em segurança para falar, através de uma metodologia sob medida para adultos, profissionais e crianças a partir de 7 anos."
         primaryAction={{ text: 'Conversar sobre seu plano', href: whatsappDiagnostic, isExternal: true }}
         secondaryAction={{ text: 'Conhecer formatos de aula', href: '#solucoes' }}
         microcopy="Atendimento consultivo e acolhedor via WhatsApp. Sem compromisso."
-        pills={['15 anos de história', '100% focado em adultos', 'Experiência corporativa', 'Acompanhamento individual e em grupo']}
+        pills={['15 anos de história', 'Adultos, Jovens & Kids (7+)', 'Alunos no Brasil & Exterior', 'Atendimento 1:1 e em Grupo']}
         imageFrameType="circle"
         imageSrc="/Nath.jpg"
         imageWebpSrc="/Nath.webp"
         imageAlt="Natalia Fernandes, fundadora da NF English"
         floatingNoteTitle="Personalização de verdade:"
-        floatingNoteText="O material das aulas é a sua profissão, seus interesses e os desafios reais do seu dia a dia."
+        floatingNoteText="O material das aulas é a sua rotina, seus interesses e os desafios reais do seu dia a dia."
       />
 
       <!-- MÉTRICAS -->
       <ProofBar
         ariaLabel="Credenciais e diferenciais NF English"
         items={[
-          { value: '15+ anos', label: 'de dedicação exclusiva ao ensino de adultos' },
-          { value: '100% Personalizado', label: 'estratégia desenhada para sua rotina e objetivos' },
-          { value: 'In Company', label: 'treinamentos para grandes indústrias e empresas' },
-          { value: 'Foco em Fala', label: 'segurança e autonomia para conversas reais' }
+          { value: '15+ anos', label: 'de dedicação ao ensino personalizado e acolhedor' },
+          { value: '100% Sob Medida', label: 'estratégia desenhada para seus objetivos e rotina' },
+          { value: 'Brasil & Exterior', label: 'alunos em Dubai, Florianópolis e contexto global' },
+          { value: 'Foco em Fala', label: 'segurança psicológica para se comunicar no mundo real' }
         ]}
       />
 
@@ -163,10 +183,10 @@ const faqs = [
       <ComparisonSection
         isBand={true}
         eyebrow="O Problema do Método Tradicional"
-        title="Por que cursos genéricos não funcionam para adultos ocupados?"
+        title="Por que cursos genéricos não funcionam na vida real?"
         description="A maioria dos cursos tradicionais coloca todos os alunos na mesma esteira mecânica. O resultado é frustração, perda de tempo e a sensação de que você 'não leva jeito' para o inglês."
         traditionalTitle="Ensino Tradicional de Prateleira"
-        traditionalDesc="O modelo engessado que ignora a realidade do aluno adulto:"
+        traditionalDesc="O modelo engessado que ignora a individualidade do aluno:"
         traditionalItems={[
           'Apostilas padronizadas com diálogos artificiais e temas desconectados da sua rotina.',
           'Turmas volumosas com níveis e objetivos misturados, gerando vergonha e pouca fala.',
@@ -177,10 +197,10 @@ const faqs = [
         nfDesc="O método que se molda a quem você é e ao que você precisa:"
         nfBadge="O Diferencial NF English"
         nfItems={[
-          'Conteúdo vivo: sua carreira, projetos, viagens e histórias pessoais viram material de aula.',
+          'Conteúdo vivo: sua carreira, projetos, viagens, família ou interesses viram material de aula.',
           'Segurança psicológica: ambiente acolhedor onde errar é parte natural do ajuste fino da fala.',
-          'Relevância imediata: você aprende vocabulário e expressões que usa no mesmo dia no trabalho.',
-          'Acompanhamento próximo: orientação humana de quem entende a rotina de profissionais ocupados.'
+          'Relevância imediata: você aprende vocabulário e expressões que usa no mesmo dia no trabalho ou na vida.',
+          'Acompanhamento próximo: orientação humana de quem entende os desafios reais de cada aluno.'
         ]}
       />
 
@@ -199,7 +219,7 @@ const faqs = [
         isBand={true}
         eyebrow="Nossas Soluções"
         title="O formato certo para o seu objetivo e disponibilidade"
-        description="De mentorias individuais a imersões em grupo e treinamentos para empresas, temos uma solução desenhada para você."
+        description="De mentorias individuais para adultos e crianças a imersões em grupo e treinamentos para empresas."
         solutions={solutions}
       />
 
@@ -208,14 +228,14 @@ const faqs = [
         id="sobre"
         eyebrow="Fundadora & Professora"
         title="Conheça Natalia Fernandes"
-        description="Com mais de 15 anos dedicados ao ensino de inglês, a Natalia construiu uma trajetória focada no desenvolvimento de alunos adultos — ajudando desde profissionais com traumas em cursos tradicionais até executivos de multinacionais a conquistarem autonomia de fala."
+        description="Com mais de 15 anos dedicados ao ensino de inglês, a Natalia construiu uma trajetória focada no desenvolvimento real de cada aluno — desde executivos de multinacionais e profissionais com bloqueios até crianças (a partir de 7 anos) e famílias expatriadas que conquistam naturalidade para falar com o mundo."
         imageSrc="/Nath.jpg"
         imageWebpSrc="/Nath.webp"
         imageAlt="Professora Natalia Fernandes, fundadora da NF English"
         creds={[
-          { value: '15+ Anos', label: 'de experiência em sala e mentoria individual' },
-          { value: 'Adultos', label: 'especialista em desbloqueio e comunicação real' },
-          { value: 'In Company', label: 'treinamentos para grandes indústrias e corporações' }
+          { value: '15+ Anos', label: 'de experiência em sala, mentoria individual e turmas' },
+          { value: 'Personalização', label: 'didática acolhedora para adultos, jovens e crianças (7+)' },
+          { value: 'Global & In Company', label: 'alunos no Brasil e exterior (Dubai) e grandes indústrias' }
         ]}
         manifesto="&ldquo;Fluência não significa falar perfeitamente ou ter sotaque nativo. Fluência é a liberdade de se expressar com clareza, defender suas ideias e participar do mundo sem medo.&rdquo;"
       />
