@@ -100,6 +100,30 @@ const whatsappDemo = 'https://wa.me/5511967165564';
         floatingNoteTitle="Natalia Fernandes"
         floatingNoteText="15 anos de experiência transformando conhecimento teórico em comunicação real com segurança e acolhimento."
       />
+
+      <!-- Hero Variante Programa (Destrave) -->
+      <div class="container" style="margin-top: 40px;">
+        <span class="pill" style="margin-bottom: 10px;">Variante: Hero.astro (variant="destrave")</span>
+      </div>
+      <Hero
+        variant="destrave"
+        announcement={{
+          tag: 'Modalidade em Grupo',
+          strong: 'O Destrave seu Inglês é um programa de ensino em grupo:',
+          text: 'encontros semanais ao vivo em turmas reduzidas para destravar a fala juntos.',
+          linkText: 'Conhecer o programa',
+          linkHref: '#programa'
+        }}
+        highlightTag="Programa em Grupo • Turmas Reduzidas"
+        title="Ganhe confiança para conversar em inglês sem travar."
+        description="O programa prático de 8 semanas com encontros ao vivo em turmas reduzidas. Você usa sua rotina real para destravar a conversa, sem vergonha de errar."
+        primaryAction={{ text: 'Quero destravar meu inglês', href: whatsappDemo, isGold: true, isExternal: true }}
+        secondaryAction={{ text: 'Ver turma e investimento', href: '#oferta', isSecondary: true }}
+        microcopy="Entre na lista de espera para receber as próximas informações da turma."
+        pills={['👥 Turma em Grupo Reduzida', '8 Semanas de Imersão', 'Aulas Online ao Vivo', 'Garantia de 7 Dias']}
+        floatingNoteTitle="Ambiente Coletivo Seguro:"
+        floatingNoteText="Aqui você pratica em grupo sem medo de errar, com quem está no mesmo momento que você."
+      />
     </div>
 
     <!-- 03. PROOF BAR & CORPORATE STRIP -->

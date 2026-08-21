@@ -82,19 +82,27 @@ const faqs = [
     <main>
       <!-- HERO -->
       <Hero
-        eyebrow="Unlock Your English"
+        variant="destrave"
+        announcement={{
+          tag: 'Group Modality',
+          strong: 'Unlock Your English is a dedicated group program:',
+          text: 'weekly live interactive sessions in small cohorts designed to unlock speaking confidence together.',
+          linkText: 'Explore the cohort',
+          linkHref: '#program'
+        }}
+        highlightTag="Small Cohort Group Program • 8 Weeks"
         title="Gain confidence to speak English without freezing."
-        description="An online program for those who have studied English before, but still feel stuck when it is time to speak. Practice real conversations using your routine, interests, and stories as your starting point."
-        primaryAction={{ text: 'Unlock My English', href: whatsapp, isExternal: true }}
+        description="An 8-week practical group program with live interactive sessions in small cohorts. Practice real conversations in a safe, psychologically supportive space using your real routine and interests."
+        primaryAction={{ text: 'Unlock My English in Group', href: whatsapp, isGold: true, isExternal: true }}
         secondaryAction={{ text: 'View Cohort & Investment', href: '#offer', isSecondary: true }}
         microcopy="Join the waiting list to receive early access information without commitment."
-        pills={['8 weeks', 'Live classes', 'Small cohorts', '7-day guarantee']}
+        pills={['👥 Small Cohort Groups', '8-Week Live Journey', 'Interactive Practice', '7-Day Guarantee']}
         imageFrameType="circle"
         imageSrc="/Nath.jpg"
         imageWebpSrc="/Nath.webp"
         imageAlt="Natalia Fernandes, English Teacher and Coach"
-        floatingNoteTitle="You don't need to start from scratch."
-        floatingNoteText="The focus is reorganizing what you already know and putting it into safe, active use."
+        floatingNoteTitle="Psychologically Safe Space:"
+        floatingNoteText="Practice with peers in small cohorts where making mistakes is just part of getting better."
       />
 
       <!-- PROOF BAR -->

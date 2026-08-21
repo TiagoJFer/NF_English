@@ -81,19 +81,27 @@ const faqs = [
     <main>
       <!-- HERO -->
       <Hero
-        eyebrow="Destrave seu inglês"
+        variant="destrave"
+        announcement={{
+          tag: 'Modalidade em Grupo',
+          strong: 'O Destrave seu Inglês é um programa de ensino em grupo:',
+          text: 'encontros semanais ao vivo em turmas reduzidas para destravar a conversação em um ambiente acolhedor e seguro.',
+          linkText: 'Conhecer a turma',
+          linkHref: '#programa'
+        }}
+        highlightTag="Programa em Grupo • Turmas Reduzidas"
         title="Ganhe confiança para conversar em inglês sem travar."
-        description="Um programa online para quem já estudou inglês, mas sente que não evoluiu e trava quando precisa falar. Pratique conversas reais usando sua rotina, seus gostos e suas histórias como ponto de partida."
-        primaryAction={{ text: 'Quero destravar meu inglês', href: whatsapp, isExternal: true }}
+        description="O programa prático de 8 semanas com encontros online ao vivo em turmas reduzidas. Pratique conversação real em um ambiente acolhedor e seguro, usando sua rotina e seus interesses como ponto de partida."
+        primaryAction={{ text: 'Quero destravar meu inglês', href: whatsapp, isGold: true, isExternal: true }}
         secondaryAction={{ text: 'Ver turma e investimento', href: '#oferta', isSecondary: true }}
         microcopy="Entre na lista de espera para receber as próximas informações da turma, sem compromisso."
-        pills={['8 semanas', 'Aulas ao vivo', 'Vagas limitadas', 'Garantia de 7 dias']}
+        pills={['👥 Turma em Grupo Reduzida', '8 Semanas de Imersão', 'Aulas Online ao Vivo', 'Garantia de 7 Dias']}
         imageFrameType="circle"
         imageSrc="/Nath.jpg"
         imageWebpSrc="/Nath.webp"
         imageAlt="Natalia Fernandes, professora de inglês"
-        floatingNoteTitle="Você não precisa recomeçar do zero."
-        floatingNoteText="O foco é reorganizar o que você já viu e colocar o inglês em uso com segurança."
+        floatingNoteTitle="Ambiente Coletivo Seguro:"
+        floatingNoteText="Aqui você pratica em grupo sem medo de errar, com quem está no mesmo momento que você."
       />
 
       <!-- PROOF ROW -->

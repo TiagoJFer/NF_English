@@ -3,11 +3,23 @@ interface ActionButton {
   text: string;
   href: string;
   isSecondary?: boolean;
+  isGold?: boolean;
   isExternal?: boolean;
+}
+
+interface AnnouncementBanner {
+  tag?: string;
+  strong?: string;
+  text: string;
+  linkText?: string;
+  linkHref?: string;
 }
 
 interface Props {
   eyebrow?: string;
+  highlightTag?: string;
+  announcement?: AnnouncementBanner;
+  variant?: 'default' | 'destrave';
   title: string;
   description: string;
   primaryAction?: ActionButton;
@@ -24,6 +36,9 @@ interface Props {
 
 const {
   eyebrow,
+  highlightTag,
+  announcement,
+  variant = 'default',
   title,
   description,
   primaryAction,
@@ -37,12 +52,42 @@ const {
   floatingNoteTitle,
   floatingNoteText
 } = Astro.props;
+
+const isDestrave = variant === 'destrave';
 ---
 
-<section class="hero">
+<section class={`hero ${isDestrave ? 'hero-destrave' : ''} ${announcement ? 'has-announcement' : ''}`}>
+  {isDestrave && <div class="hero-destrave-glow" aria-hidden="true" />}
+
+  {announcement && (
+    <div class="hero-announcement-strip">
+      <div class="container hero-announcement-inner">
+        <div class="announcement-left">
+          {announcement.tag && <span class="announcement-badge">{announcement.tag}</span>}
+          <div class="announcement-text">
+            {announcement.strong && <strong>{announcement.strong} </strong>}
+            <span set:html={announcement.text} />
+          </div>
+        </div>
+        {announcement.linkText && (
+          <a href={announcement.linkHref || '#oferta'} class="announcement-link">
+            {announcement.linkText} <span class="arr">→</span>
+          </a>
+        )}
+      </div>
+    </div>
+  )}
+
   <div class="container hero-grid">
     <div class="hero-content">
-      {eyebrow && (
+      {highlightTag && (
+        <div class="destrave-highlight-badge">
+          <span class="badge-icon">👥</span>
+          <span>{highlightTag}</span>
+        </div>
+      )}
+
+      {eyebrow && !highlightTag && (
         <div class="eyebrow"><span class="dot"></span> {eyebrow}</div>
       )}
       
@@ -102,7 +147,7 @@ const {
         <div class={`hero-actions ${primaryAction && secondaryAction ? 'has-both-actions' : ''}`}>
           {primaryAction && (
             <a
-              class={`button hero-primary ${primaryAction.isSecondary ? 'secondary' : ''}`}
+              class={`button hero-primary ${primaryAction.isGold ? 'gold' : ''} ${primaryAction.isSecondary ? 'secondary' : ''}`}
               href={primaryAction.href}
               target={primaryAction.isExternal ? '_blank' : undefined}
               rel={primaryAction.isExternal ? 'noreferrer' : undefined}
