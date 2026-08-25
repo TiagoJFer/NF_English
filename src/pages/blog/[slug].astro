@@ -86,13 +86,13 @@ const jsonLd = {
           <span class="breadcrumbs-sep">/</span>
           <a href="/blog">Blog</a>
           <span class="breadcrumbs-sep">/</span>
-          <span>{post.data.category}</span>
+          <a href={`/blog?cat=${encodeURIComponent(post.data.category)}`}>{post.data.category}</a>
         </nav>
 
         <!-- CABEÇALHO DO ARTIGO -->
         <header class="blog-post-header">
           <div class="blog-post-meta">
-            <span class="blog-badge">{post.data.category}</span>
+            <a href={`/blog?cat=${encodeURIComponent(post.data.category)}`} class="blog-badge">{post.data.category}</a>
             <span class="blog-meta-dot">•</span>
             <span>{post.data.readTime}</span>
             <span class="blog-meta-dot">•</span>
@@ -110,6 +110,17 @@ const jsonLd = {
         <div class="prose-editorial">
           <Content />
         </div>
+
+        {post.data.tags && post.data.tags.length > 0 && (
+          <div class="article-tags-row">
+            <span class="tags-label">Tags do artigo:</span>
+            <div class="tags-list">
+              {post.data.tags.map((tag) => (
+                <a href={`/blog?cat=${encodeURIComponent(post.data.category)}`} class="pill tag-pill">#{tag}</a>
+              ))}
+            </div>
+          </div>
+        )}
 
         <!-- BOX DE CONVERSÃO / CTA -->
         <ArticleCTA
@@ -183,6 +194,73 @@ const jsonLd = {
 
   .related-all-link:hover {
     color: var(--brand-dark);
+  }
+
+  .breadcrumbs a {
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .breadcrumbs a:hover {
+    color: var(--brand);
+  }
+
+  .blog-badge {
+    display: inline-block;
+    background: var(--brand-light);
+    color: var(--brand-dark);
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 750;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+
+  .blog-badge:hover {
+    background: var(--brand);
+    color: #ffffff;
+  }
+
+  .article-tags-row {
+    margin: 36px 0 20px;
+    padding-top: 20px;
+    border-top: 1px dashed var(--line);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .tags-label {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .tags-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .tag-pill {
+    text-decoration: none;
+    font-size: 12px;
+    padding: 4px 10px;
+    background: var(--surface-soft);
+    color: var(--sage-dark);
+    transition: all 0.2s ease;
+  }
+
+  .tag-pill:hover {
+    background: var(--brand);
+    color: #ffffff;
+    border-color: var(--brand);
   }
 
   .related-grid {

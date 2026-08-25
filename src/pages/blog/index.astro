@@ -40,23 +40,40 @@ const whatsappCTA = 'https://wa.me/5511967165564?text=Ola%20Natalia,%20vi%20o%20
             Artigos, reflexões e dicas práticas da professora Natalia Fernandes para ajudar você a destravar a fala, eliminar a tradução mental e se comunicar com autonomia.
           </p>
 
-          <!-- CATEGORIAS -->
-          <div class="blog-filter-pills">
-            {categories.map((cat, idx) => (
-              <span class={`pill ${idx === 0 ? 'pill-active' : ''}`}>{cat}</span>
-            ))}
+          <!-- CATEGORIAS / TAGS INTERATIVAS -->
+          <div class="blog-filter-wrapper">
+            <div class="blog-filter-pills" role="group" aria-label="Filtrar artigos por categoria">
+              {categories.map((cat, idx) => {
+                const count = cat === 'Todos' 
+                  ? sortedPosts.length 
+                  : sortedPosts.filter((p) => p.data.category === cat).length;
+                return (
+                  <button
+                    type="button"
+                    class={`blog-filter-btn pill ${idx === 0 ? 'pill-active' : ''}`}
+                    data-category={cat}
+                    aria-pressed={idx === 0 ? "true" : "false"}
+                  >
+                    <span>{cat}</span>
+                    <span class="pill-count" aria-hidden="true">{count}</span>
+                  </button>
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>
 
       <!-- ARTIGO EM DESTAQUE (HERO POST) -->
       {featuredPost && (
-        <section class="featured-post-section">
+        <section class="featured-post-section" id="featured-post-section" data-post-item data-category={featuredPost.data.category}>
           <div class="container">
             <div class="featured-card">
               <div class="featured-badge-row">
                 <span class="badge-featured">⭐ Artigo em Destaque</span>
-                <span class="featured-cat">{featuredPost.data.category}</span>
+                <button type="button" class="featured-cat-btn" data-category={featuredPost.data.category}>
+                  {featuredPost.data.category}
+                </button>
                 <span class="featured-read">{featuredPost.data.readTime}</span>
               </div>
               <h2 class="featured-title">
@@ -77,24 +94,43 @@ const whatsappCTA = 'https://wa.me/5511967165564?text=Ola%20Natalia,%20vi%20o%20
       <!-- GRID DE TODOS OS ARTIGOS -->
       <section class="all-posts-section">
         <div class="container">
-          <div class="section-head" style="text-align: left; margin-bottom: 30px;">
-            <h2>Mais Artigos & Guias</h2>
-            <p>Explore tópicos específicos para destravar sua fala e ampliar seu repertório.</p>
+          <div class="section-head-filter">
+            <div>
+              <h2 id="grid-section-title">Mais Artigos & Guias</h2>
+              <p id="grid-section-desc">Explore tópicos específicos para destravar sua fala e ampliar seu repertório.</p>
+            </div>
+            <div class="active-filter-badge" id="active-filter-badge" style="display: none;">
+              <span>Filtro: <strong id="active-filter-name">Todos</strong></span>
+              <button type="button" id="clear-filter-btn" title="Remover filtro" aria-label="Remover filtro">×</button>
+            </div>
           </div>
 
-          <div class="blog-main-grid">
+          <!-- GRID DE CARDS -->
+          <div class="blog-main-grid" id="blog-main-grid">
             {regularPosts.map((post) => (
-              <BlogCard
-                title={post.data.title}
-                hook={post.data.hook}
-                description={post.data.description}
-                category={post.data.category}
-                readTime={post.data.readTime}
-                pubDate={post.data.pubDate}
-                slug={post.id.replace(/\.md$/, '')}
-                featured={post.data.featured}
-              />
+              <div class="blog-card-wrapper" data-post-item data-category={post.data.category}>
+                <BlogCard
+                  title={post.data.title}
+                  hook={post.data.hook}
+                  description={post.data.description}
+                  category={post.data.category}
+                  readTime={post.data.readTime}
+                  pubDate={post.data.pubDate}
+                  slug={post.id.replace(/\.md$/, '')}
+                  featured={post.data.featured}
+                />
+              </div>
             ))}
+          </div>
+
+          <!-- EMPTY STATE QUANDO NENHUM ARTIGO CORRESPONDE -->
+          <div class="blog-empty-state" id="blog-empty-state" style="display: none;">
+            <div class="empty-state-icon">🔍</div>
+            <h3 class="empty-title">Nenhum artigo encontrado nesta categoria</h3>
+            <p class="empty-desc">Não encontramos artigos cadastrados com esta seleção no momento.</p>
+            <button type="button" class="btn brand" id="empty-reset-btn">
+              Ver todos os artigos <span>→</span>
+            </button>
           </div>
         </div>
       </section>
@@ -116,6 +152,125 @@ const whatsappCTA = 'https://wa.me/5511967165564?text=Ola%20Natalia,%20vi%20o%20
   </div>
 </Layout>
 
+<script>
+  function setupBlogFiltering() {
+    const filterButtons = document.querySelectorAll<HTMLButtonElement>('.blog-filter-btn');
+    const featuredSection = document.getElementById('featured-post-section');
+    const cardWrappers = document.querySelectorAll<HTMLElement>('.blog-card-wrapper');
+    const emptyState = document.getElementById('blog-empty-state');
+    const activeFilterBadge = document.getElementById('active-filter-badge');
+    const activeFilterName = document.getElementById('active-filter-name');
+    const clearFilterBtn = document.getElementById('clear-filter-btn');
+    const emptyResetBtn = document.getElementById('empty-reset-btn');
+    const gridTitle = document.getElementById('grid-section-title');
+    const gridDesc = document.getElementById('grid-section-desc');
+
+    function applyCategory(category: string) {
+      let visibleCount = 0;
+
+      // 1. Update filter pill buttons
+      filterButtons.forEach((btn) => {
+        const btnCat = btn.getAttribute('data-category') || 'Todos';
+        const isMatch = btnCat === category;
+        btn.classList.toggle('pill-active', isMatch);
+        btn.setAttribute('aria-pressed', isMatch ? 'true' : 'false');
+      });
+
+      // 2. Filter featured section
+      if (featuredSection) {
+        const featCat = featuredSection.getAttribute('data-category');
+        const showFeat = category === 'Todos' || featCat === category;
+        featuredSection.style.display = showFeat ? '' : 'none';
+        if (showFeat) visibleCount++;
+      }
+
+      // 3. Filter regular grid cards
+      cardWrappers.forEach((wrapper) => {
+        const cardCat = wrapper.getAttribute('data-category');
+        const showCard = category === 'Todos' || cardCat === category;
+        if (showCard) {
+          wrapper.style.display = '';
+          visibleCount++;
+        } else {
+          wrapper.style.display = 'none';
+        }
+      });
+
+      // 4. Update Header & Active Filter Badge
+      if (category === 'Todos') {
+        if (activeFilterBadge) activeFilterBadge.style.display = 'none';
+        if (gridTitle) gridTitle.textContent = 'Mais Artigos & Guias';
+        if (gridDesc) gridDesc.textContent = 'Explore tópicos específicos para destravar sua fala e ampliar seu repertório.';
+      } else {
+        if (activeFilterBadge) {
+          activeFilterBadge.style.display = 'inline-flex';
+          if (activeFilterName) activeFilterName.textContent = category;
+        }
+        if (gridTitle) gridTitle.textContent = `Artigos sobre "${category}"`;
+        if (gridDesc) gridDesc.textContent = `Mostrando ${visibleCount} ${visibleCount === 1 ? 'artigo disponível' : 'artigos disponíveis'}.`;
+      }
+
+      // 5. Toggle empty state
+      if (emptyState) {
+        emptyState.style.display = visibleCount === 0 ? 'block' : 'none';
+      }
+
+      // 6. Update URL query params without reloading
+      const url = new URL(window.location.href);
+      if (category === 'Todos') {
+        url.searchParams.delete('cat');
+      } else {
+        url.searchParams.set('cat', category);
+      }
+      window.history.replaceState({}, '', url.toString());
+    }
+
+    // Attach click events to filter buttons
+    filterButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const cat = btn.getAttribute('data-category') || 'Todos';
+        applyCategory(cat);
+      });
+    });
+
+    // Also support clicking on category badge in featured post
+    const featuredCatBtn = document.querySelector<HTMLButtonElement>('.featured-cat-btn');
+    if (featuredCatBtn) {
+      featuredCatBtn.addEventListener('click', () => {
+        const cat = featuredCatBtn.getAttribute('data-category') || 'Todos';
+        applyCategory(cat);
+      });
+    }
+
+    // Clear filter buttons
+    if (clearFilterBtn) {
+      clearFilterBtn.addEventListener('click', () => applyCategory('Todos'));
+    }
+    if (emptyResetBtn) {
+      emptyResetBtn.addEventListener('click', () => applyCategory('Todos'));
+    }
+
+    // Check URL search parameter on load (e.g. ?cat=Gram%C3%A1tica%20Pr%C3%A1tica)
+    const initialParams = new URLSearchParams(window.location.search);
+    const catFromUrl = initialParams.get('cat');
+    if (catFromUrl) {
+      const match = Array.from(filterButtons).find(
+        (b) => b.getAttribute('data-category')?.trim().toLowerCase() === catFromUrl.trim().toLowerCase()
+      );
+      if (match) {
+        applyCategory(match.getAttribute('data-category') || 'Todos');
+      }
+    }
+  }
+
+  // Initialize on DOM ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupBlogFiltering);
+  } else {
+    setupBlogFiltering();
+  }
+</script>
+
 <style>
   .blog-hero-section {
     padding: 60px 0 40px;
@@ -133,23 +288,91 @@ const whatsappCTA = 'https://wa.me/5511967165564?text=Ola%20Natalia,%20vi%20o%20
     line-height: 1.6;
     color: var(--muted);
     max-width: 720px;
-    margin: 0 0 26px;
+    margin: 0 0 28px;
+  }
+
+  .blog-filter-wrapper {
+    margin-top: 10px;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+  }
+
+  .blog-filter-wrapper::-webkit-scrollbar {
+    display: none;
   }
 
   .blog-filter-pills {
-    display: flex;
+    display: inline-flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 10px;
+    align-items: center;
   }
 
-  .pill-active {
-    background: var(--brand);
-    color: white;
+  .blog-filter-btn {
+    appearance: none;
+    background: var(--surface);
+    color: var(--sage-dark);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 9px 18px;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: inherit;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  }
+
+  .blog-filter-btn:hover {
+    background: var(--surface);
     border-color: var(--brand);
+    color: var(--brand);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+  }
+
+  .blog-filter-btn:active {
+    transform: translateY(0);
+  }
+
+  .blog-filter-btn.pill-active {
+    background: var(--brand);
+    color: #ffffff;
+    border-color: var(--brand);
+    box-shadow: 0 4px 14px rgba(184, 79, 71, 0.28);
+  }
+
+  .blog-filter-btn .pill-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 22px;
+    height: 22px;
+    padding: 0 6px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 800;
+    background: var(--surface-soft);
+    color: var(--sage-dark);
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+
+  .blog-filter-btn.pill-active .pill-count {
+    background: rgba(255, 255, 255, 0.28);
+    color: #ffffff;
   }
 
   .featured-post-section {
     padding: 50px 0 20px;
+    transition: opacity 0.25s ease;
   }
 
   .featured-card {
@@ -183,11 +406,23 @@ const whatsappCTA = 'https://wa.me/5511967165564?text=Ola%20Natalia,%20vi%20o%20
     border-radius: 999px;
   }
 
-  .featured-cat {
+  .featured-cat-btn {
+    appearance: none;
+    border: none;
+    font-family: inherit;
     color: var(--brand-dark);
     background: var(--brand-light);
     padding: 4px 12px;
     border-radius: 999px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+
+  .featured-cat-btn:hover {
+    background: var(--brand);
+    color: #ffffff;
   }
 
   .featured-read {
@@ -239,10 +474,99 @@ const whatsappCTA = 'https://wa.me/5511967165564?text=Ola%20Natalia,%20vi%20o%20
     padding: 40px 0 80px;
   }
 
+  .section-head-filter {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .section-head-filter h2 {
+    margin: 0 0 6px;
+    font-size: clamp(24px, 3.5vw, 32px);
+  }
+
+  .section-head-filter p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 16px;
+  }
+
+  .active-filter-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--brand-light);
+    color: var(--brand-dark);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .active-filter-badge strong {
+    color: var(--brand);
+    font-weight: 800;
+  }
+
+  #clear-filter-btn {
+    background: none;
+    border: none;
+    color: var(--brand-dark);
+    font-size: 16px;
+    font-weight: 900;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+    margin-left: 2px;
+    opacity: 0.7;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  #clear-filter-btn:hover {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+
   .blog-main-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: 24px;
+  }
+
+  .blog-card-wrapper {
+    display: flex;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  .blog-empty-state {
+    text-align: center;
+    background: var(--surface);
+    border: 1px dashed var(--line-strong);
+    border-radius: var(--radius);
+    padding: 60px 24px;
+    margin: 20px 0;
+  }
+
+  .empty-state-icon {
+    font-size: 40px;
+    margin-bottom: 12px;
+  }
+
+  .empty-title {
+    font-family: Fraunces, Georgia, serif;
+    font-size: 22px;
+    margin: 0 0 8px;
+    color: var(--ink);
+  }
+
+  .empty-desc {
+    color: var(--muted);
+    font-size: 15px;
+    max-width: 460px;
+    margin: 0 auto 24px;
   }
 
   @media (max-width: 768px) {
@@ -251,6 +575,23 @@ const whatsappCTA = 'https://wa.me/5511967165564?text=Ola%20Natalia,%20vi%20o%20
     }
     .blog-hero-section {
       padding: 40px 0 30px;
+    }
+    .blog-filter-pills {
+      flex-wrap: nowrap;
+      padding-bottom: 6px;
+    }
+    .blog-filter-btn {
+      white-space: nowrap;
+      padding: 8px 14px;
+      font-size: 13px;
+    }
+    .section-head-filter {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .blog-main-grid {
+      grid-template-columns: 1fr;
+      gap: 18px;
     }
   }
 </style>

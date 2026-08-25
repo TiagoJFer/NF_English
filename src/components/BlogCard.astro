@@ -33,7 +33,7 @@ const summaryText = hook || description;
 
 <article class={`blog-card ${featured ? 'is-featured' : ''}`}>
   <div class="blog-card-meta">
-    <span class="blog-badge">{category}</span>
+    <a href={`/blog?cat=${encodeURIComponent(category)}`} class="blog-badge" aria-label={`Ver artigos sobre ${category}`}>{category}</a>
     <span class="blog-meta-dot">•</span>
     <span class="blog-read-time">{readTime}</span>
   </div>
@@ -99,11 +99,23 @@ const summaryText = hook || description;
     font-size: 12px;
     font-weight: 750;
     letter-spacing: 0.02em;
+    text-decoration: none;
+    transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease;
+  }
+
+  .blog-badge:hover {
+    background: var(--brand);
+    color: #ffffff;
+    transform: translateY(-1px);
   }
 
   .blog-card.is-featured .blog-badge {
     background: var(--brand);
     color: #ffffff;
+  }
+
+  .blog-card.is-featured .blog-badge:hover {
+    background: var(--brand-dark);
   }
 
   .blog-meta-dot {
