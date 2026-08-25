@@ -1,0 +1,179 @@
+---
+interface Props {
+  title: string;
+  hook?: string;
+  description?: string;
+  category: string;
+  readTime: string;
+  pubDate: Date | string;
+  slug: string;
+  featured?: boolean;
+}
+
+const {
+  title,
+  hook,
+  description,
+  category,
+  readTime,
+  pubDate,
+  slug,
+  featured = false
+} = Astro.props;
+
+const dateObj = typeof pubDate === 'string' ? new Date(pubDate) : pubDate;
+const formattedDate = new Intl.DateTimeFormat('pt-BR', {
+  day: '2-digit',
+  month: 'short',
+  year: 'numeric'
+}).format(dateObj);
+
+const summaryText = hook || description;
+---
+
+<article class={`blog-card ${featured ? 'is-featured' : ''}`}>
+  <div class="blog-card-meta">
+    <span class="blog-badge">{category}</span>
+    <span class="blog-meta-dot">•</span>
+    <span class="blog-read-time">{readTime}</span>
+  </div>
+
+  <h3 class="blog-card-title">
+    <a href={`/blog/${slug}`}>{title}</a>
+  </h3>
+
+  {summaryText && (
+    <p class="blog-card-hook">{summaryText}</p>
+  )}
+
+  <div class="blog-card-footer">
+    <span class="blog-date">{formattedDate}</span>
+    <a href={`/blog/${slug}`} class="blog-card-link" aria-label={`Ler artigo: ${title}`}>
+      Ler artigo <span>→</span>
+    </a>
+  </div>
+</article>
+
+<style>
+  .blog-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 28px 24px;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    position: relative;
+    height: 100%;
+  }
+
+  .blog-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow);
+    border-color: var(--line-strong);
+  }
+
+  .blog-card.is-featured {
+    border-color: var(--brand-light);
+    background: linear-gradient(180deg, #ffffff 0%, var(--paper) 100%);
+    box-shadow: 0 10px 30px rgba(184, 79, 71, 0.08);
+  }
+
+  .blog-card-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 14px;
+    font-size: 13px;
+    color: var(--muted);
+    font-weight: 600;
+  }
+
+  .blog-badge {
+    display: inline-block;
+    background: var(--brand-light);
+    color: var(--brand-dark);
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 750;
+    letter-spacing: 0.02em;
+  }
+
+  .blog-card.is-featured .blog-badge {
+    background: var(--brand);
+    color: #ffffff;
+  }
+
+  .blog-meta-dot {
+    color: var(--line-strong);
+  }
+
+  .blog-read-time {
+    font-size: 12px;
+  }
+
+  .blog-card-title {
+    font-family: Fraunces, Georgia, serif;
+    font-size: 21px;
+    line-height: 1.25;
+    margin: 0 0 12px;
+    letter-spacing: -0.02em;
+  }
+
+  .blog-card-title a {
+    color: var(--ink);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .blog-card-title a:hover {
+    color: var(--brand);
+  }
+
+  .blog-card-hook {
+    color: var(--muted);
+    font-size: 14.5px;
+    line-height: 1.55;
+    margin: 0 0 20px;
+    flex-grow: 1;
+  }
+
+  .blog-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    margin-top: auto;
+    font-size: 13px;
+  }
+
+  .blog-date {
+    color: var(--muted);
+  }
+
+  .blog-card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--brand);
+    font-weight: 750;
+    text-decoration: none;
+    transition: gap 0.2s ease, color 0.2s ease;
+  }
+
+  .blog-card-link:hover {
+    color: var(--brand-dark);
+    gap: 8px;
+  }
+
+  .blog-card-link span {
+    transition: transform 0.2s ease;
+  }
+
+  .blog-card:hover .blog-card-link span {
+    transform: translateX(3px);
+  }
+</style>

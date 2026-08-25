@@ -1,0 +1,120 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  ctaText?: string;
+  ctaHref?: string;
+  authorName?: string;
+  authorRole?: string;
+}
+
+const {
+  title = 'Quer destravar seu inglês com acompanhamento personalizado?',
+  description = 'Cada pessoa tem um ritmo e desafios específicos. Converse diretamente com a Natalia no WhatsApp para fazer um diagnóstico pedagógico gratuito e descobrir o plano ideal para suas metas.',
+  ctaText = 'Conversar com a Natalia no WhatsApp',
+  ctaHref = 'https://wa.me/5511967165564?text=Ola%20Natalia,%20li%20seu%20artigo%20no%20blog%20e%20gostaria%20de%20conversar%20sobre%20as%20aulas.',
+  authorName = 'Natalia Fernandes',
+  authorRole = 'Fundadora & Mentora de Inglês'
+} = Astro.props;
+---
+
+<div class="article-cta-box">
+  <div class="article-cta-inner">
+    <div class="article-author-badge">
+      <img
+        src="/Nath.jpg"
+        alt={authorName}
+        class="author-avatar"
+        width="64"
+        height="64"
+        loading="lazy"
+      />
+      <div>
+        <strong class="author-name">{authorName}</strong>
+        <span class="author-role">{authorRole}</span>
+      </div>
+    </div>
+
+    <div class="article-cta-content">
+      <h3 class="article-cta-title">{title}</h3>
+      <p class="article-cta-desc">{description}</p>
+      
+      <div class="article-cta-action">
+        <a href={ctaHref} target="_blank" rel="noopener noreferrer" class="btn brand">
+          {ctaText} <span>↗</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .article-cta-box {
+    margin: 50px 0 30px;
+    background: linear-gradient(135deg, var(--surface-soft) 0%, var(--surface) 100%);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius);
+    padding: 36px 32px;
+    box-shadow: var(--shadow);
+  }
+
+  .article-cta-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .article-author-badge {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .author-avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--brand);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .author-name {
+    display: block;
+    font-size: 16px;
+    color: var(--ink);
+  }
+
+  .author-role {
+    display: block;
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .article-cta-title {
+    font-family: Fraunces, Georgia, serif;
+    font-size: 22px;
+    line-height: 1.25;
+    margin: 0 0 10px;
+    color: var(--ink);
+  }
+
+  .article-cta-desc {
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0 0 24px;
+    max-width: 680px;
+  }
+
+  .article-cta-action {
+    display: flex;
+    align-items: center;
+  }
+
+  @media (max-width: 600px) {
+    .article-cta-box {
+      padding: 24px 20px;
+    }
+  }
+</style>

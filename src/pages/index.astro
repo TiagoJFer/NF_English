@@ -1,4 +1,5 @@
 ---
+import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
@@ -10,8 +11,18 @@ import ComparisonSection from '../components/ComparisonSection.astro';
 import PillarsSection from '../components/PillarsSection.astro';
 import SolutionsSection from '../components/SolutionsSection.astro';
 import TeacherSection from '../components/TeacherSection.astro';
+import BlogPreviewSection from '../components/BlogPreviewSection.astro';
 import FAQSection from '../components/FAQSection.astro';
 import CTABanner from '../components/CTABanner.astro';
+
+const allBlogPosts = await getCollection('blog');
+const homeBlogPosts = allBlogPosts
+  .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime())
+  .slice(0, 3)
+  .map((p) => ({
+    slug: p.id.replace(/\.md$/, ''),
+    data: p.data
+  }));
 
 const whatsappDiagnostic = 'https://wa.me/5511967165564?text=Ola%20Natalia,%20gostaria%20de%20conversar%20sobre%20um%20plano%20personalizado%20de%20ingles.';
 const whatsappMentoring = 'https://wa.me/5511967165564?text=Ola%20Natalia,%20tenho%20interesse%20nas%20Aulas%20Individuais%20e%20Mentoria%201:1.';
@@ -238,6 +249,17 @@ const faqs = [
           { value: 'Global & In Company', label: 'alunos no Brasil e exterior (Dubai) e grandes indústrias' }
         ]}
         manifesto="&ldquo;Fluência não significa falar perfeitamente ou ter sotaque nativo. Fluência é a liberdade de se expressar com clareza, defender suas ideias e participar do mundo sem medo.&rdquo;"
+      />
+
+      <!-- BLOG HOOKS & ARTIGOS EM DESTAQUE -->
+      <BlogPreviewSection
+        id="blog"
+        eyebrow="Dicas & Artigos"
+        title="Conteúdo direto ao ponto para destravar sua fala"
+        description="Artigos práticos de pronúncia, gramática sem decoreba e mentalidade para quem quer se comunicar com confiança."
+        posts={homeBlogPosts}
+        ctaText="Ver todos os artigos do Blog"
+        ctaHref="/blog"
       />
 
       <!-- FAQ -->

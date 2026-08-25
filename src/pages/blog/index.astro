@@ -1,0 +1,256 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import MobileCTA from '../../components/MobileCTA.astro';
+import BlogCard from '../../components/BlogCard.astro';
+import CTABanner from '../../components/CTABanner.astro';
+
+const allPosts = await getCollection('blog');
+const sortedPosts = allPosts.sort(
+  (a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
+);
+
+const featuredPost = sortedPosts.find((p) => p.data.featured) || sortedPosts[0];
+const regularPosts = sortedPosts.filter((p) => p.id !== featuredPost.id);
+
+const categories = ['Todos', ...new Set(sortedPosts.map((p) => p.data.category))];
+
+const whatsappCTA = 'https://wa.me/5511967165564?text=Ola%20Natalia,%20vi%20o%20seu%20blog%20e%20gostaria%20de%20conversar%20sobre%20as%20aulas%20de%20ingles.';
+---
+
+<Layout
+  title="Blog de Inglês & Comunicação Real | NF English"
+  description="Artigos práticos, dicas de vocabulário, mentalidade e estratégias de destrave para adultos que querem falar inglês com confiança."
+>
+  <div class="page" id="top">
+    <!-- HEADER -->
+    <Header mode="institutional" />
+
+    <main>
+      <!-- HERO DO BLOG -->
+      <section class="blog-hero-section">
+        <div class="container">
+          <div class="eyebrow sage">
+            <span class="dot"></span> Blog NF English
+          </div>
+          <h1 class="blog-hero-title">Inglês sem rodeios para a vida real e carreira</h1>
+          <p class="blog-hero-desc">
+            Artigos, reflexões e dicas práticas da professora Natalia Fernandes para ajudar você a destravar a fala, eliminar a tradução mental e se comunicar com autonomia.
+          </p>
+
+          <!-- CATEGORIAS -->
+          <div class="blog-filter-pills">
+            {categories.map((cat, idx) => (
+              <span class={`pill ${idx === 0 ? 'pill-active' : ''}`}>{cat}</span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- ARTIGO EM DESTAQUE (HERO POST) -->
+      {featuredPost && (
+        <section class="featured-post-section">
+          <div class="container">
+            <div class="featured-card">
+              <div class="featured-badge-row">
+                <span class="badge-featured">⭐ Artigo em Destaque</span>
+                <span class="featured-cat">{featuredPost.data.category}</span>
+                <span class="featured-read">{featuredPost.data.readTime}</span>
+              </div>
+              <h2 class="featured-title">
+                <a href={`/blog/${featuredPost.id.replace(/\.md$/, '')}`}>{featuredPost.data.title}</a>
+              </h2>
+              <p class="featured-hook">{featuredPost.data.hook || featuredPost.data.description}</p>
+              <div class="featured-footer">
+                <span class="featured-author">Por <strong>{featuredPost.data.author}</strong></span>
+                <a href={`/blog/${featuredPost.id.replace(/\.md$/, '')}`} class="btn brand">
+                  Ler artigo completo <span>→</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      <!-- GRID DE TODOS OS ARTIGOS -->
+      <section class="all-posts-section">
+        <div class="container">
+          <div class="section-head" style="text-align: left; margin-bottom: 30px;">
+            <h2>Mais Artigos & Guias</h2>
+            <p>Explore tópicos específicos para destravar sua fala e ampliar seu repertório.</p>
+          </div>
+
+          <div class="blog-main-grid">
+            {regularPosts.map((post) => (
+              <BlogCard
+                title={post.data.title}
+                hook={post.data.hook}
+                description={post.data.description}
+                category={post.data.category}
+                readTime={post.data.readTime}
+                pubDate={post.data.pubDate}
+                slug={post.id.replace(/\.md$/, '')}
+                featured={post.data.featured}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA FINAL -->
+      <CTABanner
+        title="Quer um plano pedagógico 100% desenhado para o seu objetivo?"
+        description="Fale diretamente com a Natalia no WhatsApp e agende seu diagnóstico para começar suas aulas individuais ou em grupo."
+        ctaText="Conversar no WhatsApp"
+        ctaHref={whatsappCTA}
+      />
+    </main>
+
+    <!-- MOBILE CTA -->
+    <MobileCTA href={whatsappCTA} text="Falar com a Natalia" />
+
+    <!-- FOOTER -->
+    <Footer />
+  </div>
+</Layout>
+
+<style>
+  .blog-hero-section {
+    padding: 60px 0 40px;
+    background: var(--surface-soft);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .blog-hero-title {
+    margin: 16px 0 14px;
+    font-size: clamp(34px, 5.5vw, 56px);
+  }
+
+  .blog-hero-desc {
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--muted);
+    max-width: 720px;
+    margin: 0 0 26px;
+  }
+
+  .blog-filter-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .pill-active {
+    background: var(--brand);
+    color: white;
+    border-color: var(--brand);
+  }
+
+  .featured-post-section {
+    padding: 50px 0 20px;
+  }
+
+  .featured-card {
+    background: var(--surface);
+    border: 2px solid var(--brand-light);
+    border-radius: var(--radius);
+    padding: 40px;
+    box-shadow: var(--shadow);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .featured-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .featured-badge-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .badge-featured {
+    background: var(--gold-soft);
+    color: var(--gold-dark);
+    padding: 4px 12px;
+    border-radius: 999px;
+  }
+
+  .featured-cat {
+    color: var(--brand-dark);
+    background: var(--brand-light);
+    padding: 4px 12px;
+    border-radius: 999px;
+  }
+
+  .featured-read {
+    color: var(--muted);
+    font-weight: 600;
+  }
+
+  .featured-title {
+    font-family: Fraunces, Georgia, serif;
+    font-size: clamp(26px, 4vw, 38px);
+    line-height: 1.15;
+    margin: 0 0 16px;
+  }
+
+  .featured-title a {
+    color: var(--ink);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .featured-title a:hover {
+    color: var(--brand);
+  }
+
+  .featured-hook {
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--muted);
+    margin: 0 0 26px;
+    max-width: 800px;
+  }
+
+  .featured-footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+  }
+
+  .featured-author {
+    font-size: 14px;
+    color: var(--muted);
+  }
+
+  .all-posts-section {
+    padding: 40px 0 80px;
+  }
+
+  .blog-main-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+  }
+
+  @media (max-width: 768px) {
+    .featured-card {
+      padding: 24px 20px;
+    }
+    .blog-hero-section {
+      padding: 40px 0 30px;
+    }
+  }
+</style>

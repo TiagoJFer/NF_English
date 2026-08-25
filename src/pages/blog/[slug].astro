@@ -1,0 +1,193 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import MobileCTA from '../../components/MobileCTA.astro';
+import ArticleCTA from '../../components/ArticleCTA.astro';
+import BlogCard from '../../components/BlogCard.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.id.replace(/\.md$/, '') },
+    props: { post }
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+// Find related / other posts
+const allPosts = await getCollection('blog');
+const currentSlug = post.id.replace(/\.md$/, '');
+const otherPosts = allPosts
+  .filter((p) => p.id.replace(/\.md$/, '') !== currentSlug)
+  .slice(0, 2);
+
+const dateObj = new Date(post.data.pubDate);
+const formattedDate = new Intl.DateTimeFormat('pt-BR', {
+  day: '2-digit',
+  month: 'long',
+  year: 'numeric'
+}).format(dateObj);
+
+const whatsappArticle = `https://wa.me/5511967165564?text=${encodeURIComponent(
+  `Ola Natalia, li seu artigo "${post.data.title}" e gostaria de entender como funcionam as aulas personalizadas.`
+)}`;
+
+const siteUrl = 'https://nfenglish.com.br';
+const articleCanonical = `/blog/${currentSlug}`;
+
+// JSON-LD Structured Data
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.data.title,
+  description: post.data.description,
+  datePublished: post.data.pubDate.toISOString(),
+  author: {
+    '@type': 'Person',
+    name: post.data.author,
+    url: siteUrl
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'Natalia Fernandes English',
+    url: siteUrl,
+    logo: {
+      '@type': 'ImageObject',
+      url: `${siteUrl}/Nath.jpg`
+    }
+  },
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': `${siteUrl}${articleCanonical}`
+  }
+};
+---
+
+<Layout
+  title={`${post.data.title} | Blog NF English`}
+  description={post.data.description}
+  canonicalPath={articleCanonical}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+  <div class="page" id="top">
+    <!-- HEADER -->
+    <Header mode="institutional" />
+
+    <main class="container">
+      <article class="blog-article-layout">
+        <!-- BREADCRUMBS -->
+        <nav class="breadcrumbs" aria-label="Navegação Estrutural">
+          <a href="/">Início</a>
+          <span class="breadcrumbs-sep">/</span>
+          <a href="/blog">Blog</a>
+          <span class="breadcrumbs-sep">/</span>
+          <span>{post.data.category}</span>
+        </nav>
+
+        <!-- CABEÇALHO DO ARTIGO -->
+        <header class="blog-post-header">
+          <div class="blog-post-meta">
+            <span class="blog-badge">{post.data.category}</span>
+            <span class="blog-meta-dot">•</span>
+            <span>{post.data.readTime}</span>
+            <span class="blog-meta-dot">•</span>
+            <time datetime={post.data.pubDate.toISOString()}>{formattedDate}</time>
+          </div>
+
+          <h1 class="blog-post-title">{post.data.title}</h1>
+
+          {post.data.hook && (
+            <p class="blog-post-lead">{post.data.hook}</p>
+          )}
+        </header>
+
+        <!-- CONTEÚDO MD EDITORIAL -->
+        <div class="prose-editorial">
+          <Content />
+        </div>
+
+        <!-- BOX DE CONVERSÃO / CTA -->
+        <ArticleCTA
+          ctaHref={whatsappArticle}
+          ctaText="Falar com a Natalia no WhatsApp"
+        />
+
+        <!-- NAVEGAÇÃO DE RETORNO & ARTIGOS RELACIONADOS -->
+        {otherPosts.length > 0 && (
+          <div class="related-posts-section">
+            <div class="related-header">
+              <h3>Continue lendo e aprimorando seu inglês</h3>
+              <a href="/blog" class="related-all-link">Ver todos os artigos ↗</a>
+            </div>
+
+            <div class="related-grid">
+              {otherPosts.map((other) => (
+                <BlogCard
+                  title={other.data.title}
+                  hook={other.data.hook}
+                  description={other.data.description}
+                  category={other.data.category}
+                  readTime={other.data.readTime}
+                  pubDate={other.data.pubDate}
+                  slug={other.id.replace(/\.md$/, '')}
+                />
+              ))}
+            </div>
+          </div>
+        )}
+      </article>
+    </main>
+
+    <!-- MOBILE CTA -->
+    <MobileCTA href={whatsappArticle} text="Falar no WhatsApp" />
+
+    <!-- FOOTER -->
+    <Footer />
+  </div>
+</Layout>
+
+<style>
+  .related-posts-section {
+    margin-top: 60px;
+    padding-top: 40px;
+    border-top: 1px solid var(--line);
+  }
+
+  .related-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .related-header h3 {
+    font-family: Fraunces, Georgia, serif;
+    font-size: 22px;
+    margin: 0;
+  }
+
+  .related-all-link {
+    color: var(--brand);
+    font-weight: 750;
+    font-size: 14px;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .related-all-link:hover {
+    color: var(--brand-dark);
+  }
+
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+</style>

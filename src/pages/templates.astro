@@ -16,6 +16,9 @@ import CurriculumSection from '../components/CurriculumSection.astro';
 import OfferSection from '../components/OfferSection.astro';
 import FAQSection from '../components/FAQSection.astro';
 import CTABanner from '../components/CTABanner.astro';
+import BlogCard from '../components/BlogCard.astro';
+import BlogPreviewSection from '../components/BlogPreviewSection.astro';
+import ArticleCTA from '../components/ArticleCTA.astro';
 
 const whatsappDemo = 'https://wa.me/5511967165564';
 ---
@@ -384,7 +387,58 @@ const whatsappDemo = 'https://wa.me/5511967165564';
       />
     </div>
 
-    <!-- 14. FOOTER & MOBILE CTA -->
+    <!-- 14. COMPONENTES DO BLOG -->
+    <div style="border-top: 2px dashed var(--line); padding-top: 20px;">
+      <div class="container">
+        <span class="pill" style="margin-bottom: 10px;">Componentes: BlogPreviewSection.astro & BlogCard.astro</span>
+      </div>
+      <BlogPreviewSection
+        eyebrow="Demonstração Blog"
+        title="Conteúdo Prático para Destravar seu Inglês"
+        description="Showroom do componente BlogPreviewSection e BlogCard integrado ao ecossistema."
+        posts={[
+          {
+            slug: 'fluencia-no-ingles-o-que-fazer-de-verdade',
+            data: {
+              title: 'O Que Fazer Para Ter Fluência no Inglês (De Verdade)',
+              hook: 'Você não precisa de 10 anos de cursinho nem de falar com sotaque de nativo. Descubra o método prático para ter segurança e fluência real.',
+              category: 'Fluência & Mentalidade',
+              readTime: '6 min de leitura',
+              pubDate: new Date('2026-08-20'),
+              featured: true
+            }
+          },
+          {
+            slug: 'confusoes-comuns-ingles-portugues-como-destravar',
+            data: {
+              title: 'Como Destravar as Confusões Mais Comuns Entre Inglês e Português',
+              hook: 'Por que você ainda traduz mentalmente antes de falar? Veja as 5 confusões clássicas de tradução e como destravá-las de vez.',
+              category: 'Gramática Prática',
+              readTime: '7 min de leitura',
+              pubDate: new Date('2026-08-18')
+            }
+          },
+          {
+            slug: 'phrasal-verbs-o-que-sao-e-como-aprender-sem-decorar',
+            data: {
+              title: 'O Que São Phrasal Verbs e Como Dominá-los Sem Listas de Decoreba',
+              hook: 'Chega de listas de 200 phrasal verbs! Entenda a lógica por trás de get up, give up e look for para usar com naturalidade.',
+              category: 'Vocabulário & Expressões',
+              readTime: '5 min de leitura',
+              pubDate: new Date('2026-08-15')
+            }
+          }
+        ]}
+        ctaHref="/blog"
+      />
+
+      <div class="container" style="margin-top: 30px;">
+        <span class="pill" style="margin-bottom: 10px;">Componente: ArticleCTA.astro</span>
+        <ArticleCTA ctaHref={whatsappDemo} />
+      </div>
+    </div>
+
+    <!-- 15. FOOTER & MOBILE CTA -->
     <div style="border-top: 2px dashed var(--line); padding-top: 20px;">
       <div class="container">
         <span class="pill" style="margin-bottom: 10px;">Componentes: Footer.astro & MobileCTA.astro</span>
