@@ -57,7 +57,10 @@ const linkOffer = isRu ? '/ru/destrave#offer' : isEn ? '/en/destrave#offer' : '/
   <div class="container nav-inner">
     <a class="brand" href={homeTarget} aria-label="Natalia Fernandes English">
       <span class="brand-mark">NF</span>
-      <span>Natalia Fernandes English</span>
+      <span class="brand-text">
+        <span class="brand-name">Natalia Fernandes</span>
+        <span class="brand-tag">English</span>
+      </span>
     </a>
 
     <!-- Desktop Navigation Links -->
@@ -137,7 +140,7 @@ const linkOffer = isRu ? '/ru/destrave#offer' : isEn ? '/en/destrave#offer' : '/
         {ctaText}
       </a>
 
-      <!-- Botão Hambúrguer Mobile -->
+      <!-- Botão Hambúrguer Mobile (Apenas os 3 traços) -->
       <button
         type="button"
         class="mobile-menu-toggle"
@@ -151,7 +154,6 @@ const linkOffer = isRu ? '/ru/destrave#offer' : isEn ? '/en/destrave#offer' : '/
           <span class="bar bar-mid"></span>
           <span class="bar bar-bot"></span>
         </span>
-        <span class="menu-label">{isRu ? "Меню" : isEn ? "Menu" : "Menu"}</span>
       </button>
     </div>
   </div>
@@ -172,10 +174,10 @@ const linkOffer = isRu ? '/ru/destrave#offer' : isEn ? '/en/destrave#offer' : '/
     <div class="mobile-drawer-header">
       <a class="brand" href={homeTarget} aria-label="Natalia Fernandes English">
         <span class="brand-mark">NF</span>
-        <div class="brand-text-col">
-          <strong>Natalia Fernandes</strong>
-          <small>English Mentoring</small>
-        </div>
+        <span class="brand-text">
+          <span class="brand-name">Natalia Fernandes</span>
+          <span class="brand-tag">English Mentoring</span>
+        </span>
       </a>
       <button
         type="button"
@@ -502,6 +504,12 @@ const linkOffer = isRu ? '/ru/destrave#offer' : isEn ? '/en/destrave#offer' : '/
 
     if (!toggleBtn || !drawer || !backdrop) return;
 
+    // Move backdrop and drawer directly into document.body so they are not trapped inside header's backdrop-filter stacking context
+    if (drawer.parentElement !== document.body) {
+      document.body.appendChild(backdrop);
+      document.body.appendChild(drawer);
+    }
+
     function openMenu() {
       drawer.classList.add('is-open');
       backdrop.classList.add('is-open');
@@ -523,7 +531,8 @@ const linkOffer = isRu ? '/ru/destrave#offer' : isEn ? '/en/destrave#offer' : '/
     }
 
     // Toggle click
-    toggleBtn.addEventListener('click', (e) => {
+    toggleBtn.onclick = (e) => {
+      e.preventDefault();
       e.stopPropagation();
       const isOpen = drawer.classList.contains('is-open');
       if (isOpen) {
@@ -531,22 +540,28 @@ const linkOffer = isRu ? '/ru/destrave#offer' : isEn ? '/en/destrave#offer' : '/
       } else {
         openMenu();
       }
-    });
+    };
 
     // Close button click
     if (closeBtn) {
-      closeBtn.addEventListener('click', closeMenu);
+      closeBtn.onclick = (e) => {
+        e.preventDefault();
+        closeMenu();
+      };
     }
 
     // Backdrop click
-    backdrop.addEventListener('click', closeMenu);
+    backdrop.onclick = (e) => {
+      e.preventDefault();
+      closeMenu();
+    };
 
     // Close on link click inside drawer
     const drawerLinks = drawer.querySelectorAll('a');
     drawerLinks.forEach(link => {
-      link.addEventListener('click', () => {
+      link.onclick = () => {
         closeMenu();
-      });
+      };
     });
 
     // Close on Escape key
@@ -559,4 +574,5 @@ const linkOffer = isRu ? '/ru/destrave#offer' : isEn ? '/en/destrave#offer' : '/
 
   setupMobileMenu();
   document.addEventListener('astro:page-load', setupMobileMenu);
+  document.addEventListener('DOMContentLoaded', setupMobileMenu);
 </script>
