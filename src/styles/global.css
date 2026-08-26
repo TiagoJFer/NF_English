@@ -650,7 +650,10 @@ body.mobile-nav-locked {
 .pill { display: inline-flex; align-items: center; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); padding: 8px 14px; color: var(--sage-dark); font-size: 13px; font-weight: 800; }
 
 /* Hero */
-.hero { position: relative; padding: 90px 0 68px; background: linear-gradient(115deg, rgba(255,250,242,.85), rgba(245,234,220,.4)); }
+.hero { position: relative; padding: 40px 0 68px; background: linear-gradient(115deg, rgba(255,250,242,.85), rgba(245,234,220,.4)); }
+.hero .hero-content > :first-child { margin-top: 0; }
+.hero .hero-title { margin-top: 0; }
+.hero .eyebrow { margin-bottom: 16px; }
 .hero.hero-destrave {
   background: linear-gradient(135deg, #fffaf2 0%, #fbf4ea 45%, #eef3ef 100%);
   border-bottom: 1px solid var(--line);
