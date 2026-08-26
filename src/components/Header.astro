@@ -1,12 +1,12 @@
 ---
 interface Props {
-  mode?: 'institutional' | 'destrave';
+  mode?: 'institutional' | 'destrave' | 'index';
   lang?: 'pt' | 'en' | 'ru';
 }
 
 const { mode = 'institutional', lang = 'pt' } = Astro.props;
 
-const isInstitutional = mode === 'institutional';
+const isInstitutional = mode === 'institutional' || mode === 'index';
 const isEn = lang === 'en';
 const isRu = lang === 'ru';
 const isPt = !isEn && !isRu;
@@ -27,78 +27,105 @@ const msgDestrave = isRu
 const whatsappInstitucional = `https://wa.me/5511967165564?text=${encodeURIComponent(msgInstrucional)}`;
 const whatsappDestrave = `https://wa.me/5511967165564?text=${encodeURIComponent(msgDestrave)}`;
 
+const activeWhatsapp = isInstitutional ? whatsappInstitucional : whatsappDestrave;
+const ctaText = isInstitutional
+  ? (isRu ? 'В WhatsApp' : isEn ? 'WhatsApp Chat' : 'Falar no WhatsApp')
+  : (isRu ? 'В лист ожидания' : isEn ? 'Join Waitlist' : 'Entrar na lista');
+
 // Target URLs for language switcher
 const ptTarget = isInstitutional ? '/' : '/destrave';
 const enTarget = isInstitutional ? '/en' : '/en/destrave';
 const ruTarget = isInstitutional ? '/ru' : '/ru/destrave';
 const homeTarget = isRu ? '/ru' : isEn ? '/en' : '/';
+const destraveTarget = isRu ? '/ru/destrave' : isEn ? '/en/destrave' : '/destrave';
+
+// Section anchor links based on current language and mode
+const linkPersonalization = isRu ? '/ru#personalization' : isEn ? '/en#personalization' : '/#personalizacao';
+const linkSolutions = isRu ? '/ru#solutions' : isEn ? '/en#solutions' : '/#solucoes';
+const linkAbout = isRu ? '/ru#about' : isEn ? '/en#about' : '/#sobre';
+const linkCorporate = isRu ? '/ru#corporate' : isEn ? '/en#corporate' : '/#corporate';
+const linkFaq = isInstitutional
+  ? (isRu ? '/ru#faq' : isEn ? '/en#faq' : '/#faq')
+  : (isRu ? '/ru/destrave#faq' : isEn ? '/en/destrave#faq' : '/destrave#faq');
+
+const linkProgram = isRu ? '/ru/destrave#program' : isEn ? '/en/destrave#program' : '/destrave#programa';
+const linkTeacher = isRu ? '/ru/destrave#natalia' : isEn ? '/en/destrave#natalia' : '/destrave#natalia';
+const linkOffer = isRu ? '/ru/destrave#offer' : isEn ? '/en/destrave#offer' : '/destrave#oferta';
 ---
-<header class="nav">
+
+<header class="nav" id="site-header">
   <div class="container nav-inner">
     <a class="brand" href={homeTarget} aria-label="Natalia Fernandes English">
       <span class="brand-mark">NF</span>
       <span>Natalia Fernandes English</span>
     </a>
 
+    <!-- Desktop Navigation Links -->
     <nav class="nav-links" aria-label={isRu ? "Главное меню" : isEn ? "Main navigation" : "Navegação principal"}>
       {isInstitutional ? (
         isRu ? (
           <>
-            <a href="#personalization">Подход</a>
-            <a href="#solutions">Решения</a>
-            <a href="#about">О Наталье</a>
-            <a href="#corporate">Компаниям</a>
-            <a href="/ru/destrave" class="nav-highlight">Программа Destrave ↗</a>
-            <a href="#faq">FAQ</a>
+            <a href={linkPersonalization}>Подход</a>
+            <a href={linkSolutions}>Решения</a>
+            <a href={linkAbout}>О Наталье</a>
+            <a href={linkCorporate}>Компаниям</a>
+            <a href="/blog">Блог</a>
+            <a href={destraveTarget} class="nav-highlight">Программа Destrave ↗</a>
+            <a href={linkFaq}>FAQ</a>
           </>
         ) : isEn ? (
           <>
-            <a href="#personalization">Personalization</a>
-            <a href="#solutions">Solutions</a>
-            <a href="#about">About Natalia</a>
-            <a href="#corporate">Corporate</a>
-            <a href="/en/destrave" class="nav-highlight">Unlock Program ↗</a>
-            <a href="#faq">FAQ</a>
+            <a href={linkPersonalization}>Personalization</a>
+            <a href={linkSolutions}>Solutions</a>
+            <a href={linkAbout}>About Natalia</a>
+            <a href={linkCorporate}>Corporate</a>
+            <a href="/blog">Blog</a>
+            <a href={destraveTarget} class="nav-highlight">Unlock Program ↗</a>
+            <a href={linkFaq}>FAQ</a>
           </>
         ) : (
           <>
-            <a href="#personalizacao">Personalização</a>
-            <a href="#solucoes">Soluções</a>
-            <a href="#sobre">Sobre a Natalia</a>
+            <a href={linkPersonalization}>Personalização</a>
+            <a href={linkSolutions}>Soluções</a>
+            <a href={linkAbout}>Sobre a Natalia</a>
             <a href="/blog">Blog</a>
-            <a href="/destrave" class="nav-highlight">Programa Destrave ↗</a>
-            <a href="#faq">FAQ</a>
+            <a href={destraveTarget} class="nav-highlight">Programa Destrave ↗</a>
+            <a href={linkFaq}>FAQ</a>
           </>
         )
       ) : (
         isRu ? (
           <>
-            <a href="/ru" class="nav-back">← Главная</a>
-            <a href="#program">О программе</a>
-            <a href="#natalia">Наталья</a>
-            <a href="#offer">Группа</a>
-            <a href="#faq">FAQ</a>
+            <a href={homeTarget} class="nav-back">← Главная</a>
+            <a href={linkProgram}>О программе</a>
+            <a href={linkTeacher}>Наталья</a>
+            <a href={linkOffer}>Группа</a>
+            <a href="/blog">Блог</a>
+            <a href={linkFaq}>FAQ</a>
           </>
         ) : isEn ? (
           <>
-            <a href="/en" class="nav-back">← Home</a>
-            <a href="#program">The Program</a>
-            <a href="#natalia">Natalia</a>
-            <a href="#offer">Cohort</a>
-            <a href="#faq">FAQ</a>
+            <a href={homeTarget} class="nav-back">← Home</a>
+            <a href={linkProgram}>The Program</a>
+            <a href={linkTeacher}>Natalia</a>
+            <a href={linkOffer}>Cohort</a>
+            <a href="/blog">Blog</a>
+            <a href={linkFaq}>FAQ</a>
           </>
         ) : (
           <>
-            <a href="/" class="nav-back">← Início</a>
-            <a href="#programa">O Programa</a>
-            <a href="#natalia">Natalia</a>
-            <a href="#oferta">Turma</a>
-            <a href="#faq">FAQ</a>
+            <a href={homeTarget} class="nav-back">← Início</a>
+            <a href={linkProgram}>O Programa</a>
+            <a href={linkTeacher}>Natalia</a>
+            <a href={linkOffer}>Turma</a>
+            <a href="/blog">Blog</a>
+            <a href={linkFaq}>FAQ</a>
           </>
         )
       )}
     </nav>
 
+    <!-- Header Actions (Lang Switch, Desktop CTA & Mobile Hamburger) -->
     <div class="nav-actions">
       <div class="lang-switch" aria-label="Language selector / Выбор языка">
         <a href={ptTarget} class={isPt ? 'active' : ''} aria-current={isPt ? 'true' : undefined}>PT</a>
@@ -106,15 +133,430 @@ const homeTarget = isRu ? '/ru' : isEn ? '/en' : '/';
         <a href={ruTarget} class={isRu ? 'active' : ''} aria-current={isRu ? 'true' : undefined}>RU</a>
       </div>
 
-      {isInstitutional ? (
-        <a class="button small" href={whatsappInstitucional} target="_blank" rel="noreferrer">
-          {isRu ? 'В WhatsApp' : isEn ? 'WhatsApp Chat' : 'Falar no WhatsApp'}
-        </a>
-      ) : (
-        <a class="button small" href={whatsappDestrave} target="_blank" rel="noreferrer">
-          {isRu ? 'В лист ожидания' : isEn ? 'Join Waitlist' : 'Entrar na lista'}
-        </a>
-      )}
+      <a class="button small nav-cta-desktop" href={activeWhatsapp} target="_blank" rel="noreferrer">
+        {ctaText}
+      </a>
+
+      <!-- Botão Hambúrguer Mobile -->
+      <button
+        type="button"
+        class="mobile-menu-toggle"
+        id="mobile-menu-toggle"
+        aria-label={isRu ? "Открыть меню" : isEn ? "Open navigation menu" : "Abrir menu de navegação"}
+        aria-expanded="false"
+        aria-controls="mobile-nav-drawer"
+      >
+        <span class="bar-box" aria-hidden="true">
+          <span class="bar bar-top"></span>
+          <span class="bar bar-mid"></span>
+          <span class="bar bar-bot"></span>
+        </span>
+        <span class="menu-label">{isRu ? "Меню" : isEn ? "Menu" : "Menu"}</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Backdrop do Menu Mobile -->
+  <div class="mobile-nav-backdrop" id="mobile-nav-backdrop" aria-hidden="true"></div>
+
+  <!-- Drawer Lateral / Menu Mobile -->
+  <div
+    class="mobile-nav-drawer"
+    id="mobile-nav-drawer"
+    role="dialog"
+    aria-modal="true"
+    aria-label={isRu ? "Мобильное меню" : isEn ? "Mobile menu" : "Menu de navegação mobile"}
+    aria-hidden="true"
+  >
+    <!-- Topo do Drawer -->
+    <div class="mobile-drawer-header">
+      <a class="brand" href={homeTarget} aria-label="Natalia Fernandes English">
+        <span class="brand-mark">NF</span>
+        <div class="brand-text-col">
+          <strong>Natalia Fernandes</strong>
+          <small>English Mentoring</small>
+        </div>
+      </a>
+      <button
+        type="button"
+        class="mobile-drawer-close"
+        id="mobile-drawer-close"
+        aria-label={isRu ? "Закрыть меню" : isEn ? "Close menu" : "Fechar menu"}
+      >
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Conteúdo do Drawer -->
+    <div class="mobile-drawer-body">
+      <!-- Navegação Principal Completa: Todas as Seções, Blog e Destrave -->
+      <div class="mobile-menu-section">
+        <div class="mobile-section-heading">
+          <span class="dot"></span>
+          <span>{isRu ? "Навигация по сайту" : isEn ? "Site Navigation" : "Menu do Site"}</span>
+        </div>
+
+        <nav class="mobile-nav-list" aria-label="Links principais">
+          {isInstitutional ? (
+            isRu ? (
+              <>
+                <a href={linkPersonalization} class="mobile-nav-item">
+                  <span class="item-icon">🎯</span>
+                  <span class="item-label">Подход & Персонализация</span>
+                  <span class="item-arrow">›</span>
+                </a>
+                <a href={linkSolutions} class="mobile-nav-item">
+                  <span class="item-icon">💼</span>
+                  <span class="item-label">Решения & Форматы</span>
+                  <span class="item-arrow">›</span>
+                </a>
+                <a href={linkAbout} class="mobile-nav-item">
+                  <span class="item-icon">👩‍🏫</span>
+                  <span class="item-label">О Наталье Фернандес</span>
+                  <span class="item-arrow">›</span>
+                </a>
+                <a href={linkCorporate} class="mobile-nav-item">
+                  <span class="item-icon">🏢</span>
+                  <span class="item-label">Корпоративным клиентам</span>
+                  <span class="item-arrow">›</span>
+                </a>
+                <!-- Blog Highlight -->
+                <a href="/blog" class="mobile-nav-item mobile-item-highlight gold">
+                  <span class="item-icon">✍️</span>
+                  <div class="item-label-group">
+                    <span class="item-label"><strong>Блог NF English</strong></span>
+                    <span class="item-badge gold">Статьи</span>
+                  </div>
+                  <span class="item-arrow">→</span>
+                </a>
+                <!-- Destrave Highlight -->
+                <a href={destraveTarget} class="mobile-nav-item mobile-item-highlight brand">
+                  <span class="item-icon">🚀</span>
+                  <div class="item-label-group">
+                    <span class="item-label"><strong>Программа Destrave</strong></span>
+                    <span class="item-badge brand">Курс</span>
+                  </div>
+                  <span class="item-arrow">→</span>
+                </a>
+                <a href={linkFaq} class="mobile-nav-item">
+                  <span class="item-icon">❓</span>
+                  <span class="item-label">Вопросы и ответы (FAQ)</span>
+                  <span class="item-arrow">›</span>
+                </a>
+              </>
+            ) : isEn ? (
+              <>
+                <a href={linkPersonalization} class="mobile-nav-item">
+                  <span class="item-icon">🎯</span>
+                  <span class="item-label">Personalized Approach</span>
+                  <span class="item-arrow">›</span>
+                </a>
+                <a href={linkSolutions} class="mobile-nav-item">
+                  <span class="item-icon">💼</span>
+                  <span class="item-label">Tailored Solutions</span>
+                  <span class="item-arrow">›</span>
+                </a>
+                <a href={linkAbout} class="mobile-nav-item">
+                  <span class="item-icon">👩‍🏫</span>
+                  <span class="item-label">About Natalia Fernandes</span>
+                  <span class="item-arrow">›</span>
+                </a>
+                <a href={linkCorporate} class="mobile-nav-item">
+                  <span class="item-icon">🏢</span>
+                  <span class="item-label">Corporate Programs</span>
+                  <span class="item-arrow">›</span>
+                </a>
+                <!-- Blog Highlight -->
+                <a href="/blog" class="mobile-nav-item mobile-item-highlight gold">
+                  <span class="item-icon">✍️</span>
+                  <div class="item-label-group">
+                    <span class="item-label"><strong>Blog NF English</strong></span>
+                    <span class="item-badge gold">Articles</span>
+                  </div>
+                  <span class="item-arrow">→</span>
+                </a>
+                <!-- Destrave Highlight -->
+                <a href={destraveTarget} class="mobile-nav-item mobile-item-highlight brand">
+                  <span class="item-icon">🚀</span>
+                  <div class="item-label-group">
+                    <span class="item-label"><strong>Unlock Your English</strong></span>
+                    <span class="item-badge brand">Program</span>
+                  </div>
+                  <span class="item-arrow">→</span>
+                </a>
+                <a href={linkFaq} class="mobile-nav-item">
+                  <span class="item-icon">❓</span>
+                  <span class="item-label">FAQ & Inquiries</span>
+                  <span class="item-arrow">›</span>
+                </a>
+              </>
+            ) : (
+              <>
+                <a href={linkPersonalization} class="mobile-nav-item">
+                  <span class="item-icon">🎯</span>
+                  <span class="item-label">Personalização & Metodologia</span>
+                  <span class="item-arrow">›</span>
+                </a>
+                <a href={linkSolutions} class="mobile-nav-item">
+                  <span class="item-icon">💼</span>
+                  <span class="item-label">Soluções & Formatos</span>
+                  <span class="item-arrow">›</span>
+                </a>
+                <a href={linkAbout} class="mobile-nav-item">
+                  <span class="item-icon">👩‍🏫</span>
+                  <span class="item-label">Sobre a Natalia Fernandes</span>
+                  <span class="item-arrow">›</span>
+                </a>
+                <!-- Blog Highlight -->
+                <a href="/blog" class="mobile-nav-item mobile-item-highlight gold">
+                  <span class="item-icon">✍️</span>
+                  <div class="item-label-group">
+                    <span class="item-label"><strong>Blog NF English</strong></span>
+                    <span class="item-badge gold">Artigos & Dicas</span>
+                  </div>
+                  <span class="item-arrow">→</span>
+                </a>
+                <!-- Destrave Highlight -->
+                <a href={destraveTarget} class="mobile-nav-item mobile-item-highlight brand">
+                  <span class="item-icon">🚀</span>
+                  <div class="item-label-group">
+                    <span class="item-label"><strong>Programa Destrave ↗</strong></span>
+                    <span class="item-badge brand">Mentoria</span>
+                  </div>
+                  <span class="item-arrow">→</span>
+                </a>
+                <a href={linkFaq} class="mobile-nav-item">
+                  <span class="item-icon">❓</span>
+                  <span class="item-label">Dúvidas Frequentes (FAQ)</span>
+                  <span class="item-arrow">›</span>
+                </a>
+              </>
+            )
+          ) : (
+            isRu ? (
+              <>
+                <a href={homeTarget} class="mobile-nav-item">
+                  <span class="item-icon">🏛️</span>
+                  <span class="item-label">← Главный сайт NF</span>
+                  <span class="item-arrow">›</span>
+                </a>
+                <a href={linkProgram} class="mobile-nav-item">
+                  <span class="item-icon">📋</span>
+                  <span class="item-label">О программе</span>
+                  <span class="item-arrow">›</span>
+                </a>
+                <a href={linkTeacher} class="mobile-nav-item">
+                  <span class="item-icon">👩‍🏫</span>
+                  <span class="item-label">Преподаватель Наталья</span>
+                  <span class="item-arrow">›</span>
+                </a>
+                <a href={linkOffer} class="mobile-nav-item">
+                  <span class="item-icon">👥</span>
+                  <span class="item-label">Группа & Стоимость</span>
+                  <span class="item-arrow">›</span>
+                </a>
+                <!-- Blog Highlight -->
+                <a href="/blog" class="mobile-nav-item mobile-item-highlight gold">
+                  <span class="item-icon">✍️</span>
+                  <div class="item-label-group">
+                    <span class="item-label"><strong>Блог NF English</strong></span>
+                    <span class="item-badge gold">Статьи</span>
+                  </div>
+                  <span class="item-arrow">→</span>
+                </a>
+                <a href={linkFaq} class="mobile-nav-item">
+                  <span class="item-icon">❓</span>
+                  <span class="item-label">FAQ</span>
+                  <span class="item-arrow">›</span>
+                </a>
+              </>
+            ) : isEn ? (
+              <>
+                <a href={homeTarget} class="mobile-nav-item">
+                  <span class="item-icon">🏛️</span>
+                  <span class="item-label">← NF Main Website</span>
+                  <span class="item-arrow">›</span>
+                </a>
+                <a href={linkProgram} class="mobile-nav-item">
+                  <span class="item-icon">📋</span>
+                  <span class="item-label">The Program</span>
+                  <span class="item-arrow">›</span>
+                </a>
+                <a href={linkTeacher} class="mobile-nav-item">
+                  <span class="item-icon">👩‍🏫</span>
+                  <span class="item-label">About Natalia</span>
+                  <span class="item-arrow">›</span>
+                </a>
+                <a href={linkOffer} class="mobile-nav-item">
+                  <span class="item-icon">👥</span>
+                  <span class="item-label">Cohort & Pricing</span>
+                  <span class="item-arrow">›</span>
+                </a>
+                <!-- Blog Highlight -->
+                <a href="/blog" class="mobile-nav-item mobile-item-highlight gold">
+                  <span class="item-icon">✍️</span>
+                  <div class="item-label-group">
+                    <span class="item-label"><strong>Blog NF English</strong></span>
+                    <span class="item-badge gold">Articles</span>
+                  </div>
+                  <span class="item-arrow">→</span>
+                </a>
+                <a href={linkFaq} class="mobile-nav-item">
+                  <span class="item-icon">❓</span>
+                  <span class="item-label">FAQ</span>
+                  <span class="item-arrow">›</span>
+                </a>
+              </>
+            ) : (
+              <>
+                <a href={homeTarget} class="mobile-nav-item">
+                  <span class="item-icon">🏛️</span>
+                  <span class="item-label">← Site Institucional NF</span>
+                  <span class="item-arrow">›</span>
+                </a>
+                <a href={linkProgram} class="mobile-nav-item">
+                  <span class="item-icon">📋</span>
+                  <span class="item-label">O Programa</span>
+                  <span class="item-arrow">›</span>
+                </a>
+                <a href={linkTeacher} class="mobile-nav-item">
+                  <span class="item-icon">👩‍🏫</span>
+                  <span class="item-label">Sobre a Natalia</span>
+                  <span class="item-arrow">›</span>
+                </a>
+                <a href={linkOffer} class="mobile-nav-item">
+                  <span class="item-icon">👥</span>
+                  <span class="item-label">Turma & Vagas</span>
+                  <span class="item-arrow">›</span>
+                </a>
+                <!-- Blog Highlight -->
+                <a href="/blog" class="mobile-nav-item mobile-item-highlight gold">
+                  <span class="item-icon">✍️</span>
+                  <div class="item-label-group">
+                    <span class="item-label"><strong>Blog NF English</strong></span>
+                    <span class="item-badge gold">Artigos & Dicas</span>
+                  </div>
+                  <span class="item-arrow">→</span>
+                </a>
+                <a href={linkFaq} class="mobile-nav-item">
+                  <span class="item-icon">❓</span>
+                  <span class="item-label">Dúvidas Frequentes (FAQ)</span>
+                  <span class="item-arrow">›</span>
+                </a>
+              </>
+            )
+          )}
+        </nav>
+      </div>
+
+      <!-- Idioma no Drawer -->
+      <div class="mobile-menu-section">
+        <div class="mobile-section-heading">
+          <span class="dot"></span>
+          <span>{isRu ? "Язык сайта" : isEn ? "Language" : "Idioma do Site"}</span>
+        </div>
+        <div class="mobile-lang-grid">
+          <a href={ptTarget} class={`mobile-lang-card ${isPt ? 'active' : ''}`}>
+            <span class="lang-flag">🇧🇷</span>
+            <span class="lang-name">Português</span>
+            <span class="lang-code">PT</span>
+          </a>
+          <a href={enTarget} class={`mobile-lang-card ${isEn ? 'active' : ''}`}>
+            <span class="lang-flag">🇺🇸</span>
+            <span class="lang-name">English</span>
+            <span class="lang-code">EN</span>
+          </a>
+          <a href={ruTarget} class={`mobile-lang-card ${isRu ? 'active' : ''}`}>
+            <span class="lang-flag">🇷🇺</span>
+            <span class="lang-name">Русский</span>
+            <span class="lang-code">RU</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rodapé do Drawer com CTA -->
+    <div class="mobile-drawer-footer">
+      <a class="button gold full" href={activeWhatsapp} target="_blank" rel="noreferrer">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;">
+          <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+        </svg>
+        {ctaText}
+      </a>
+      <p class="drawer-footer-tagline">
+        {isRu ? 'Индивидуальный английский для лидеров и экспертов' : isEn ? 'Tailored English for leaders and executives' : 'Inglês sob medida para líderes e profissionais'}
+      </p>
     </div>
   </div>
 </header>
+
+<script>
+  function setupMobileMenu() {
+    const toggleBtn = document.getElementById('mobile-menu-toggle');
+    const closeBtn = document.getElementById('mobile-drawer-close');
+    const backdrop = document.getElementById('mobile-nav-backdrop');
+    const drawer = document.getElementById('mobile-nav-drawer');
+
+    if (!toggleBtn || !drawer || !backdrop) return;
+
+    function openMenu() {
+      drawer.classList.add('is-open');
+      backdrop.classList.add('is-open');
+      toggleBtn.classList.add('is-active');
+      toggleBtn.setAttribute('aria-expanded', 'true');
+      drawer.setAttribute('aria-hidden', 'false');
+      backdrop.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('mobile-nav-locked');
+    }
+
+    function closeMenu() {
+      drawer.classList.remove('is-open');
+      backdrop.classList.remove('is-open');
+      toggleBtn.classList.remove('is-active');
+      toggleBtn.setAttribute('aria-expanded', 'false');
+      drawer.setAttribute('aria-hidden', 'true');
+      backdrop.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('mobile-nav-locked');
+    }
+
+    // Toggle click
+    toggleBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = drawer.classList.contains('is-open');
+      if (isOpen) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+
+    // Close button click
+    if (closeBtn) {
+      closeBtn.addEventListener('click', closeMenu);
+    }
+
+    // Backdrop click
+    backdrop.addEventListener('click', closeMenu);
+
+    // Close on link click inside drawer
+    const drawerLinks = drawer.querySelectorAll('a');
+    drawerLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        closeMenu();
+      });
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && drawer.classList.contains('is-open')) {
+        closeMenu();
+      }
+    });
+  }
+
+  setupMobileMenu();
+  document.addEventListener('astro:page-load', setupMobileMenu);
+</script>
