@@ -6,6 +6,8 @@ interface Props {
   ctaHref?: string;
   authorName?: string;
   authorRole?: string;
+  imageSrc?: string;
+  imageWebpSrc?: string;
 }
 
 const {
@@ -14,21 +16,26 @@ const {
   ctaText = 'Conversar com a Natalia no WhatsApp',
   ctaHref = 'https://wa.me/5511967165564?text=Ola%20Natalia,%20li%20seu%20artigo%20no%20blog%20e%20gostaria%20de%20conversar%20sobre%20as%20aulas.',
   authorName = 'Natalia Fernandes',
-  authorRole = 'Fundadora & Mentora de Inglês'
+  authorRole = 'Fundadora & Mentora de Inglês',
+  imageSrc = '/Nath.jpg',
+  imageWebpSrc = '/Nath.webp'
 } = Astro.props;
 ---
 
 <div class="article-cta-box">
   <div class="article-cta-inner">
     <div class="article-author-badge">
-      <img
-        src="/Nath.jpg"
-        alt={authorName}
-        class="author-avatar"
-        width="64"
-        height="64"
-        loading="lazy"
-      />
+      <picture class="author-avatar-picture">
+        {imageWebpSrc && <source srcset={imageWebpSrc} type="image/webp" />}
+        <img
+          src={imageWebpSrc || imageSrc}
+          alt={authorName}
+          class="author-avatar"
+          width="56"
+          height="56"
+          loading="lazy"
+        />
+      </picture>
       <div>
         <strong class="author-name">{authorName}</strong>
         <span class="author-role">{authorRole}</span>
@@ -70,6 +77,11 @@ const {
     gap: 14px;
   }
 
+  .author-avatar-picture {
+    display: inline-flex;
+    flex-shrink: 0;
+  }
+
   .author-avatar {
     width: 56px;
     height: 56px;
@@ -77,6 +89,7 @@ const {
     object-fit: cover;
     border: 2px solid var(--brand);
     box-shadow: var(--shadow-sm);
+    display: block;
   }
 
   .author-name {
