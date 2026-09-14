@@ -73,3 +73,19 @@ A rota [`/templates`](file:///templates) (`src/pages/templates.astro`) é o show
 - Hospedagem: **Cloudflare Pages** (deploy automático via GitHub Actions / Git Push na branch `main`).
 - Build command: `npm run build` (saída em `dist`).
 - Teste local antes de qualquer commit: `npm run build`.
+
+---
+
+## 📊 Governança de Projetos & Sincronização com o Dashboard
+
+### Regra Obrigatória para Agentes de IA e Desenvolvedores:
+Qualquer assistente de inteligência artificial (Antigravity, Claude Code, Cursor, Copilot) ou desenvolvedor atuando neste repositório ou em produtos correlatos da NF English (incluindo o ecossistema Low Ticket e a Área de Membros) **DEVE OBRIGATORIAMENTE LER O DASHBOARD DO PROJETO** no início de cada sessão para saber exatamente onde estamos e quais são os próximos passos:
+
+- **Dashboard Oficial do Projeto (+360 Mapas Mentais / Área de Membros)**:
+  - Arquivo: [`/Users/tiagofernandes/Low Ticket/produtos/mapas-mentais-ingles/DASHBOARD.md`](file:///Users/tiagofernandes/Low%20Ticket/produtos/mapas-mentais-ingles/DASHBOARD.md)
+  - Plano Mestre de Arquitetura: [`/Users/tiagofernandes/Low Ticket/produtos/mapas-mentais-ingles/plano-portal-membros-mapas-mentais.md`](file:///Users/tiagofernandes/Low%20Ticket/produtos/mapas-mentais-ingles/plano-portal-membros-mapas-mentais.md)
+
+### Protocolo de Trabalho com o Dashboard:
+1. **Leitura Obrigatória no Início**: Antes de planejar, executar ou sugerir ações, o agente deve ler o `DASHBOARD.md` para identificar a fase atual, os entregáveis já concluídos e o backlog de tarefas imediatas.
+2. **Centralização de Melhorias e Sugestões**: Toda e qualquer melhoria, sugestão de funcionalidade, otimização visual (UI/UX), estratégia de conversão/LTV ou refinamento de código **deve ser obrigatoriamente documentada na seção "Banco de Melhorias & Sugestões Contínuas" do `DASHBOARD.md`**.
+3. **Atualização Contínua de Status**: Ao concluir ou avançar em qualquer tarefa, o agente/desenvolvedor deve atualizar o status das fases e marcar as caixas de seleção no `DASHBOARD.md`, mantendo o histórico de decisões e logs em dia.
