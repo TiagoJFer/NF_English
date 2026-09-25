@@ -1,0 +1,504 @@
+---
+interface HighlightItem {
+  icon: string;
+  title: string;
+  description: string;
+}
+
+interface Props {
+  id?: string;
+  isBand?: boolean;
+  eyebrow?: string;
+  title?: string;
+  description?: string;
+  highlights?: HighlightItem[];
+  originalPrice?: string;
+  currentPrice?: string;
+  priceNote?: string;
+  ctaText?: string;
+  ctaHref?: string;
+  ctaSubtext?: string;
+  badgeTop?: string;
+  badgeBottom?: string;
+  imageSrc?: string;
+  imageAlt?: string;
+  rating?: string;
+  reviewCount?: string;
+  guaranteeText?: string;
+}
+
+const {
+  id = 'infograficos',
+  isBand = false,
+  eyebrow = 'Material Didático & Autoestudo',
+  title = '+360 Infográficos de Inglês: Aprenda e Revise sem Decoreba',
+  description = 'O acervo visual definitivo do básico ao avançado (A1 ao C2). Chega de apostilas pesadas e regras abstratas: cada infográfico conecta ideias, cores e vocabulário para fixar o inglês na sua mente em revisões de apenas 3 minutos.',
+  highlights = [
+    {
+      icon: '🧠',
+      title: 'Ilustrações Mnemônicas',
+      description: 'Memorize até 60.000x mais rápido do que texto puro com esquemas visuais intuitivos.'
+    },
+    {
+      icon: '📱',
+      title: 'Celular, Tablet ou PC',
+      description: 'PDFs vetoriais em altíssima definição otimizados para leitura nítida e confortável.'
+    },
+    {
+      icon: '🖨️',
+      title: '100% Pronto para Imprimir',
+      description: 'Diagramação no padrão A4 perfeita para encadernar ou plastificar sua apostila física.'
+    },
+    {
+      icon: '⚡',
+      title: 'Acesso Vitalício no Drive',
+      description: 'Pagamento único, sem mensalidades. Link liberado no seu e-mail imediatamente após a compra.'
+    }
+  ],
+  originalPrice = 'R$ 97,00',
+  currentPrice = 'R$ 10,00',
+  priceNote = 'pagamento único • sem mensalidade',
+  ctaText = 'Quero Garantir por Apenas R$ 10,00 ↗',
+  ctaHref = '/codigo',
+  ctaSubtext = 'Acesso Imediato no seu E-mail • Pix ou Cartão',
+  badgeTop = '⚡ Acesso Vitalício no Google Drive',
+  badgeBottom = '⭐ A1 ao C2 • Do Básico ao Domínio Nativo',
+  imageSrc = '/infographics-mockup.webp',
+  imageAlt = 'Mockup 3D +360 Infográficos de Inglês NF English em celular, tablet e computador',
+  rating = '4.9/5.0',
+  reviewCount = '+1.450 alunos ativos',
+  guaranteeText = '7 Dias de Garantia Incondicional'
+} = Astro.props;
+---
+
+<section id={id} class:list={['infographics-section', { band: isBand }]}>
+  <div class="container">
+    <div class="spotlight-card">
+      <div class="spotlight-grid">
+        <!-- Visual Column / Mockup -->
+        <div class="spotlight-visual">
+          <div class="spotlight-mockup-wrapper">
+            {badgeTop && (
+              <div class="spotlight-float-badge top-badge">
+                <span class="badge-dot"></span>
+                <span>{badgeTop}</span>
+              </div>
+            )}
+            
+            <a href={ctaHref} class="mockup-link" aria-label="Ver detalhes dos +360 Infográficos de Inglês">
+              <picture>
+                <source srcset={imageSrc} type="image/webp" />
+                <img
+                  src={imageSrc}
+                  alt={imageAlt}
+                  width="700"
+                  height="467"
+                  loading="lazy"
+                  decoding="async"
+                  class="mockup-img"
+                />
+              </picture>
+            </a>
+
+            {badgeBottom && (
+              <div class="spotlight-float-badge bottom-badge">
+                <span class="badge-star">★</span>
+                <span>{badgeBottom}</span>
+              </div>
+            )}
+          </div>
+        </div>
+
+        <!-- Content Column -->
+        <div class="spotlight-content">
+          {eyebrow && (
+            <div class="eyebrow gold">
+              <span class="dot"></span> {eyebrow}
+            </div>
+          )}
+
+          <h2 class="spotlight-title" set:html={title} />
+          <p class="spotlight-description" set:html={description} />
+
+          <!-- Highlights Grid -->
+          <div class="spotlight-highlights">
+            {highlights.map((item) => (
+              <div class="highlight-item">
+                <span class="highlight-icon" aria-hidden="true">{item.icon}</span>
+                <div class="highlight-text">
+                  <strong>{item.title}</strong>
+                  <span>{item.description}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <!-- Offer & CTA Container -->
+          <div class="spotlight-action-box">
+            <div class="price-row">
+              <div class="price-info">
+                {originalPrice && (
+                  <span class="price-original">De {originalPrice}</span>
+                )}
+                <div class="price-main">
+                  <span class="price-label">Por apenas</span>
+                  <strong class="price-value">{currentPrice}</strong>
+                  {priceNote && <span class="price-note">({priceNote})</span>}
+                </div>
+              </div>
+            </div>
+
+            <div class="cta-wrapper">
+              <a href={ctaHref} class="button gold spotlight-btn">
+                <span>{ctaText}</span>
+              </a>
+              {ctaSubtext && (
+                <span class="cta-microcopy">{ctaSubtext}</span>
+              )}
+            </div>
+
+            <!-- Social Proof & Trust Badges -->
+            <div class="spotlight-trust-bar">
+              <div class="trust-item">
+                <span class="stars" aria-hidden="true">★★★★★</span>
+                <span><strong>{rating}</strong> ({reviewCount})</span>
+              </div>
+              <span class="trust-divider" aria-hidden="true">•</span>
+              <div class="trust-item">
+                <span class="shield-icon" aria-hidden="true">🛡️</span>
+                <span>{guaranteeText}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .infographics-section {
+    padding: 72px 0;
+  }
+
+  .spotlight-card {
+    background: linear-gradient(135deg, var(--surface) 0%, var(--surface-soft) 100%);
+    border: 1px solid rgba(241, 189, 97, 0.35);
+    border-radius: 4px 32px 4px 32px;
+    padding: 48px 40px;
+    box-shadow: 0 16px 40px -12px rgba(53, 72, 61, 0.08), 0 0 0 1px rgba(255, 255, 255, 0.8) inset;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .spotlight-card::before {
+    content: '';
+    position: absolute;
+    top: -120px;
+    right: -120px;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(241, 189, 97, 0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .spotlight-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: 48px;
+    align-items: center;
+  }
+
+  /* Visual Column */
+  .spotlight-visual {
+    position: relative;
+  }
+
+  .spotlight-mockup-wrapper {
+    position: relative;
+    border-radius: 4px 24px 4px 24px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid var(--line);
+    box-shadow: 0 20px 48px -16px rgba(53, 72, 61, 0.14);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .spotlight-mockup-wrapper:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 24px 56px -16px rgba(53, 72, 61, 0.2);
+  }
+
+  .mockup-link {
+    display: block;
+    overflow: hidden;
+    border-radius: 4px 18px 4px 18px;
+  }
+
+  .mockup-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  .mockup-link:hover .mockup-img {
+    transform: scale(1.02);
+  }
+
+  /* Badges Flutuantes */
+  .spotlight-float-badge {
+    position: absolute;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 700;
+    box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.12);
+    z-index: 2;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .top-badge {
+    top: -12px;
+    right: 12px;
+    background: var(--sage-dark);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .badge-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--gold);
+    box-shadow: 0 0 8px var(--gold);
+    display: inline-block;
+  }
+
+  .bottom-badge {
+    bottom: -14px;
+    left: 12px;
+    background: #ffffff;
+    color: var(--sage-dark);
+    border: 1px solid var(--gold);
+  }
+
+  .badge-star {
+    color: #f59e0b;
+    font-size: 14px;
+  }
+
+  /* Content Column */
+  .spotlight-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .spotlight-title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(26px, 3.2vw, 36px);
+    line-height: 1.2;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .spotlight-description {
+    font-size: 15.5px;
+    line-height: 1.6;
+    color: var(--muted);
+    margin: 0;
+  }
+
+  /* Highlights */
+  .spotlight-highlights {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin: 8px 0;
+  }
+
+  .highlight-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 12px 14px;
+    border-radius: 4px 14px 4px 14px;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+  }
+
+  .highlight-icon {
+    font-size: 20px;
+    line-height: 1;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .highlight-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .highlight-text strong {
+    font-size: 14px;
+    color: var(--ink);
+    font-weight: 700;
+  }
+
+  .highlight-text span {
+    font-size: 12.5px;
+    line-height: 1.4;
+    color: var(--muted);
+  }
+
+  /* Action Box */
+  .spotlight-action-box {
+    margin-top: 10px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+  }
+
+  .price-original {
+    font-size: 14px;
+    color: #8c9b90;
+    text-decoration: line-through;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .price-main {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .price-label {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .price-value {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(28px, 4vw, 36px);
+    font-weight: 800;
+    color: var(--brand);
+    line-height: 1;
+  }
+
+  .price-note {
+    font-size: 13.5px;
+    color: var(--muted);
+  }
+
+  .cta-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+  }
+
+  .spotlight-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 16px 32px;
+    box-shadow: 0 8px 24px -4px rgba(241, 189, 97, 0.45);
+    transition: all 0.25s ease;
+  }
+
+  .spotlight-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px -4px rgba(241, 189, 97, 0.6);
+  }
+
+  .cta-microcopy {
+    font-size: 12.5px;
+    color: var(--muted);
+    padding-left: 2px;
+  }
+
+  .spotlight-trust-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 13px;
+    color: var(--muted);
+    flex-wrap: wrap;
+  }
+
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .stars {
+    color: #f59e0b;
+    letter-spacing: 1px;
+    font-size: 13px;
+  }
+
+  .trust-divider {
+    color: var(--line);
+  }
+
+  /* Responsividade */
+  @media (max-width: 991px) {
+    .spotlight-grid {
+      grid-template-columns: 1fr;
+      gap: 36px;
+    }
+
+    .spotlight-card {
+      padding: 36px 24px;
+    }
+
+    .spotlight-visual {
+      max-width: 540px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .spotlight-btn {
+      width: 100%;
+    }
+
+    .cta-wrapper {
+      width: 100%;
+      align-items: center;
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .spotlight-highlights {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .spotlight-float-badge {
+      font-size: 11.5px;
+      padding: 6px 10px;
+    }
+  }
+</style>

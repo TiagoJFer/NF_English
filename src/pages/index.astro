@@ -14,6 +14,7 @@ import TeacherSection from '../components/TeacherSection.astro';
 import BlogPreviewSection from '../components/BlogPreviewSection.astro';
 import FAQSection from '../components/FAQSection.astro';
 import CTABanner from '../components/CTABanner.astro';
+import InfographicsSpotlight from '../components/InfographicsSpotlight.astro';
 
 const allBlogPosts = await getCollection('blog');
 const homeBlogPosts = allBlogPosts
@@ -112,6 +113,20 @@ const solutions = [
     ctaHref: whatsappCorporate,
     ctaClass: 'secondary',
     isExternal: true
+  },
+  {
+    tag: 'Autoestudo & Material Visual',
+    title: 'Acervo +360 Infográficos',
+    desc: 'Aprenda e revise inglês do A1 ao C2 com esquemas visuais mnemônicos, sem decoreba gramatical. No celular, tablet ou pronto para imprimir.',
+    features: [
+      '+360 mapas mentais e infográficos ilustrados',
+      'Revisões rápidas de 3 a 5 minutos por dia',
+      'PDF vetorial de alta definição (A4 imprimível)',
+      'Acesso imediato e vitalício por apenas R$ 10'
+    ],
+    ctaText: 'Conhecer Acervo (R$ 10) ↗',
+    ctaHref: '/codigo',
+    ctaClass: 'gold'
   }
 ];
 
@@ -230,8 +245,29 @@ const faqs = [
         isBand={true}
         eyebrow="Nossas Soluções"
         title="O formato certo para o seu objetivo e disponibilidade"
-        description="De mentorias individuais para adultos e crianças a imersões em grupo e treinamentos para empresas."
+        description="De mentorias individuais para adultos e crianças a imersões em grupo, treinamentos corporativos e material de autoestudo."
         solutions={solutions}
+      />
+
+      <!-- VITRINE DOS INFOGRÁFICOS (LOW TICKET) -->
+      <InfographicsSpotlight
+        id="infograficos"
+        eyebrow="Material Didático & Autoestudo"
+        title="+360 Infográficos de Inglês: Aprenda e Revise sem Decoreba"
+        description="O acervo visual definitivo do básico ao avançado (A1 ao C2). Chega de apostilas pesadas e regras abstratas: cada infográfico conecta ideias, cores e vocabulário para fixar o inglês na sua mente em revisões de apenas 3 minutos."
+        originalPrice="R$ 97,00"
+        currentPrice="R$ 10,00"
+        priceNote="pagamento único • sem mensalidade"
+        ctaText="Garantir Meu Acervo por Apenas R$ 10,00 ↗"
+        ctaHref="/codigo"
+        ctaSubtext="Acesso Imediato no seu E-mail • Pix ou Cartão"
+        badgeTop="⚡ Acesso Vitalício no Google Drive"
+        badgeBottom="⭐ A1 ao C2 • Do Básico ao Domínio Nativo"
+        imageSrc="/infographics-mockup.webp"
+        imageAlt="Mockup 3D +360 Infográficos de Inglês NF English em celular, tablet e computador"
+        rating="4.9/5.0"
+        reviewCount="+1.450 alunos ativos"
+        guaranteeText="7 Dias de Garantia Incondicional"
       />
 
       <!-- AUTORIDADE -->

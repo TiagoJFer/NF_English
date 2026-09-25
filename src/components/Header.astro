@@ -91,6 +91,7 @@ const linkOffer = isRu ? '/ru/destrave#offer' : isEn ? '/en/destrave#offer' : '/
             <a href={linkPersonalization}>Personalização</a>
             <a href={linkSolutions}>Soluções</a>
             <a href={linkAbout}>Sobre a Natalia</a>
+            <a href="/codigo" class="nav-highlight gold">Infográficos (R$ 10) ↗</a>
             <a href="/blog">Blog</a>
             <a href={destraveTarget} class="nav-highlight">Programa Destrave ↗</a>
             <a href={linkFaq}>FAQ</a>
@@ -135,10 +136,6 @@ const linkOffer = isRu ? '/ru/destrave#offer' : isEn ? '/en/destrave#offer' : '/
         <a href={enTarget} class={isEn ? 'active' : ''} aria-current={isEn ? 'true' : undefined}>EN</a>
         <a href={ruTarget} class={isRu ? 'active' : ''} aria-current={isRu ? 'true' : undefined}>RU</a>
       </div>
-
-      <a class="button small nav-cta-desktop" href={activeWhatsapp} target="_blank" rel="noreferrer">
-        {ctaText}
-      </a>
 
       <!-- Botão Hambúrguer Mobile (Apenas os 3 traços) -->
       <button
@@ -311,6 +308,15 @@ const linkOffer = isRu ? '/ru/destrave#offer' : isEn ? '/en/destrave#offer' : '/
                   <span class="item-icon">👩‍🏫</span>
                   <span class="item-label">Sobre a Natalia Fernandes</span>
                   <span class="item-arrow">›</span>
+                </a>
+                <!-- Infográficos Highlight -->
+                <a href="/codigo" class="mobile-nav-item mobile-item-highlight gold">
+                  <span class="item-icon">🧠</span>
+                  <div class="item-label-group">
+                    <span class="item-label"><strong>+360 Infográficos de Inglês</strong></span>
+                    <span class="item-badge gold">R$ 10</span>
+                  </div>
+                  <span class="item-arrow">→</span>
                 </a>
                 <!-- Blog Highlight -->
                 <a href="/blog" class="mobile-nav-item mobile-item-highlight gold">
