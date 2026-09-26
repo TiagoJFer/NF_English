@@ -193,11 +193,13 @@ h1, h2, h3, h4 {
   margin: 0 auto 36px;
   border-radius: var(--radius-lg);
   overflow: visible;
+  aspect-ratio: 16 / 9;
 }
 
 .hero-mockup-img {
   width: 100%;
   height: auto;
+  aspect-ratio: 16 / 9;
   border-radius: var(--radius-lg);
   box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.15), 0 0 25px rgba(5, 150, 105, 0.08);
   border: 1px solid var(--border-color);
