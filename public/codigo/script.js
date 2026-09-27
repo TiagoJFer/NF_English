@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // 5. Preservação de Parâmetros UTM nos Botões de Checkout
-  const checkoutButtons = document.querySelectorAll('.btn-plan, .checkout-btn, #btn-comprar-agora, #btn-comprar-pro, #btn-comprar-essencial');
+  const checkoutButtons = document.querySelectorAll('.btn-plan, .checkout-btn, .cta-btn, #cta-hero, #btn-comprar-agora, #btn-comprar-pro, #btn-comprar-essencial');
   if (checkoutButtons.length > 0) {
     const urlParams = window.location.search;
     if (urlParams) {
