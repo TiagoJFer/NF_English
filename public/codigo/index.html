@@ -1151,14 +1151,11 @@
         } catch(e){}
       }
 
-      ['scroll', 'touchstart', 'mousemove', 'click', 'keydown'].forEach(function(evt) {
-        window.addEventListener(evt, initTrackers, { once: true, passive: true });
-      });
-
-      if ('requestIdleCallback' in window) {
-        window.requestIdleCallback(function() { setTimeout(initTrackers, 3000); });
+      // Disparo imediato para registrar 100% dos acessos do Meta Ads
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initTrackers);
       } else {
-        setTimeout(initTrackers, 3500);
+        initTrackers();
       }
     })();
   </script>
