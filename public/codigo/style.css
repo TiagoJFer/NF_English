@@ -193,13 +193,11 @@ h1, h2, h3, h4 {
   margin: 0 auto 36px;
   border-radius: var(--radius-lg);
   overflow: visible;
-  aspect-ratio: 16 / 9;
 }
 
 .hero-mockup-img {
   width: 100%;
   height: auto;
-  aspect-ratio: 16 / 9;
   border-radius: var(--radius-lg);
   box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.15), 0 0 25px rgba(5, 150, 105, 0.08);
   border: 1px solid var(--border-color);
@@ -236,11 +234,59 @@ h1, h2, h3, h4 {
   border-color: rgba(5, 150, 105, 0.4);
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
+  .top-bar {
+    padding: 6px 10px;
+    font-size: clamp(0.72rem, 3.4vw, 0.85rem);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .top-bar-content {
+    flex-wrap: nowrap;
+    gap: 6px;
+  }
+  .hero-section {
+    padding: 16px 0 20px;
+  }
+  .hero-title {
+    font-size: clamp(1.45rem, 5.2vw, 1.85rem);
+    margin-bottom: 8px;
+    line-height: 1.18;
+  }
+  .hero-subtitle {
+    font-size: 0.86rem;
+    margin: 0 auto 10px;
+    line-height: 1.35;
+  }
+  .hero-mockup-wrapper {
+    max-width: 280px;
+    margin: 0 auto 10px;
+  }
   .mockup-floating-badge {
-    position: static;
-    display: inline-flex;
-    margin: 8px auto;
+    display: none !important;
+  }
+  .hero-cta-immediate {
+    margin: 10px auto 14px;
+  }
+  .cta-btn {
+    padding: 13px 20px;
+    border-radius: 12px;
+  }
+  .cta-btn .btn-text {
+    font-size: 1rem;
+  }
+  .cta-btn .btn-subtext {
+    font-size: 0.74rem;
+    margin-top: 3px;
+  }
+  .social-proof-micro {
+    margin-top: 6px;
+    font-size: 0.78rem;
+  }
+  .hero-scroll-link {
+    font-size: 0.78rem;
+    margin-top: 6px;
   }
 }
 
