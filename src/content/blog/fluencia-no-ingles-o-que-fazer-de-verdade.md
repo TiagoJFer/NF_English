@@ -64,3 +64,12 @@ Por isso, na **NF English**, trabalhamos a segurança psicológica antes de qual
 Fluência não é um dom reservado para quem começou na infância. É o resultado de um método personalizado, exposição consistente e prática em um ambiente seguro.
 
 Comece hoje: escolha 3 frases conectadas com o seu trabalho ou interesses e pratique em voz alta. O seu inglês não precisa ser perfeito para transformar a sua vida profissional!
+
+---
+
+## O Método Visual para Revisões Diárias de 3 Minutos
+
+A verdadeira fluência é construída com micro-hábitos diários de exposição inteligente. Em vez de abrir livros pesados de gramática, estude e revise com o **[Acervo +360 Infográficos de Inglês](https://codigo.nfenglish.com.br)**.
+
+Cada infográfico entrega um conceito completo e ilustrado para você fixar no trajeto do trabalho ou nos intervalos da rotina. [Garantir acervo completo por R$ 37,90 ↗](https://codigo.nfenglish.com.br)
+

@@ -85,3 +85,12 @@ Falar em reuniões em inglês não é questão de talento; é treino contextuali
 Na **NF English**, nós simulamos as suas reuniões reais, analisamos suas apresentações e treinamos o seu vocabulário corporativo em um ambiente 100% seguro e sem julgamentos.
 
 Que tal destravar sua comunicação profissional para as próximas reuniões? Entre em contato e conheça nossos programas personalizados.
+
+---
+
+## Fichas Prontas para Consultar Antes de Reuniões Globais
+
+Ganhe segurança instantânea para abrir reuniões, pedir esclarecimentos e discordar com elegância. O **[Acervo +360 Infográficos de Inglês da NF English](https://codigo.nfenglish.com.br)** traz resumos visuais prontos com frases-chave para situações corporativas reais.
+
+Baixe no celular ou imprima o material completo do A1 ao C2 com pagamento único de R$ 37,90. [Conhecer o acervo completo ↗](https://codigo.nfenglish.com.br)
+

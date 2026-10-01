@@ -1,0 +1,287 @@
+---
+interface Props {
+  offerUrl?: string;
+}
+
+const {
+  offerUrl = 'https://codigo.nfenglish.com.br'
+} = Astro.props;
+---
+
+<aside class="infographics-blog-banner" aria-label="Oferta Especial do Acervo de Infográficos">
+  <div class="banner-badge-top">⚡ MATERIAL DIDÁTICO RECOMENDADO</div>
+  
+  <div class="banner-body">
+    <div class="banner-image-col">
+      <img
+        src="/infographics-mockup.webp"
+        alt="Acervo +360 Infográficos de Inglês NF English em celular e tablet"
+        width="380"
+        height="260"
+        class="banner-mockup-img"
+        loading="lazy"
+      />
+    </div>
+
+    <div class="banner-content-col">
+      <span class="banner-eyebrow">ACERVO VISUAL COMPLETO • A1 AO C2</span>
+      <h3 class="banner-title">Aprenda e Revise Inglês em Apenas 3 Minutos por Dia</h3>
+      <p class="banner-desc">
+        Cansado de esquecer regras gramaticais e travar na conversação? O <strong>Acervo +360 Infográficos de Inglês</strong> traduz conceitos complexos em esquemas ilustrados intuitivos que fixam instantaneamente na sua memória.
+      </p>
+
+      <ul class="banner-benefits">
+        <li><span>✅</span> <strong>+360 Infográficos e Mapas Mentais</strong> (Do Básico ao Domínio Nativo)</li>
+        <li><span>✅</span> <strong>Super Bônus VIP:</strong> Enciclopédia Interativa com Índice Clicável</li>
+        <li><span>✅</span> <strong>6 Bônus Livros Digitais Inclusos</strong> para Conversação e Viagens</li>
+      </ul>
+
+      <div class="banner-pricing-cta">
+        <div class="banner-pricing">
+          <span class="banner-old-price">De <s>R$ 97,00</s> por apenas</span>
+          <div class="banner-main-price">
+            <span class="currency">R$</span>
+            <span class="value">37,90</span>
+            <span class="period">pagamento único</span>
+          </div>
+        </div>
+
+        <a href={offerUrl} target="_blank" rel="noopener noreferrer" class="btn-banner-cta">
+          Garantir Meu Acervo Completo ↗
+        </a>
+      </div>
+
+      <div class="banner-trust-row">
+        <span>🛡️ 7 Dias de Garantia Incondicional</span>
+        <span>•</span>
+        <span>⚡ Acesso Vitalício Imediato no E-mail</span>
+        <span>•</span>
+        <span>⭐ 4.9/5 (+1.450 Alunos)</span>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<style>
+  .infographics-blog-banner {
+    margin: 48px 0 36px;
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    border: 2px solid #0284c7;
+    border-radius: 16px;
+    padding: 32px 28px;
+    box-shadow: 0 12px 32px -8px rgba(2, 132, 199, 0.15), 0 4px 12px rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .banner-badge-top {
+    position: absolute;
+    top: 0;
+    left: 28px;
+    background: #0284c7;
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    padding: 4px 12px;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    text-transform: uppercase;
+  }
+
+  .banner-body {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    margin-top: 10px;
+  }
+
+  .banner-image-col {
+    flex: 0 0 280px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .banner-mockup-img {
+    width: 100%;
+    height: auto;
+    max-width: 280px;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.12));
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+  }
+
+  .banner-mockup-img:hover {
+    transform: scale(1.03);
+  }
+
+  .banner-content-col {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .banner-eyebrow {
+    display: inline-block;
+    color: #0284c7;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .banner-title {
+    font-family: Fraunces, Georgia, serif;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.25;
+    color: #0f172a;
+    margin: 0 0 10px;
+  }
+
+  .banner-desc {
+    font-size: 15px;
+    line-height: 1.55;
+    color: #475569;
+    margin: 0 0 16px;
+  }
+
+  .banner-benefits {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .banner-benefits li {
+    font-size: 14px;
+    color: #1e293b;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .banner-pricing-cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    background: #f1f5f9;
+    padding: 16px 20px;
+    border-radius: 12px;
+    margin-bottom: 14px;
+  }
+
+  .banner-pricing {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .banner-old-price {
+    font-size: 12px;
+    color: #64748b;
+  }
+
+  .banner-main-price {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+  }
+
+  .banner-main-price .currency {
+    font-size: 16px;
+    font-weight: 700;
+    color: #0284c7;
+  }
+
+  .banner-main-price .value {
+    font-size: 28px;
+    font-weight: 900;
+    color: #0f172a;
+    line-height: 1;
+  }
+
+  .banner-main-price .period {
+    font-size: 12px;
+    color: #64748b;
+    font-weight: 600;
+    margin-left: 4px;
+  }
+
+  .btn-banner-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #0284c7;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 14px 24px;
+    border-radius: 10px;
+    text-decoration: none;
+    white-space: nowrap;
+    box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
+    transition: all 0.2s ease;
+  }
+
+  .btn-banner-cta:hover {
+    background: #0369a1;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(2, 132, 199, 0.45);
+  }
+
+  .banner-trust-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 12px;
+    color: #64748b;
+  }
+
+  @media (max-width: 768px) {
+    .infographics-blog-banner {
+      padding: 24px 18px;
+      margin: 36px 0 24px;
+    }
+
+    .banner-body {
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .banner-image-col {
+      flex: 0 0 auto;
+      max-width: 220px;
+      margin: 0 auto;
+    }
+
+    .banner-title {
+      font-size: 20px;
+    }
+
+    .banner-pricing-cta {
+      flex-direction: column;
+      align-items: stretch;
+      text-align: center;
+      gap: 14px;
+    }
+
+    .banner-pricing {
+      align-items: center;
+    }
+
+    .btn-banner-cta {
+      width: 100%;
+    }
+
+    .banner-trust-row {
+      justify-content: center;
+      text-align: center;
+      font-size: 11px;
+    }
+  }
+</style>

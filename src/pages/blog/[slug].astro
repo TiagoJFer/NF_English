@@ -5,6 +5,7 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import MobileCTA from '../../components/MobileCTA.astro';
 import ArticleCTA from '../../components/ArticleCTA.astro';
+import InfographicsBlogBanner from '../../components/InfographicsBlogBanner.astro';
 import BlogCard from '../../components/BlogCard.astro';
 
 export async function getStaticPaths() {
@@ -122,7 +123,10 @@ const jsonLd = {
           </div>
         )}
 
-        <!-- BOX DE CONVERSÃO / CTA -->
+        <!-- BANNER DE CONVERSÃO DOS INFOGRÁFICOS -->
+        <InfographicsBlogBanner offerUrl="https://codigo.nfenglish.com.br" />
+
+        <!-- BOX DE CONVERSÃO / CTA AULAS & MENTORIA -->
         <ArticleCTA
           ctaHref={whatsappArticle}
           ctaText="Falar com a Natalia no WhatsApp"

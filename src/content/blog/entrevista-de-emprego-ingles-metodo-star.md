@@ -105,3 +105,12 @@ Uma entrevista em inglês não é uma prova de gramática — é uma conversa de
 Na **NF English**, realizamos simulações reais de entrevistas, lapidamos o seu pitch profissional e refinamos suas respostas STAR para que você converse de igual para igual com qualquer recrutador do mundo.
 
 Quer destravar seu inglês para o mercado global? Fale com a Natalia e prepare-se com quem entende a realidade do executivo moderno.
+
+---
+
+## Prepare seu Repertório Visual para Conversas Profissionais
+
+Ter respostas estruturadas no método STAR é o grande diferencial nas entrevistas em multinacionais. Para acelerar seu domínio dos verbos de ação e conectivos em inglês, use o **[Acervo +360 Infográficos de Inglês](https://codigo.nfenglish.com.br)**.
+
+Mapas visuais rápidos de revisar no celular minutos antes da sua entrevista para garantir vocabulário sofisticado e segurança absoluta. [Garantir acervo vitalício por R$ 37,90 ↗](https://codigo.nfenglish.com.br)
+

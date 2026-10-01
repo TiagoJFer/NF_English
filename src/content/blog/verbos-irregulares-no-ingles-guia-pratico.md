@@ -85,3 +85,12 @@ Verbos que mudam a vogal interna de forma progressiva e melódica:
 1. **Crie frases sobre ontem**: Escolha 3 verbos por dia e monte frases reais sobre coisas que você fez ontem (*"Yesterday I bought a coffee and thought about my new project"*).
 2. **Fale em voz alta**: A memória muscular da boca e a audição são fundamentais para fixar as novas sonoridades.
 3. **Não trave por medo do erro**: Se você esquecer a forma irregular no meio de uma frase, use uma alternativa ou continue falando. A comunicação flui quando você mantém o ritmo!
+
+---
+
+## Memorize Verbos Irregulares com Famílias Sonoras Ilustradas
+
+Chega de sofrer tentando decorar listas alfabéticas intermináveis de verbos irregulares. No **[Acervo +360 Infográficos de Inglês da NF English](https://codigo.nfenglish.com.br)**, os verbos são agrupados visualmente por padrões sonoros e ilustrações que o cérebro grava instantaneamente.
+
+Mais de 360 infográficos em alta definição do básico ao nativo por apenas R$ 37,90. [Acessar acervo vitalício ↗](https://codigo.nfenglish.com.br)
+

@@ -114,3 +114,12 @@ Conhecer os principais falsos cognatos evita gafes no trabalho e eleva instantan
 | **Eventually** | Eventualmente | No fim das contas / Com o tempo | *Occasionally* |
 
 Guarde este guia e, sempre que tiver dúvida ao formular uma frase profissional, consulte os significados reais. Pequenos ajustes geram uma comunicação muito mais sofisticada!
+
+---
+
+## Tenha um Guia Visual dos Falsos Cognatos Sempre à Mão
+
+Falsos cognatos podem gerar constrangimentos em reuniões e e-mails de trabalho. No **[Acervo +360 Infográficos de Inglês da NF English](https://codigo.nfenglish.com.br)**, você encontra painéis visuais mnemônicos dedicados a cada grupo de *false friends*, para memorizar de primeira e nunca mais se confundir.
+
+Acesso vitalício no Google Drive ao acervo do A1 ao C2 por apenas R$ 37,90. [Acessar todos os 360 infográficos ↗](https://codigo.nfenglish.com.br)
+

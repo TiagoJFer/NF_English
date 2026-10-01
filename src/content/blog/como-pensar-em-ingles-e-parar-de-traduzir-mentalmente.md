@@ -131,3 +131,12 @@ Pensar em inglês não é um dom genético reservado para quem morou fora desde 
 O programa **Destrave seu Inglês** da **NF English** foi desenhado exatamente para quem já cansou de estudar regras soltas e precisa colocar o inglês para funcionar nas situações reais da sua vida pessoal e profissional.
 
 Quer dar o primeiro passo para destravar a sua fala de verdade? Envie uma mensagem no WhatsApp da professora Natalia e comece a praticar com quem entende as suas reais dificuldades.
+
+---
+
+## Treine seu Cérebro para Pensar em Imagens, Não em Tradução
+
+O segredo para parar de traduzir mentalmente é associar palavras e frases diretamente a conceitos visuais. É exatamente por isso que criamos o **[Acervo +360 Infográficos de Inglês da NF English](https://codigo.nfenglish.com.br)**.
+
+Com esquemas coloridos e dinâmicos que cobrem do A1 ao C2, você fixa a gramática intuitivamente em revisões de apenas 3 minutos por dia. [Garanta seu acesso vitalício ao acervo completo por apenas R$ 37,90 ↗](https://codigo.nfenglish.com.br)
+

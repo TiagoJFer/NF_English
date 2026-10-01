@@ -72,3 +72,12 @@ Para desligar o "tradutor interno", siga este exercício prático diário:
 3. **Aceite que cada língua tem sua lógica**: O inglês valoriza a brevidade e a ordem direta (Sujeito + Verbo + Objeto).
 
 Com a repetição dessas estruturas em situações reais de conversa, seu cérebro passa a responder sem passar pela ponte do português!
+
+---
+
+## Elimine Todas as Confusões Comuns com Mapas Mentais Ilustrados
+
+Não deixe pequenos vícios de tradução prejudicarem sua segurança na conversação. O **[Acervo +360 Infográficos de Inglês](https://codigo.nfenglish.com.br)** traz painéis visuais comparativos (como *make vs do*, *preposições in/on/at* e *falsos cognatos*) desenhados para fixação imediata.
+
+Tenha o mapa completo do básico ao avançado no seu bolso para consultar antes de reuniões e viagens por apenas R$ 37,90. [Conhecer o acervo completo ↗](https://codigo.nfenglish.com.br)
+

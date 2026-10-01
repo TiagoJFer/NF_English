@@ -60,3 +60,12 @@ Em vez de estudar por letra A, B, C, agrupe por momentos:
 
 > **💡 Dica da Nath:**
 > Não tente aprender 10 phrasal verbs em um dia. Escolha **dois** por semana, coloque-os em frases sobre a sua rotina de trabalho e use-os em voz alta até virarem automáticos!
+
+---
+
+## Pare de Decorar Phrasal Verbs: Aprenda com Mapas Visuais
+
+A melhor maneira de dominar *phrasal verbs* é enxergar a lógica espacial de cada partícula (*out, off, up, down*). No **[Acervo +360 Infográficos de Inglês](https://codigo.nfenglish.com.br)**, dezenas de mapas mentais ilustrados mostram essas conexões de forma 100% visual.
+
+Elimine a decoreba mecânica e aprenda inglês com leveza por apenas R$ 37,90 vitalício. [Garantir acervo completo ↗](https://codigo.nfenglish.com.br)
+
