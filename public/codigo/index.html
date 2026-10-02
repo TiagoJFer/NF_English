@@ -187,6 +187,7 @@
       <div class="preview-card">
         <div class="preview-image-box">
           <picture>
+            <source media="(max-width: 640px)" srcset="assets/meta-muse-image-generated%20(4)-mobile.webp" type="image/webp">
             <source srcset="assets/meta-muse-image-generated%20(4).webp" type="image/webp">
             <img 
               src="assets/meta-muse-image-generated (4).webp" 
@@ -1092,15 +1093,22 @@
         } catch(e){}
       }
 
-      // Disparo imediato para registrar 100% dos acessos do Meta Ads
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initTrackers);
-      } else {
+      // Inicialização inteligente: dispara no primeiro gesto do usuário ou quando o browser estiver ocioso (após LCP)
+      var interactionEvents = ['pointerdown', 'touchstart', 'scroll', 'keydown'];
+      function triggerTrackers() {
         initTrackers();
+        interactionEvents.forEach(function(e) { window.removeEventListener(e, triggerTrackers); });
+      }
+      interactionEvents.forEach(function(e) { window.addEventListener(e, triggerTrackers, { passive: true, once: true }); });
+
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(function() { setTimeout(initTrackers, 1800); }, { timeout: 3000 });
+      } else {
+        setTimeout(initTrackers, 2000);
       }
     })();
   </script>
 
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
 </body>
 </html>
