@@ -1,5 +1,6 @@
 /**
- * Script Interativo da Landing Page (Modo Claro) — +360 Mapas Mentais de Inglês
+ * Script Interativo da Landing Page — +360 Infográficos de Inglês
+ * Alta Performance, Pré-carregamento Inteligente e Abertura Instantânea de Amostras
  */
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -23,11 +24,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   tabButtons.forEach(btn => {
     btn.addEventListener('click', () => {
-      // Remove classe ativa de todos
       tabButtons.forEach(b => b.classList.remove('active'));
       tabPanes.forEach(p => p.classList.remove('active'));
 
-      // Ativa o clicado
       btn.classList.add('active');
       const targetId = btn.getAttribute('data-tab');
       const targetPane = document.getElementById(targetId);
@@ -44,12 +43,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const currentItem = header.parentElement;
       const isActive = currentItem.classList.contains('active');
 
-      // Fecha todos os outros accordions
       document.querySelectorAll('.accordion-item').forEach(item => {
         item.classList.remove('active');
       });
 
-      // Se não estava ativo, abre
       if (!isActive) {
         currentItem.classList.add('active');
       }
@@ -65,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const currentHref = btn.getAttribute('href');
         if (currentHref && !currentHref.startsWith('#')) {
           const separator = currentHref.includes('?') ? '&' : '?';
-          btn.setAttribute('href', `${currentHref}${separator}${urlParams.substring(1)}`);
+          btn.setAttribute('href', currentHref + separator + urlParams.substring(1));
         }
       });
     }
@@ -83,12 +80,11 @@ document.addEventListener('DOMContentLoaded', () => {
       } else {
         stickyBar.style.display = 'none';
       }
-    });
-    // Inicia oculto
+    }, { passive: true });
     stickyBar.style.display = 'none';
   }
 
-  // 7. Carrossel Contínuo: Pausa em Touch & Modal Lightbox para Ampliar Amostras
+  // 7. Carrossel Contínuo: Pausa em Touch & Modal Lightbox Instantâneo
   const samplesTrack = document.getElementById('samples-track');
   const samplesModal = document.getElementById('samples-modal');
   const modalImg = document.getElementById('samples-modal-img');
@@ -96,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalClose = document.getElementById('samples-modal-close');
   const modalOverlay = document.getElementById('samples-modal-overlay');
 
-  // Pausa/retomada no touch em mobile
+  // Pausa/retomada suave no touch em mobile
   if (samplesTrack) {
     samplesTrack.addEventListener('touchstart', () => {
       samplesTrack.classList.add('is-paused');
@@ -105,26 +101,75 @@ document.addEventListener('DOMContentLoaded', () => {
     samplesTrack.addEventListener('touchend', () => {
       setTimeout(() => {
         samplesTrack.classList.remove('is-paused');
-      }, 1500);
+      }, 1200);
     }, { passive: true });
   }
 
-  // Abertura do Modal de Zoom ao Clicar em Qualquer Card
+  // Pré-carregamento dinâmico em background das imagens completas WebP
+  let preloaded = false;
+  function preloadFullImages() {
+    if (preloaded) return;
+    preloaded = true;
+    const cards = document.querySelectorAll('.sample-mini-card');
+    cards.forEach(card => {
+      const fullSrc = card.getAttribute('data-full');
+      if (fullSrc) {
+        const img = new Image();
+        img.src = fullSrc;
+      }
+    });
+  }
+
+  // Dispara pré-carga quando o carrossel se aproxima da tela
+  if ('IntersectionObserver' in window && samplesTrack) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          preloadFullImages();
+          observer.disconnect();
+        }
+      });
+    }, { rootMargin: '250px' });
+    observer.observe(samplesTrack);
+  } else {
+    setTimeout(preloadFullImages, 2000);
+  }
+
+  // Abertura Ultra-Rápida do Modal ao Clicar/Tocar no Card
   const sampleCards = document.querySelectorAll('.sample-mini-card');
   sampleCards.forEach(card => {
-    card.addEventListener('click', () => {
-      const imgSrc = card.getAttribute('data-full') || card.querySelector('img')?.getAttribute('src');
-      const imgTitle = card.getAttribute('data-title') || card.querySelector('span')?.textContent;
+    card.addEventListener('click', (e) => {
+      e.preventDefault();
+      const fullSrc = card.getAttribute('data-full');
+      const thumbImg = card.querySelector('img');
+      const thumbSrc = thumbImg ? thumbImg.getAttribute('src') : '';
+      const imgTitle = card.getAttribute('data-title') || card.querySelector('span')?.textContent || 'Amostra do Infográfico';
 
-      if (samplesModal && modalImg && imgSrc) {
-        modalImg.src = imgSrc;
-        modalImg.alt = imgTitle || 'Amostra do Mapa Mental';
-        if (modalCaption) {
-          modalCaption.textContent = imgTitle || '';
+      if (samplesModal && modalImg) {
+        // Passo 1: Mostra imediatamente a thumbnail que já está carregada no navegador (0ms de espera visual!)
+        if (thumbSrc) {
+          modalImg.src = thumbSrc;
         }
+        modalImg.alt = imgTitle;
+        if (modalCaption) {
+          modalCaption.textContent = imgTitle;
+        }
+
+        // Abre o modal instantaneamente
         samplesModal.classList.add('active');
         samplesModal.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
+
+        // Passo 2: Se tiver a versão em alta definição leve (WebP), carrega e substitui
+        if (fullSrc && fullSrc !== thumbSrc) {
+          const highRes = new Image();
+          highRes.src = fullSrc;
+          highRes.onload = () => {
+            if (samplesModal.classList.contains('active')) {
+              modalImg.src = fullSrc;
+            }
+          };
+        }
       }
     });
   });
@@ -147,6 +192,27 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.key === 'Escape' && samplesModal && samplesModal.classList.contains('active')) {
       closeModal();
     }
+  });
+
+  // 8. Scroll Suave para Links Internos
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+      if (targetId === '#' || targetId === '') return;
+
+      const targetElem = document.querySelector(targetId);
+      if (targetElem) {
+        e.preventDefault();
+        const headerOffset = 76;
+        const elementPosition = targetElem.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    });
   });
 
 });
