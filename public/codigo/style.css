@@ -494,6 +494,16 @@ h1, h2, h3, h4 {
   }
 }
 
+@media (max-width: 768px) {
+  .ecosystem-grid {
+    display: none !important;
+  }
+  .ecosystem-mockup-wrapper {
+    margin-bottom: 0 !important;
+  }
+}
+
+
 .eco-card {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
