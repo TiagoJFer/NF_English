@@ -1,11 +1,31 @@
 ---
-interface Props {
-  mode?: 'institutional' | 'destrave' | 'index';
-  lang?: 'pt' | 'en' | 'ru';
+interface HeaderAnchor {
+  label: string;
+  href: string;
 }
 
-const { mode = 'institutional', lang = 'pt' } = Astro.props;
+interface Props {
+  mode?: 'institutional' | 'destrave' | 'index' | 'lp';
+  lang?: 'pt' | 'en' | 'ru';
+  whatsappHref?: string;
+  ctaLabel?: string;
+  lpLinks?: HeaderAnchor[];
+}
 
+const {
+  mode = 'institutional',
+  lang = 'pt',
+  whatsappHref,
+  ctaLabel,
+  lpLinks = [
+    { label: 'Método', href: '#metodo' },
+    { label: 'Mentora', href: '#natalia' },
+    { label: 'Investimento', href: '#investimento' },
+    { label: 'Dúvidas', href: '#faq' }
+  ]
+} = Astro.props;
+
+const isLp = mode === 'lp';
 const isInstitutional = mode === 'institutional' || mode === 'index';
 const isEn = lang === 'en';
 const isRu = lang === 'ru';
@@ -27,16 +47,18 @@ const msgDestrave = isRu
 const whatsappInstitucional = `https://wa.me/5511967165564?text=${encodeURIComponent(msgInstrucional)}`;
 const whatsappDestrave = `https://wa.me/5511967165564?text=${encodeURIComponent(msgDestrave)}`;
 
-const activeWhatsapp = isInstitutional ? whatsappInstitucional : whatsappDestrave;
-const ctaText = isInstitutional
-  ? (isRu ? 'В WhatsApp' : isEn ? 'WhatsApp Chat' : 'Falar no WhatsApp')
-  : (isRu ? 'В лист ожидания' : isEn ? 'Join Waitlist' : 'Entrar na lista');
+const activeWhatsapp = whatsappHref || (isInstitutional ? whatsappInstitucional : whatsappDestrave);
+const ctaText =
+  ctaLabel ||
+  (isInstitutional
+    ? (isRu ? 'В WhatsApp' : isEn ? 'WhatsApp Chat' : 'Falar no WhatsApp')
+    : (isRu ? 'В лист ожидания' : isEn ? 'Join Waitlist' : 'Entrar na lista'));
 
 // Target URLs for language switcher
 const ptTarget = isInstitutional ? '/' : '/destrave';
 const enTarget = isInstitutional ? '/en' : '/en/destrave';
 const ruTarget = isInstitutional ? '/ru' : '/ru/destrave';
-const homeTarget = isRu ? '/ru' : isEn ? '/en' : '/';
+const homeTarget = isLp ? '#top' : isRu ? '/ru' : isEn ? '/en' : '/';
 const destraveTarget = isRu ? '/ru/destrave' : isEn ? '/en/destrave' : '/destrave';
 
 // Section anchor links based on current language and mode
@@ -65,7 +87,13 @@ const linkOffer = isRu ? '/ru/destrave#offer' : isEn ? '/en/destrave#offer' : '/
 
     <!-- Desktop Navigation Links -->
     <nav class="nav-links" aria-label={isRu ? "Главное меню" : isEn ? "Main navigation" : "Navegação principal"}>
-      {isInstitutional ? (
+      {isLp ? (
+        <>
+          {lpLinks.map((item) => (
+            <a href={item.href}>{item.label}</a>
+          ))}
+        </>
+      ) : isInstitutional ? (
         isRu ? (
           <>
             <a href={linkPersonalization}>Подход</a>
@@ -131,11 +159,17 @@ const linkOffer = isRu ? '/ru/destrave#offer' : isEn ? '/en/destrave#offer' : '/
 
     <!-- Header Actions (Lang Switch, Desktop CTA & Mobile Hamburger) -->
     <div class="nav-actions">
-      <div class="lang-switch" aria-label="Language selector / Выбор языка">
-        <a href={ptTarget} class={isPt ? 'active' : ''} aria-current={isPt ? 'true' : undefined}>PT</a>
-        <a href={enTarget} class={isEn ? 'active' : ''} aria-current={isEn ? 'true' : undefined}>EN</a>
-        <a href={ruTarget} class={isRu ? 'active' : ''} aria-current={isRu ? 'true' : undefined}>RU</a>
-      </div>
+      {isLp ? (
+        <a class="button" href={activeWhatsapp} target="_blank" rel="noreferrer" style="min-height: 40px; padding: 8px 18px; font-size: 0.9rem;">
+          {ctaText}
+        </a>
+      ) : (
+        <div class="lang-switch" aria-label="Language selector / Выбор языка">
+          <a href={ptTarget} class={isPt ? 'active' : ''} aria-current={isPt ? 'true' : undefined}>PT</a>
+          <a href={enTarget} class={isEn ? 'active' : ''} aria-current={isEn ? 'true' : undefined}>EN</a>
+          <a href={ruTarget} class={isRu ? 'active' : ''} aria-current={isRu ? 'true' : undefined}>RU</a>
+        </div>
+      )}
 
       <!-- Botão Hambúrguer Mobile (Apenas os 3 traços) -->
       <button
@@ -199,7 +233,17 @@ const linkOffer = isRu ? '/ru/destrave#offer' : isEn ? '/en/destrave#offer' : '/
         </div>
 
         <nav class="mobile-nav-list" aria-label="Links principais">
-          {isInstitutional ? (
+          {isLp ? (
+            <>
+              {lpLinks.map((item) => (
+                <a href={item.href} class="mobile-nav-item">
+                  <span class="item-icon">•</span>
+                  <span class="item-label">{item.label}</span>
+                  <span class="item-arrow">›</span>
+                </a>
+              ))}
+            </>
+          ) : isInstitutional ? (
             isRu ? (
               <>
                 <a href={linkPersonalization} class="mobile-nav-item">
@@ -460,29 +504,31 @@ const linkOffer = isRu ? '/ru/destrave#offer' : isEn ? '/en/destrave#offer' : '/
       </div>
 
       <!-- Idioma no Drawer -->
-      <div class="mobile-menu-section">
-        <div class="mobile-section-heading">
-          <span class="dot"></span>
-          <span>{isRu ? "Язык сайта" : isEn ? "Language" : "Idioma do Site"}</span>
+      {!isLp && (
+        <div class="mobile-menu-section">
+          <div class="mobile-section-heading">
+            <span class="dot"></span>
+            <span>{isRu ? "Язык сайта" : isEn ? "Language" : "Idioma do Site"}</span>
+          </div>
+          <div class="mobile-lang-grid">
+            <a href={ptTarget} class={`mobile-lang-card ${isPt ? 'active' : ''}`}>
+              <span class="lang-flag">🇧🇷</span>
+              <span class="lang-name">Português</span>
+              <span class="lang-code">PT</span>
+            </a>
+            <a href={enTarget} class={`mobile-lang-card ${isEn ? 'active' : ''}`}>
+              <span class="lang-flag">🇺🇸</span>
+              <span class="lang-name">English</span>
+              <span class="lang-code">EN</span>
+            </a>
+            <a href={ruTarget} class={`mobile-lang-card ${isRu ? 'active' : ''}`}>
+              <span class="lang-flag">🇷🇺</span>
+              <span class="lang-name">Русский</span>
+              <span class="lang-code">RU</span>
+            </a>
+          </div>
         </div>
-        <div class="mobile-lang-grid">
-          <a href={ptTarget} class={`mobile-lang-card ${isPt ? 'active' : ''}`}>
-            <span class="lang-flag">🇧🇷</span>
-            <span class="lang-name">Português</span>
-            <span class="lang-code">PT</span>
-          </a>
-          <a href={enTarget} class={`mobile-lang-card ${isEn ? 'active' : ''}`}>
-            <span class="lang-flag">🇺🇸</span>
-            <span class="lang-name">English</span>
-            <span class="lang-code">EN</span>
-          </a>
-          <a href={ruTarget} class={`mobile-lang-card ${isRu ? 'active' : ''}`}>
-            <span class="lang-flag">🇷🇺</span>
-            <span class="lang-name">Русский</span>
-            <span class="lang-code">RU</span>
-          </a>
-        </div>
-      </div>
+      )}
     </div>
 
     <!-- Rodapé do Drawer com CTA -->

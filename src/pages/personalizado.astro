@@ -1,0 +1,254 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import MobileCTA from '../components/MobileCTA.astro';
+import Hero from '../components/Hero.astro';
+import ProofBar from '../components/ProofBar.astro';
+import CorporateStrip from '../components/CorporateStrip.astro';
+import ComparisonSection from '../components/ComparisonSection.astro';
+import PillarsSection from '../components/PillarsSection.astro';
+import TeacherSection from '../components/TeacherSection.astro';
+import OfferSection from '../components/OfferSection.astro';
+import FAQSection from '../components/FAQSection.astro';
+import CTABanner from '../components/CTABanner.astro';
+
+const whatsappDiagnostico =
+  'https://wa.me/5511967165564?text=' +
+  encodeURIComponent(
+    'Olá Natalia! Vi a página da Mentoria Individual 1:1 Sob Medida e gostaria de agendar minha Sessão Diagnóstica para montar meu plano personalizado.'
+  );
+
+const pillars = [
+  {
+    num: '01',
+    title: 'Sessão Diagnóstica & Mapa de Afinidades',
+    desc: 'Antes da primeira aula, mapeamos seu histórico com o idioma, os pontos exatos onde sua fala trava e suas prioridades imediatas de carreira, negócios ou viagens.'
+  },
+  {
+    num: '02',
+    title: 'Sua Rotina Real como Material Didático',
+    desc: 'Reuniões internacionais, apresentações, entrevistas, tecnologia, gestão e viagens viram a base dos encontros — zero apostilas genéricas ou diálogos artificiais.'
+  },
+  {
+    num: '03',
+    title: 'Segurança Psicológica & Ajuste Fino',
+    desc: 'Um ambiente individual, acolhedor e sem julgamentos onde você fala desde o primeiro encontro, recebe correções precisas de pronúncia e ganha naturalidade.'
+  },
+  {
+    num: '04',
+    title: 'Encontros de 60 Min + Suporte de Bolso',
+    desc: 'Aulas individuais 100% online ao vivo (1x ou 2x por semana), com apoio pontual no WhatsApp para destravar dúvidas rápidas antes de calls ou e-mails importantes.'
+  }
+];
+
+const faqs = [
+  {
+    q: 'Como funciona a Sessão Diagnóstica inicial?',
+    a: 'É uma conversa individual por vídeo (15 a 20 minutos) diretamente com a Natalia Fernandes. Avaliamos seu nível atual, entendemos onde o inglês trava a sua rotina hoje e desenhamos a recomendação ideal de ciclo (Trimestral ou Semestral).'
+  },
+  {
+    q: 'As aulas são online ou presenciais em Florianópolis?',
+    a: 'Todas as mentorias são realizadas 100% online ao vivo (encontros individuais de 60 minutos), permitindo total praticidade na sua agenda — atendemos profissionais em Florianópolis, em todo o Brasil e no exterior (como Dubai e Europa).'
+  },
+  {
+    q: 'Como funciona o investimento e o formato dos ciclos?',
+    a: 'Trabalhamos em ciclos fechados sob medida para garantir consistência e resultado real, usando como referência R$ 120 por encontro de 60 minutos. Temos ciclos Trimestrais (12 semanas — 1x/sem por R$ 1.440 ou 2x/sem por R$ 2.880) e Semestrais (24 semanas — a partir de R$ 2.760), com parcelamento ou 8% de desconto à vista no Pix.'
+  },
+  {
+    q: 'Eu já fiz vários cursos e ainda travo. Esse formato resolve?',
+    a: 'Sim — esse é exatamente o perfil da maioria dos nossos alunos. Você não precisa recomeçar do zero nem acumular mais regras soltas: o foco da mentoria 1:1 é transformar o inglês que você já entende em fala segura para situações reais.'
+  },
+  {
+    q: 'Tenho agenda corrida e imprevistos no trabalho. Como funciona a flexibilidade?',
+    a: 'Os horários são combinados individualmente conforme sua disponibilidade, com regras claras e humanas de reagendamento prévio para que o inglês caiba na sua rotina executiva sem virar mais um peso.'
+  },
+  {
+    q: 'Qual a diferença entre a Mentoria Individual 1:1 e o programa em grupo Destrave?',
+    a: 'A Mentoria 1:1 é 100% exclusiva e moldada às suas metas específicas (reuniões, entrevistas, apresentações, viagens ou carreira internacional), com ritmo e agenda individuais. O Destrave é um programa em grupo de 8 semanas voltado para destravar a conversação geral.'
+  }
+];
+---
+
+<Layout
+  title="Mentoria Individual de Inglês 1:1 Sob Medida | Natalia Fernandes English"
+  description="Acompanhamento individual 1:1 de inglês 100% online ao vivo para executivos, profissionais de tecnologia e empresários. 15+ anos de experiência corporativa."
+>
+  <div class="page" id="top">
+    <Header
+      mode="lp"
+      whatsappHref={whatsappDiagnostico}
+      ctaLabel="Agendar Diagnóstico"
+      lpLinks={[
+        { label: 'Método', href: '#metodo' },
+        { label: 'Mentora', href: '#natalia' },
+        { label: 'Investimento', href: '#investimento' },
+        { label: 'Dúvidas', href: '#faq' }
+      ]}
+    />
+
+    <main>
+      <!-- HERO -->
+      <Hero
+        highlightTag="Mentoria Individual 1:1 • 100% Online ao Vivo"
+        title="Inglês sob medida para profissionais que não têm tempo a perder com cursos genéricos."
+        description="Você já estudou inglês, entende boa parte do que lê e ouve, mas trava quando precisa falar em reuniões, entrevistas ou viagens. Tenha um plano 100% individual construído sobre a sua rotina real com quem soma mais de 15 anos de experiência executiva."
+        primaryAction={{
+          text: 'Agendar Sessão Diagnóstica',
+          href: whatsappDiagnostico,
+          isGold: true,
+          isExternal: true
+        }}
+        secondaryAction={{
+          text: 'Ver ciclos e investimento',
+          href: '#investimento',
+          isSecondary: true
+        }}
+        microcopy="Conversa diagnóstica de 15 min diretamente com a Natalia Fernandes. Vagas individuais limitadas."
+        pills={[
+          'Encontros de 60 min (1:1)',
+          '15+ Anos de Experiência',
+          'Florianópolis, Brasil & Exterior',
+          'Ciclos Trimestrais & Semestrais'
+        ]}
+        imageFrameType="circle"
+        imageSrc="/Nath.jpg"
+        imageWebpSrc="/Nath.webp"
+        imageAlt="Natalia Fernandes, professora e mentora de inglês executivo"
+        floatingNoteTitle="100% Sob Medida:"
+        floatingNoteText="Suas calls, apresentações, entrevistas e viagens viram o material vivo das nossas aulas."
+      />
+
+      <!-- PROVA RÁPIDA -->
+      <ProofBar
+        ariaLabel="Credenciais da Mentoria Individual 1:1"
+        items={[
+          { value: '15+ anos', label: 'preparando executivos, líderes e profissionais' },
+          { value: '60 min 1:1', label: 'encontros individuais ao vivo com foco total em fala' },
+          { value: 'Ciclos Claros', label: 'planos de 12 ou 24 semanas com meta e acompanhamento' },
+          { value: 'Global', label: 'alunos em Florianópolis, todo o Brasil e Dubai' }
+        ]}
+      />
+
+      <!-- MARCAS CORPORATIVAS -->
+      <CorporateStrip
+        label="Experiência comprovada em treinamentos para grandes corporações:"
+        extraBadge="+ Executivos, Tech & Empresários"
+      />
+
+      <!-- COMPARATIVO -->
+      <ComparisonSection
+        isBand={true}
+        eyebrow="Por que o modelo tradicional trava você"
+        title="A diferença entre pagar um curso de prateleira e investir em uma mentoria sob medida."
+        description="Profissionais experientes abandonam escolas tradicionais em menos de 90 dias porque o método ignora a sua realidade e desperdiça a sua agenda."
+        traditionalTitle="Escolas & Cursos Tradicionais"
+        traditionalDesc="O formato padronizado que faz você sentir que não evolui:"
+        traditionalItems={[
+          'Apostilas engessadas com diálogos artificiais que você nunca usa no trabalho.',
+          'Turmas misturadas com ritmos diferentes, pouca prática de fala e medo de errar.',
+          'Foco excessivo em regras gramaticais soltas sem preparo para calls reais.',
+          'Professores rotativos sem visão estratégica da sua carreira ou objetivo.'
+        ]}
+        nfTitle="Mentoria Individual NF English"
+        nfDesc="Acompanhamento exclusivo desenhado para resultados reais:"
+        nfBadge="Alto Padrão 1:1"
+        nfItems={[
+          'Material vivo: suas reuniões, projetos, apresentações e viagens conduzem a aula.',
+          'Atenção 100% individual por 60 minutos, falando desde o primeiro encontro.',
+          'Segurança psicológica: correção precisa e acolhedora, sem constrangimento.',
+          'Acompanhamento direto com a Natalia Fernandes (15+ anos de bagagem corporativa).'
+        ]}
+      />
+
+      <!-- OS 4 PILARES -->
+      <PillarsSection
+        id="metodo"
+        eyebrow="Como funciona na prática"
+        title="Os 4 pilares do acompanhamento individual sob medida"
+        description="Estrutura clara para transformar conhecimento passivo em clareza, vocabulário natural e confiança para falar."
+        pillars={pillars}
+      />
+
+      <!-- AUTORIDADE -->
+      <TeacherSection
+        id="natalia"
+        isBand={true}
+        eyebrow="Sua Mentora"
+        title="Natalia Fernandes"
+        description="Professora e mentora de inglês há mais de 15 anos, ex-coordenadora pedagógica e especialista em destravar profissionais e executivos que já estudaram o idioma, mas precisam de segurança real para se comunicar em alto nível."
+        imageSrc="/Nath.jpg"
+        imageWebpSrc="/Nath.webp"
+        imageAlt="Professora Natalia Fernandes"
+        creds={[
+          { value: '15+ Anos', label: 'de dedicação ao ensino personalizado de inglês' },
+          { value: 'In Company', label: 'atuação em marcas como Yamaha, Pfizer, Eaton, Mahle e Modine' },
+          { value: 'Sob Medida', label: 'atendimento individual para executivos, tech e famílias globais' }
+        ]}
+        manifesto="&ldquo;Fluência não é falar sem sotaque. É ter clareza, calma e segurança para defender suas ideias em inglês em qualquer sala do mundo.&rdquo;"
+      />
+
+      <!-- INVESTIMENTO & CICLOS -->
+      <OfferSection
+        id="investimento"
+        isBand={false}
+        title="Ciclos Fechados de Acompanhamento 1:1"
+        description="Trabalhamos em ciclos trimestrais (12 semanas) ou semestrais (24 semanas) para garantir continuidade, ritmo e evolução mensurável. Referência base: R$ 120 por encontro individual de 60 minutos."
+        checklist={[
+          'Ciclo Trimestral Essencial (1x/sem • 12 aulas): R$ 1.440 (3x de R$ 480) ou R$ 1.325 no Pix.',
+          'Ciclo Trimestral Executivo ⭐ (2x/sem • 24 aulas): R$ 2.880 (6x de R$ 480) ou R$ 2.650 no Pix.',
+          'Ciclo Semestral Consolidação (1x/sem • 24 aulas): R$ 2.760 (6x de R$ 460) ou R$ 2.540 no Pix.',
+          'Ciclo Semestral Imersão VIP (2x/sem • 48 aulas): R$ 5.280 (6x de R$ 880) ou R$ 4.850 no Pix.',
+          'Incluso em todos os ciclos: Diagnóstico, Mapa de Afinidades, material sob medida e suporte de bolso no WhatsApp.'
+        ]}
+        priceAriaLabel="Investimento a partir de"
+        priceLabel="Ciclos Individuais 1:1"
+        price="R$ 460/mês"
+        priceDetails="<strong>A partir de 6x de R$ 460</strong> (1x/sem) ou <strong>R$ 880 a R$ 960/mês</strong> (2x/sem)."
+        priceFull="8% de desconto à vista no Pix • Referência R$ 120/aula (60 min)."
+        offerNote="Antes de escolher o ciclo, fazemos uma <strong>Sessão Diagnóstica de 15 min</strong> por vídeo para recomendar o ritmo ideal para o seu objetivo."
+        ctaText="Agendar Sessão Diagnóstica"
+        ctaHref={whatsappDiagnostico}
+        ctaMicrocopy="Atendimento direto no WhatsApp com a Natalia Fernandes."
+      />
+
+      <!-- FAQ -->
+      <FAQSection
+        id="faq"
+        isBand={true}
+        eyebrow="Transparência total"
+        title="Dúvidas Frequentes"
+        description="Tudo o que você precisa saber antes de agendar sua Sessão Diagnóstica."
+        faqs={faqs}
+      />
+
+      <!-- CTA FINAL -->
+      <CTABanner
+        title="Pronto para destravar seu inglês com um plano feito para a sua rotina?"
+        description="Agende sua Sessão Diagnóstica de 15 minutos no WhatsApp e descubra o formato ideal para evoluir com segurança e consistência."
+        ctaText="Falar com a Natalia no WhatsApp"
+        ctaHref={whatsappDiagnostico}
+      />
+    </main>
+
+    <!-- MOBILE CTA -->
+    <MobileCTA href={whatsappDiagnostico} text="Agendar Sessão Diagnóstica" />
+
+    <!-- FOOTER -->
+    <Footer
+      brandDescription="Mentoria individual de inglês sob medida para executivos, profissionais e empresários."
+      solutionsTitle="Nesta Página"
+      solutions={[
+        { label: 'Como funciona o método', href: '#metodo' },
+        { label: 'Sobre Natalia Fernandes', href: '#natalia' },
+        { label: 'Ciclos e investimento', href: '#investimento' },
+        { label: 'Dúvidas frequentes', href: '#faq' }
+      ]}
+      contactTitle="Próximo Passo"
+      contactLinks={[
+        { label: 'Agendar Sessão Diagnóstica (WhatsApp)', href: whatsappDiagnostico, isExternal: true },
+        { label: 'Voltar ao topo', href: '#top' }
+      ]}
+    />
+  </div>
+</Layout>
